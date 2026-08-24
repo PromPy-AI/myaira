@@ -210,21 +210,8 @@ function Index() {
               don't want remembered. Decide what stays, what goes, and who can access your
               legacy.
             </p>
-            <ul className="mt-16 grid gap-px overflow-hidden border border-[oklch(0.95_0.015_88)]/15 sm:grid-cols-3">
-              {controls.map((c) => (
-                <li
-                  key={c.state}
-                  className="px-6 py-7 transition-colors duration-300 hover:bg-[oklch(0.95_0.015_88)]/5 sm:border-r sm:border-[oklch(0.95_0.015_88)]/15 sm:last:border-r-0"
-                >
-                  <span className="block text-[0.68rem] tracking-[0.28em] text-champagne uppercase">
-                    {c.state}
-                  </span>
-                  <span className="mt-3 block text-sm text-[oklch(0.95_0.015_88)]/75">
-                    {c.action}
-                  </span>
-                </li>
-              ))}
-            </ul>
+            <ControlToggle />
+
           </div>
         </section>
 
