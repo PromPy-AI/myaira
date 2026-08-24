@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
+import portrait from "@/assets/aira-portrait.png.asset.json";
+
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -49,6 +51,9 @@ const controls = [
   { state: "BLOCK", action: "Don't remember" },
 ];
 
+const products = ["AIRA Loop (wristband)", "AIRA Sense", "AIRA Life"];
+
+
 function WaitlistForm() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "done">("idle");
@@ -96,6 +101,49 @@ function WaitlistForm() {
   );
 }
 
+function ControlToggle() {
+  const [active, setActive] = useState<string>(controls[0]!.state);
+  const current = controls.find((c) => c.state === active) ?? controls[0]!;
+
+
+  return (
+    <div className="mt-16">
+      <div
+        role="radiogroup"
+        aria-label="Memory control"
+        className="inline-flex items-center gap-px border border-[oklch(0.95_0.015_88)]/15 p-1"
+      >
+        {controls.map((c) => {
+          const isOn = c.state === active;
+          return (
+            <button
+              key={c.state}
+              type="button"
+              role="radio"
+              aria-checked={isOn}
+              onClick={() => setActive(c.state)}
+              className={`px-6 py-3 text-[0.68rem] tracking-[0.28em] uppercase transition-colors duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-champagne ${
+                isOn
+                  ? "bg-champagne text-deep"
+                  : "text-[oklch(0.95_0.015_88)]/55 hover:text-[oklch(0.95_0.015_88)]"
+              }`}
+            >
+              {c.state}
+            </button>
+          );
+        })}
+      </div>
+      <p aria-live="polite" className="mt-5 text-sm text-[oklch(0.95_0.015_88)]/70">
+        {current.action}
+      </p>
+      <p className="mt-10 text-[0.62rem] tracking-[0.24em] text-[oklch(0.95_0.015_88)]/40 uppercase">
+        {products.join("  ·  ")}
+      </p>
+    </div>
+  );
+}
+
+
 function Index() {
   return (
     <div className="min-h-screen bg-background">
@@ -139,9 +187,10 @@ function Index() {
               className="reveal mt-10 max-w-[46ch] text-base leading-relaxed text-[oklch(0.97_0.015_88)]/72 sm:text-lg"
               style={{ animationDelay: "220ms" }}
             >
-              AIRA is a wearable that learns from your life — your health, your voice, your
-              stories, and the moments that matter.
+              AIRA is a wearable that learns from your life, monitors your health, preserves
+              what matters, and helps your legacy live on.
             </p>
+
           </div>
         </section>
 
@@ -151,16 +200,29 @@ function Index() {
             <p className="text-xs tracking-[0.3em] text-muted-foreground uppercase">
               A life, remembered.
             </p>
-            <h2 className="mt-12 max-w-[20ch] text-[clamp(2rem,5.4vw,4.25rem)] leading-[1.02] tracking-[-0.03em]">
-              The longer you wear it, the more of you it remembers.
-            </h2>
-            <p className="mt-12 max-w-[54ch] text-base leading-relaxed text-muted-foreground sm:ml-auto sm:text-lg">
-              AIRA quietly builds a private understanding of your life over time — from the
-              conversations you choose to preserve to the moments, experiences, and patterns
-              that make you uniquely you.
-            </p>
+            <div className="mt-12 grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
+              <div>
+                <h2 className="max-w-[20ch] text-[clamp(2rem,5.4vw,4.25rem)] leading-[1.02] tracking-[-0.03em]">
+                  The longer you wear it, the more of you it remembers.
+                </h2>
+                <p className="mt-10 max-w-[54ch] text-base leading-relaxed text-muted-foreground sm:text-lg">
+                  AIRA quietly builds a private understanding of your life over time — from the
+                  conversations you choose to preserve to the moments, experiences, and patterns
+                  that make you uniquely you.
+                </p>
+              </div>
+              <figure className="relative overflow-hidden bg-deep">
+                <img
+                  src={portrait.url}
+                  alt="A person wearing AIRA, eyes closed, in low light"
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
+              </figure>
+            </div>
           </div>
         </section>
+
 
         {/* Three ideas */}
         <section className="pb-32 sm:pb-48">
@@ -191,21 +253,8 @@ function Index() {
               don't want remembered. Decide what stays, what goes, and who can access your
               legacy.
             </p>
-            <ul className="mt-16 grid gap-px overflow-hidden border border-[oklch(0.95_0.015_88)]/15 sm:grid-cols-3">
-              {controls.map((c) => (
-                <li
-                  key={c.state}
-                  className="px-6 py-7 transition-colors duration-300 hover:bg-[oklch(0.95_0.015_88)]/5 sm:border-r sm:border-[oklch(0.95_0.015_88)]/15 sm:last:border-r-0"
-                >
-                  <span className="block text-[0.68rem] tracking-[0.28em] text-champagne uppercase">
-                    {c.state}
-                  </span>
-                  <span className="mt-3 block text-sm text-[oklch(0.95_0.015_88)]/75">
-                    {c.action}
-                  </span>
-                </li>
-              ))}
-            </ul>
+            <ControlToggle />
+
           </div>
         </section>
 
