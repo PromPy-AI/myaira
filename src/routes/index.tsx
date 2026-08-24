@@ -206,17 +206,27 @@ function Index() {
                   The longer you wear it, the more of you it remembers.
                 </h2>
                 <p className="mt-10 max-w-[54ch] text-base leading-relaxed text-muted-foreground sm:text-lg">
-                  AIRA quietly builds a private understanding of your life over time — from the
+                  AIRA quietly builds a private understanding of your life over time, from the
                   conversations you choose to preserve to the moments, experiences, and patterns
                   that make you uniquely you.
                 </p>
+                <p className="mt-6 text-xs tracking-[0.24em] text-muted-foreground uppercase">
+                  The AI You. Built from your life.
+                </p>
               </div>
-              <figure className="relative overflow-hidden bg-deep">
+              <figure className="relative overflow-hidden rounded-2xl bg-deep">
                 <img
                   src={portrait.url}
                   alt="A person wearing AIRA, eyes closed, in low light"
                   loading="lazy"
-                  className="h-full w-full object-cover"
+                  draggable={false}
+                  className="h-full w-full rounded-2xl object-cover select-none"
+                  style={{
+                    maskImage:
+                      "radial-gradient(120% 120% at 50% 50%, #000 62%, transparent 100%)",
+                    WebkitMaskImage:
+                      "radial-gradient(120% 120% at 50% 50%, #000 62%, transparent 100%)",
+                  }}
                 />
               </figure>
             </div>
@@ -230,7 +240,7 @@ function Index() {
             {ideas.map((idea) => (
               <article key={idea.index} className="max-w-[34ch]">
                 <p className="text-xs tracking-[0.28em] text-muted-foreground uppercase">
-                  {idea.index} — {idea.label}
+                  {idea.index} {idea.label}
                 </p>
                 <h3 className="mt-6 text-2xl leading-snug tracking-[-0.02em]">{idea.title}</h3>
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{idea.body}</p>
