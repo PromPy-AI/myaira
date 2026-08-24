@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
+import portrait from "@/assets/aira-portrait.png.asset.json";
+
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -48,6 +50,9 @@ const controls = [
   { state: "MUTE", action: "Pause" },
   { state: "BLOCK", action: "Don't remember" },
 ];
+
+const products = ["AIRA Loop (wristband)", "AIRA Sense", "AIRA Life"];
+
 
 function WaitlistForm() {
   const [email, setEmail] = useState("");
