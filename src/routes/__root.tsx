@@ -77,11 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "AIRA — Remember what makes you, you." },
+      {
+        name: "description",
+        content:
+          "AIRA is a wearable that learns from your life — your health, your voice, your stories, and the moments that matter.",
+      },
+      { name: "author", content: "AIRA" },
+      { property: "og:title", content: "AIRA — Remember what makes you, you." },
+      {
+        property: "og:description",
+        content: "A wearable that understands your life today and preserves what matters.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
