@@ -101,6 +101,48 @@ function WaitlistForm() {
   );
 }
 
+function ControlToggle() {
+  const [active, setActive] = useState(controls[0].state);
+  const current = controls.find((c) => c.state === active) ?? controls[0];
+
+  return (
+    <div className="mt-16">
+      <div
+        role="radiogroup"
+        aria-label="Memory control"
+        className="inline-flex items-center gap-px border border-[oklch(0.95_0.015_88)]/15 p-1"
+      >
+        {controls.map((c) => {
+          const isOn = c.state === active;
+          return (
+            <button
+              key={c.state}
+              type="button"
+              role="radio"
+              aria-checked={isOn}
+              onClick={() => setActive(c.state)}
+              className={`px-6 py-3 text-[0.68rem] tracking-[0.28em] uppercase transition-colors duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-champagne ${
+                isOn
+                  ? "bg-champagne text-deep"
+                  : "text-[oklch(0.95_0.015_88)]/55 hover:text-[oklch(0.95_0.015_88)]"
+              }`}
+            >
+              {c.state}
+            </button>
+          );
+        })}
+      </div>
+      <p aria-live="polite" className="mt-5 text-sm text-[oklch(0.95_0.015_88)]/70">
+        {current.action}
+      </p>
+      <p className="mt-10 text-[0.62rem] tracking-[0.24em] text-[oklch(0.95_0.015_88)]/40 uppercase">
+        {products.join("  ·  ")}
+      </p>
+    </div>
+  );
+}
+
+
 function Index() {
   return (
     <div className="min-h-screen bg-background">
