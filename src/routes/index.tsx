@@ -144,9 +144,10 @@ function Index() {
               className="reveal mt-10 max-w-[46ch] text-base leading-relaxed text-[oklch(0.97_0.015_88)]/72 sm:text-lg"
               style={{ animationDelay: "220ms" }}
             >
-              AIRA is a wearable that learns from your life — your health, your voice, your
-              stories, and the moments that matter.
+              AIRA is a wearable that learns from your life, monitors your health, preserves
+              what matters, and helps your legacy live on.
             </p>
+
           </div>
         </section>
 
@@ -156,16 +157,29 @@ function Index() {
             <p className="text-xs tracking-[0.3em] text-muted-foreground uppercase">
               A life, remembered.
             </p>
-            <h2 className="mt-12 max-w-[20ch] text-[clamp(2rem,5.4vw,4.25rem)] leading-[1.02] tracking-[-0.03em]">
-              The longer you wear it, the more of you it remembers.
-            </h2>
-            <p className="mt-12 max-w-[54ch] text-base leading-relaxed text-muted-foreground sm:ml-auto sm:text-lg">
-              AIRA quietly builds a private understanding of your life over time — from the
-              conversations you choose to preserve to the moments, experiences, and patterns
-              that make you uniquely you.
-            </p>
+            <div className="mt-12 grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
+              <div>
+                <h2 className="max-w-[20ch] text-[clamp(2rem,5.4vw,4.25rem)] leading-[1.02] tracking-[-0.03em]">
+                  The longer you wear it, the more of you it remembers.
+                </h2>
+                <p className="mt-10 max-w-[54ch] text-base leading-relaxed text-muted-foreground sm:text-lg">
+                  AIRA quietly builds a private understanding of your life over time — from the
+                  conversations you choose to preserve to the moments, experiences, and patterns
+                  that make you uniquely you.
+                </p>
+              </div>
+              <figure className="relative overflow-hidden bg-deep">
+                <img
+                  src={portrait.url}
+                  alt="A person wearing AIRA, eyes closed, in low light"
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
+              </figure>
+            </div>
           </div>
         </section>
+
 
         {/* Three ideas */}
         <section className="pb-32 sm:pb-48">
