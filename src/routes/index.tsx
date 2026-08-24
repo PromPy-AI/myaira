@@ -102,8 +102,9 @@ function WaitlistForm() {
 }
 
 function ControlToggle() {
-  const [active, setActive] = useState(controls[0].state);
-  const current = controls.find((c) => c.state === active) ?? controls[0];
+  const [active, setActive] = useState<string>(controls[0]!.state);
+  const current = controls.find((c) => c.state === active) ?? controls[0]!;
+
 
   return (
     <div className="mt-16">
