@@ -1,6 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
-import portrait from "@/assets/aira-portrait.png.asset.json";
 import logo from "@/assets/aira-logo.png.asset.json";
 
 
@@ -8,28 +7,28 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "AIRA — Remember what makes you, you." },
+      { title: "AIRA" },
       {
         name: "description",
         content:
-          "AIRA is a wearable that learns from your life — your health, your voice, your stories, and the moments that matter.",
+          "AIRA is a wearable that learns from your life, your health, your voice, your stories, and the moments that matter.",
       },
-      { property: "og:title", content: "AIRA — Remember what makes you, you." },
+      { property: "og:title", content: "AIRA" },
       {
         property: "og:description",
-        content: "A wearable that understands your life today and preserves what matters.",
+        content: "a wearable that learns from your life, monitors your health, preserves what matters, and helps your legacy live on.",
       },
       {
         property: "og:image",
-        content: `https://myaira.lovable.app${logo.url}`,
+        content: `https://useaira.netlify.app/man-aira-sense.png`,
       },
       {
         name: "twitter:image",
-        content: `https://myaira.lovable.app${logo.url}`,
+        content: `https://useaira.netlify.app/man-aira-sense.png`,
       },
-      { property: "og:url", content: "https://myaira.lovable.app/" },
+      { property: "og:url", content: "https://useaira.netlify.app/" },
     ],
-    links: [{ rel: "canonical", href: "https://myaira.lovable.app/" }],
+    links: [{ rel: "canonical", href: "https://useaira.netlify.app/" }],
   }),
 });
 
@@ -76,12 +75,13 @@ function WaitlistForm() {
     <>
       <iframe name="aira-waitlist-sink" title="hidden" className="hidden" aria-hidden />
       <form
-        action={GOOGLE_FORM_ACTION}
+        action="https://docs.google.com/forms/d/e/1FAIpQLSe3beJyYrFt3ZAhtMRYrLtnU-_YdqdC5DV45e6wF7OZqyIDew/formResponse"
         method="POST"
         target="aira-waitlist-sink"
         onSubmit={(e: FormEvent<HTMLFormElement>) => {
+          const form = e.currentTarget;
           setStatus("done");
-          e.currentTarget.reset();
+          setTimeout(() => form.reset(), 500);
         }}
         className="mt-12 flex w-full max-w-xl flex-col gap-3 sm:flex-row"
         aria-label="Early access signup"
@@ -91,7 +91,7 @@ function WaitlistForm() {
         </label>
         <input
           id="email"
-          name={GOOGLE_FORM_EMAIL_ENTRY}
+          name="entry.1695628208"
           type="email"
           required
           placeholder="Enter your email"
@@ -99,7 +99,7 @@ function WaitlistForm() {
         />
         <button
           type="submit"
-          className="rounded-none border border-primary bg-primary px-7 py-4 text-sm tracking-[0.14em] text-primary-foreground uppercase transition-colors duration-300 hover:bg-transparent hover:text-primary focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none"
+          className="cursor-pointer rounded-none border border-primary bg-primary px-7 py-4 text-sm tracking-[0.14em] text-primary-foreground uppercase transition-colors duration-300 hover:bg-transparent hover:text-primary focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none"
         >
           Join Early Access
         </button>
@@ -162,9 +162,9 @@ function Index() {
     <div className="min-h-screen bg-background">
       <header className="absolute inset-x-0 top-0 z-20">
         <div className={`${shell} flex items-center justify-between py-8`}>
-          <a href="#top" className="flex items-center gap-3">
+          <a href="?ref=src-nav" className="flex items-center gap-3">
             <img
-              src={logo.url}
+              src="src/assets/logo.png"
               alt="AIRA logo"
               width={28}
               height={28}
@@ -236,7 +236,7 @@ function Index() {
               </div>
               <figure className="relative overflow-hidden rounded-2xl bg-deep">
                 <img
-                  src={portrait.url}
+                  src="src/assets/man-aira-sense.png"
                   alt="A person wearing AIRA, eyes closed, in low light"
                   loading="lazy"
                   draggable={false}
@@ -309,14 +309,15 @@ function Index() {
           <span className="text-sm tracking-[0.42em] uppercase">AIRA</span>
           <nav className="flex gap-8 text-sm text-muted-foreground">
             <a href="#" className="transition-colors hover:text-foreground">
-              Privacy
+              Privacy & Terms
             </a>
-            <a href="#" className="transition-colors hover:text-foreground">
-              Terms
+             <a href="use-cases" className="transition-colors hover:text-foreground">
+              Use Case
             </a>
-            <a href="#" className="transition-colors hover:text-foreground">
+            <Link
+            to="/" hash="early-access">
               Contact
-            </a>
+            </Link>
           </nav>
           <p className="text-xs text-muted-foreground">© 2026 AIRA. All rights reserved.</p>
         </div>
