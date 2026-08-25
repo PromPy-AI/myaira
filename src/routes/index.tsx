@@ -113,15 +113,16 @@ function WaitlistForm() {
       />
       <button
         type="submit"
-        className="rounded-none border border-primary bg-primary px-7 py-4 text-sm tracking-[0.14em] text-primary-foreground uppercase transition-colors duration-300 hover:bg-transparent hover:text-primary focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none"
+        disabled={status === "sending"}
+        className="rounded-none border border-primary bg-primary px-7 py-4 text-sm tracking-[0.14em] text-primary-foreground uppercase transition-colors duration-300 hover:bg-transparent hover:text-primary focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none disabled:opacity-60"
       >
-        Join Early Access
+        {status === "sending" ? "Sending" : "Join Early Access"}
       </button>
       <p aria-live="polite" className="sr-only">
-        {status === "done" ? "Thank you — you are on the list." : ""}
+        {status === "done" ? "Thank you, you are on the list." : ""}
       </p>
       {status === "done" && (
-        <span className="self-center text-sm text-muted-foreground sm:hidden">
+        <span className="self-center text-sm text-muted-foreground">
           You're on the list.
         </span>
       )}
