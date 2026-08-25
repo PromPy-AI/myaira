@@ -19,7 +19,17 @@ export const Route = createFileRoute("/")({
         property: "og:description",
         content: "A wearable that understands your life today and preserves what matters.",
       },
+      {
+        property: "og:image",
+        content: `https://myaira.lovable.app${logo.url}`,
+      },
+      {
+        name: "twitter:image",
+        content: `https://myaira.lovable.app${logo.url}`,
+      },
+      { property: "og:url", content: "https://myaira.lovable.app/" },
     ],
+    links: [{ rel: "canonical", href: "https://myaira.lovable.app/" }],
   }),
 });
 
@@ -150,11 +160,18 @@ function Index() {
     <div className="min-h-screen bg-background">
       <header className="absolute inset-x-0 top-0 z-20">
         <div className={`${shell} flex items-center justify-between py-8`}>
-          <a
-            href="#top"
-            className="text-sm tracking-[0.42em] text-[oklch(0.95_0.02_88)] uppercase"
-          >
-            AIRA
+          <a href="#top" className="flex items-center gap-3">
+            <img
+              src={logo.url}
+              alt="AIRA logo"
+              width={28}
+              height={28}
+              draggable={false}
+              className="h-7 w-7 shrink-0 select-none object-contain"
+            />
+            <span className="text-sm leading-none tracking-[0.42em] text-[oklch(0.95_0.02_88)] uppercase">
+              AIRA
+            </span>
           </a>
           <a
             href="#early-access"
