@@ -158,7 +158,7 @@ function UseCases() {
         <div className={`${shell} flex items-center justify-between py-8`}>
           <Link to="/" className="flex items-center gap-3">
             <img
-              src={logo.url}
+              src="src/assets/logo.png"
               alt="AIRA logo"
               width={28}
               height={28}
@@ -297,8 +297,8 @@ function UseCases() {
             <a href="#" className="transition-colors hover:text-foreground">
               Privacy
             </a>
-            <a href="#" className="transition-colors hover:text-foreground">
-              Terms
+            <a href="/?ref=use-case-footer" className="transition-colors hover:text-foreground">
+              Home
             </a>
           </nav>
           <p className="text-xs text-muted-foreground">© 2026 AIRA. All rights reserved.</p>
