@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import logo from "@/assets/aira-logo.png.asset.json";
+import logoImg from "@/assets/logo.png";
 
 export const Route = createFileRoute("/use-cases")({
   component: UseCases,
@@ -158,7 +159,7 @@ function UseCases() {
         <div className={`${shell} flex items-center justify-between py-8`}>
           <Link to="/" className="flex items-center gap-3">
             <img
-              src="src/assets/logo.png"
+              src={logoImg}
               alt="AIRA logo"
               width={28}
               height={28}
