@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import portrait from "@/assets/aira-portrait.png.asset.json";
+import logo from "@/assets/aira-logo.png.asset.json";
 
 
 export const Route = createFileRoute("/")({
@@ -18,7 +19,17 @@ export const Route = createFileRoute("/")({
         property: "og:description",
         content: "A wearable that understands your life today and preserves what matters.",
       },
+      {
+        property: "og:image",
+        content: `https://myaira.lovable.app${logo.url}`,
+      },
+      {
+        name: "twitter:image",
+        content: `https://myaira.lovable.app${logo.url}`,
+      },
+      { property: "og:url", content: "https://myaira.lovable.app/" },
     ],
+    links: [{ rel: "canonical", href: "https://myaira.lovable.app/" }],
   }),
 });
 
@@ -54,14 +65,31 @@ const controls = [
 const products = ["AIRA Loop (wristband)", "AIRA Sense", "AIRA Life"];
 
 
+const GOOGLE_FORM_ACTION =
+  "https://docs.google.com/forms/d/e/1FAIpQLSe3beJyYrFt3ZAhtMRYrLtnU-_YdqdC5DV45e6wF7OZqyIDew/formResponse";
+const GOOGLE_FORM_EMAIL_ENTRY = "entry.1695628208";
+
 function WaitlistForm() {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "done">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "done">("idle");
 
-  // Placeholder submit — swap for a backend call (Cloud, Resend, etc.) later.
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!email) return;
+    if (!email || status === "sending") return;
+    setStatus("sending");
+
+    const body = new URLSearchParams({ [GOOGLE_FORM_EMAIL_ENTRY]: email });
+    try {
+      await fetch(GOOGLE_FORM_ACTION, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString(),
+      });
+    } catch {
+      // Google Forms responds opaquely; treat network noise as delivered.
+    }
+    setEmail("");
     setStatus("done");
   };
 
@@ -85,15 +113,16 @@ function WaitlistForm() {
       />
       <button
         type="submit"
-        className="rounded-none border border-primary bg-primary px-7 py-4 text-sm tracking-[0.14em] text-primary-foreground uppercase transition-colors duration-300 hover:bg-transparent hover:text-primary focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none"
+        disabled={status === "sending"}
+        className="rounded-none border border-primary bg-primary px-7 py-4 text-sm tracking-[0.14em] text-primary-foreground uppercase transition-colors duration-300 hover:bg-transparent hover:text-primary focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none disabled:opacity-60"
       >
-        Join Early Access
+        {status === "sending" ? "Sending" : "Join Early Access"}
       </button>
       <p aria-live="polite" className="sr-only">
-        {status === "done" ? "Thank you — you are on the list." : ""}
+        {status === "done" ? "Thank you, you are on the list." : ""}
       </p>
       {status === "done" && (
-        <span className="self-center text-sm text-muted-foreground sm:hidden">
+        <span className="self-center text-sm text-muted-foreground">
           You're on the list.
         </span>
       )}
@@ -149,11 +178,18 @@ function Index() {
     <div className="min-h-screen bg-background">
       <header className="absolute inset-x-0 top-0 z-20">
         <div className={`${shell} flex items-center justify-between py-8`}>
-          <a
-            href="#top"
-            className="text-sm tracking-[0.42em] text-[oklch(0.95_0.02_88)] uppercase"
-          >
-            AIRA
+          <a href="#top" className="flex items-center gap-3">
+            <img
+              src={logo.url}
+              alt="AIRA logo"
+              width={28}
+              height={28}
+              draggable={false}
+              className="h-7 w-7 shrink-0 select-none object-contain"
+            />
+            <span className="text-sm leading-none tracking-[0.42em] text-[oklch(0.95_0.02_88)] uppercase">
+              AIRA
+            </span>
           </a>
           <a
             href="#early-access"
