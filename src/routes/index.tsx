@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import logo from "@/assets/aira-logo.png.asset.json";
+import logoImg from "@/assets/logo.png";
+import manAiraSenseImg from "@/assets/man-aira-sense.png";
 
 
 export const Route = createFileRoute("/")({
@@ -164,7 +166,7 @@ function Index() {
         <div className={`${shell} flex items-center justify-between py-8`}>
           <a href="?ref=src-nav" className="flex items-center gap-3">
             <img
-              src="src/assets/logo.png"
+              src={logoImg}
               alt="AIRA logo"
               width={28}
               height={28}
@@ -236,7 +238,7 @@ function Index() {
               </div>
               <figure className="relative overflow-hidden rounded-2xl bg-deep">
                 <img
-                  src="src/assets/man-aira-sense.png"
+                  src={manAiraSenseImg}
                   alt="A person wearing AIRA, eyes closed, in low light"
                   loading="lazy"
                   draggable={false}
