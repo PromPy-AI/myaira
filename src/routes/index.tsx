@@ -22,11 +22,11 @@ export const Route = createFileRoute("/")({
       },
       {
         property: "og:image",
-        content: `https://useaira.netlify.app/man-aira-sense.png`,
+        content: `https://useaira.netlify.app/assets/man-aira-sense-BQjR8dKc.png`,
       },
       {
         name: "twitter:image",
-        content: `https://useaira.netlify.app/man-aira-sense.png`,
+        content: `https://useaira.netlify.app/assets/man-aira-sense-BQjR8dKc.png`,
       },
       { property: "og:url", content: "https://useaira.netlify.app/" },
     ],
