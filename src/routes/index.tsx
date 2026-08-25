@@ -65,14 +65,31 @@ const controls = [
 const products = ["AIRA Loop (wristband)", "AIRA Sense", "AIRA Life"];
 
 
+const GOOGLE_FORM_ACTION =
+  "https://docs.google.com/forms/d/e/1FAIpQLSe3beJyYrFt3ZAhtMRYrLtnU-_YdqdC5DV45e6wF7OZqyIDew/formResponse";
+const GOOGLE_FORM_EMAIL_ENTRY = "entry.1695628208";
+
 function WaitlistForm() {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "done">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "done">("idle");
 
-  // Placeholder submit — swap for a backend call (Cloud, Resend, etc.) later.
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!email) return;
+    if (!email || status === "sending") return;
+    setStatus("sending");
+
+    const body = new URLSearchParams({ [GOOGLE_FORM_EMAIL_ENTRY]: email });
+    try {
+      await fetch(GOOGLE_FORM_ACTION, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString(),
+      });
+    } catch {
+      // Google Forms responds opaquely; treat network noise as delivered.
+    }
+    setEmail("");
     setStatus("done");
   };
 
