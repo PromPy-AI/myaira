@@ -18,7 +18,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "AIRA" },
       {
         property: "og:description",
-        content: "a wearable that learns from your life, monitors your health, preserves what matters, and helps your legacy live on.",
+        content: "A wearable that learns from your life, monitors your health, preserves what matters, and helps your legacy live on.",
       },
       {
         property: "og:image",
