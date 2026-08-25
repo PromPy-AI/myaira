@@ -70,63 +70,47 @@ const GOOGLE_FORM_ACTION =
 const GOOGLE_FORM_EMAIL_ENTRY = "entry.1695628208";
 
 function WaitlistForm() {
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "sending" | "done">("idle");
-
-  const onSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    if (!email || status === "sending") return;
-    setStatus("sending");
-
-    const body = new URLSearchParams({ [GOOGLE_FORM_EMAIL_ENTRY]: email });
-    try {
-      await fetch(GOOGLE_FORM_ACTION, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: body.toString(),
-      });
-    } catch {
-      // Google Forms responds opaquely; treat network noise as delivered.
-    }
-    setEmail("");
-    setStatus("done");
-  };
+  const [status, setStatus] = useState<"idle" | "done">("idle");
 
   return (
-    <form
-      onSubmit={onSubmit}
-      className="mt-12 flex w-full max-w-xl flex-col gap-3 sm:flex-row"
-      aria-label="Early access signup"
-    >
-      <label htmlFor="email" className="sr-only">
-        Email address
-      </label>
-      <input
-        id="email"
-        type="email"
-        required
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Enter your email"
-        className="w-full flex-1 border border-border bg-transparent px-5 py-4 text-base text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-      />
-      <button
-        type="submit"
-        disabled={status === "sending"}
-        className="rounded-none border border-primary bg-primary px-7 py-4 text-sm tracking-[0.14em] text-primary-foreground uppercase transition-colors duration-300 hover:bg-transparent hover:text-primary focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none disabled:opacity-60"
+    <>
+      <iframe name="aira-waitlist-sink" title="hidden" className="hidden" aria-hidden />
+      <form
+        action={GOOGLE_FORM_ACTION}
+        method="POST"
+        target="aira-waitlist-sink"
+        onSubmit={(e: FormEvent<HTMLFormElement>) => {
+          setStatus("done");
+          e.currentTarget.reset();
+        }}
+        className="mt-12 flex w-full max-w-xl flex-col gap-3 sm:flex-row"
+        aria-label="Early access signup"
       >
-        {status === "sending" ? "Sending" : "Join Early Access"}
-      </button>
-      <p aria-live="polite" className="sr-only">
-        {status === "done" ? "Thank you, you are on the list." : ""}
-      </p>
-      {status === "done" && (
-        <span className="self-center text-sm text-muted-foreground">
-          You're on the list.
-        </span>
-      )}
-    </form>
+        <label htmlFor="email" className="sr-only">
+          Email address
+        </label>
+        <input
+          id="email"
+          name={GOOGLE_FORM_EMAIL_ENTRY}
+          type="email"
+          required
+          placeholder="Enter your email"
+          className="w-full flex-1 border border-border bg-transparent px-5 py-4 text-base text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+        />
+        <button
+          type="submit"
+          className="rounded-none border border-primary bg-primary px-7 py-4 text-sm tracking-[0.14em] text-primary-foreground uppercase transition-colors duration-300 hover:bg-transparent hover:text-primary focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none"
+        >
+          Join Early Access
+        </button>
+        <p aria-live="polite" className="sr-only">
+          {status === "done" ? "Thank you, you are on the list." : ""}
+        </p>
+        {status === "done" && (
+          <span className="self-center text-sm text-muted-foreground">You're on the list.</span>
+        )}
+      </form>
+    </>
   );
 }
 
