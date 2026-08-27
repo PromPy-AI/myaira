@@ -275,6 +275,7 @@ function UseCases() {
             <h2 className="mt-10 max-w-[20ch] text-[clamp(2rem,5.4vw,4.25rem)] leading-[1.02] tracking-[-0.03em]">
               The longer you wear it, the more of you it remembers.
             </h2>
+            <div className="gap-2 flex">
             <Link
               to="/"
               hash="early-access"
@@ -282,6 +283,13 @@ function UseCases() {
             >
               Join Early Access
             </Link>
+            <a
+              href="https://cal.eu/giridhar-orange/team-aira" target="_blank"
+              className="mt-12 inline-block border border-primary bg-secondary px-7 py-4 text-sm tracking-[0.14em] text-primary uppercase transition-colors duration-300 hover:bg-transparent hover:text-primary"
+            >
+              Meet Our Team
+            </a>
+            </div>
           </div>
         </section>
       </main>
