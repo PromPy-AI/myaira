@@ -236,10 +236,10 @@ function Index() {
                   The AI You. Built from your life.
                 </p>
               </div>
-              <figure className="relative overflow-hidden rounded-2xl bg-deep">
+              <figure className="relative overflow-hidden rounded-2xl">
                 <img
                   src={manAiraSenseImg}
-                  alt="A person wearing AIRA, eyes closed, in low light"
+                  alt="A person wearing AIRA Sense, eyes closed, in low light"
                   loading="lazy"
                   draggable={false}
                   className="h-full w-full rounded-2xl object-cover select-none"
@@ -314,7 +314,7 @@ function Index() {
               Privacy & Terms
             </a>
              <a href="use-cases" className="transition-colors hover:text-foreground">
-              Use Case
+              Use Cases
             </a>
             <Link
             to="/" hash="early-access">
