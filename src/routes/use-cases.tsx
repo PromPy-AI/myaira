@@ -6,23 +6,23 @@ export const Route = createFileRoute("/use-cases")({
   component: UseCases,
   head: () => ({
     meta: [
-      { title: "AIRA Use Cases — Health, Memory, Legacy" },
+      { title: "AIRA Use Cases" },
       {
         name: "description",
         content:
           "How people use AIRA: everyday health and sleep, private memory, family stories, voice preservation and digital legacy.",
       },
-      { property: "og:title", content: "AIRA Use Cases — Health, Memory, Legacy" },
+      { property: "og:title", content: "AIRA Use Cases For Health, Memory, Legacy" },
       {
         property: "og:description",
         content:
-          "From daily health signals to preserved voices and digital legacy — the ways AIRA fits into a life.",
+          "From daily health signals to preserved voices and digital legacy, the ways AIRA fits into a life.",
       },
-      { property: "og:image", content: `https://myaira.lovable.app${logo.url}` },
-      { name: "twitter:image", content: `https://myaira.lovable.app${logo.url}` },
-      { property: "og:url", content: "https://myaira.lovable.app/use-cases" },
+      { property: "og:image", content: `https://useaira.netlify.app/assets/Aira-loop-fade-C_r_3lYP.png` },
+      { name: "twitter:image", content: `https://useaira.netlify.app/assets/Aira-loop-fade-C_r_3lYP.png` },
+      { property: "og:url", content: "https://useaira.netlify.app/use-cases" },
     ],
-    links: [{ rel: "canonical", href: "https://myaira.lovable.app/use-cases" }],
+    links: [{ rel: "canonical", href: "https://useaira.netlify.app/use-cases" }],
   }),
 });
 
