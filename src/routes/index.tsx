@@ -333,9 +333,9 @@ function Index() {
         >
           <span className="text-sm tracking-[0.42em] uppercase">AIRA</span>
           <nav className="flex gap-8 text-sm text-muted-foreground">
-            <a href="#" className="transition-colors hover:text-foreground">
+            <Link to="/privacy" className="transition-colors hover:text-foreground">
               Privacy & Terms
-            </a>
+            </Link>
              <a href="use-cases" className="transition-colors hover:text-foreground">
               Use Cases
             </a>
