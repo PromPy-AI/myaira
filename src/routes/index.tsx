@@ -3,6 +3,7 @@ import { useState, type FormEvent } from "react";
 import logo from "@/assets/aira-logo.png.asset.json";
 import logoImg from "@/assets/logo.png";
 import manAiraSenseImg from "@/assets/man-aira-sense.png";
+import AiraloopImg from "@/assets/Aira-loop-fade.png"
 
 
 export const Route = createFileRoute("/")({
@@ -10,6 +11,10 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "AIRA" },
+      {
+        name: "google-site-verification",
+        content: "g3ztuAaXUBq989dq0wlM74iRlSIlnTWUZ1peokfFEWs",
+      },
       {
         name: "description",
         content:
@@ -274,19 +279,37 @@ function Index() {
         {/* Privacy */}
         <section className="bg-deep text-[oklch(0.95_0.015_88)]">
           <div className={`${shell} py-28 sm:py-40`}>
-            <p className="text-xs tracking-[0.3em] text-[oklch(0.95_0.015_88)]/55 uppercase">
-              Private by design
-            </p>
-            <h2 className="mt-10 max-w-[18ch] text-[clamp(1.9rem,4.4vw,3.5rem)] leading-[1.05] tracking-[-0.03em]">
-              Your life. Your data. Your decision.
-            </h2>
-            <p className="mt-10 max-w-[56ch] text-base leading-relaxed text-[oklch(0.95_0.015_88)]/65">
-              AIRA is designed around control. Pause it. Mute it. Block it. Delete what you
-              don't want remembered. Decide what stays, what goes, and who can access your
-              legacy.
-            </p>
-            <ControlToggle />
-
+            <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
+              <div>
+                <p className="text-xs tracking-[0.3em] text-[oklch(0.95_0.015_88)]/55 uppercase">
+                  Private by design
+                </p>
+                <h2 className="mt-10 max-w-[18ch] text-[clamp(1.9rem,4.4vw,3.5rem)] leading-[1.05] tracking-[-0.03em]">
+                  Your life. Your data. Your decision.
+                </h2>
+                <p className="mt-10 max-w-[56ch] text-base leading-relaxed text-[oklch(0.95_0.015_88)]/65">
+                  AIRA is designed around control. Pause it. Mute it. Block it. Delete what you
+                  don't want remembered. Decide what stays, what goes, and who can access your
+                  legacy.
+                </p>
+                <ControlToggle />
+              </div>
+              <figure className="relative overflow-hidden rounded-2xl">
+                <img
+                  src={AiraloopImg}
+                  alt="Aira loop demo device"
+                  loading="lazy"
+                  draggable={false}
+                  className="h-full w-full rounded-2xl object-cover opacity-[0.2] select-none"
+                  style={{
+                    maskImage:
+                      "radial-gradient(120% 120% at 50% 50%, #000 62%, transparent 100%)",
+                    WebkitMaskImage:
+                      "radial-gradient(120% 120% at 50% 50%, #000 62%, transparent 100%)",
+                  }}
+                />
+              </figure>
+            </div>
           </div>
         </section>
 
