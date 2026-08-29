@@ -4,6 +4,7 @@ import logo from "@/assets/aira-logo.png.asset.json";
 import logoImg from "@/assets/logo.png";
 import manAiraSenseImg from "@/assets/man-aira-sense.png";
 import AiraloopImg from "@/assets/Aira-loop-fade.png"
+import airaSenseImg from "@/assets/aira-sense-inhand.png"
 
 
 export const Route = createFileRoute("/")({
@@ -108,7 +109,7 @@ function WaitlistForm() {
           type="submit"
           className="cursor-pointer rounded-none border border-primary bg-primary px-7 py-4 text-sm tracking-[0.14em] text-primary-foreground uppercase transition-colors duration-300 hover:bg-transparent hover:text-primary focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none"
         >
-          Join Early Access
+          Join Waitlist
         </button>
         <p aria-live="polite" className="sr-only">
           {status === "done" ? "Thank you, you are on the list." : ""}
@@ -117,6 +118,257 @@ function WaitlistForm() {
           <span className="self-center text-sm text-muted-foreground">You're on the list.</span>
         )}
       </form>
+    </>
+  );
+}
+
+const PREBOOK_FORM_ACTION =
+  "https://docs.google.com/forms/d/e/1FAIpQLSd1mh1cEgaaCWwTavEu1OojHRF7L0YJ9wCwQBzgVYOKGPKDqg/formResponse";
+const PREBOOK_ENTRY = {
+  name: "entry.1927162729",
+  email: "entry.1393360373",
+  country: "entry.646913968",
+  usage: "entry.1442413605",
+  device: "entry.758994742",
+  consent: "entry.1565231005",
+};
+
+const PREBOOK_CONSENT_VALUE =
+  "I agree to AIRA\u2019s Privacy & Terms, consent to the processing of my personal information, and agree to receive communications from AIRA via email.";
+
+const prebookUsageOptions = [
+  "Remember everyday conversations",
+  "Health & wellness",
+  "Meetings & work",
+  "Learnings",
+  "Personal AI",
+  "Family memories",
+  "Preserving my voice & stories",
+  "Everything or Something else",
+];
+
+const prebookDeviceOptions = [
+  {
+    value: "AIRA Loop (Wrist band )",
+    label: "AIRA Loop",
+    caption: "Wrist band",
+    image: AiraloopImg,
+  },
+  {
+    value: "AIRA Sense (Head patch device)",
+    label: "AIRA Sense",
+    caption: "Head patch device",
+    image: airaSenseImg,
+  },
+];
+
+function PreBookingForm() {
+  const [open, setOpen] = useState(false);
+  const [status, setStatus] = useState<"idle" | "done">("idle");
+
+  return (
+    <>
+      <button
+        type="button"
+        onClick={() => {
+          setStatus("idle");
+          setOpen(true);
+        }}
+        className="mt-6 inline-block cursor-pointer rounded-none border border-primary bg-secondary px-7 py-4 text-sm tracking-[0.14em] text-primary uppercase transition-colors duration-300 hover:bg-transparent hover:text-primary focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none"
+      >
+        Reserve Early Access
+      </button>
+
+      {open && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Early access and free pre-booking"
+        >
+          <div
+            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+            onClick={() => setOpen(false)}
+            aria-hidden
+          />
+          <div className="relative z-10 max-h-[90vh] w-full max-w-lg overflow-y-auto border border-border bg-background p-8 shadow-2xl sm:p-10">
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              aria-label="Close"
+              className="absolute top-5 right-5 cursor-pointer text-2xl leading-none text-muted-foreground transition-colors hover:text-foreground"
+            >
+              &times;
+            </button>
+
+            <iframe name="aira-prebook-sink" title="hidden" className="hidden" aria-hidden />
+
+            {status === "done" ? (
+              <div className="py-8 text-center">
+                <h3 className="text-2xl tracking-[-0.02em]">You're on the list.</h3>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  You're among the first to join the AIRA community. Early access will be offered
+                  to the first 500 selected members in this batch. If your early access is
+                  confirmed, we'll reach out to you directly via email.
+                </p>
+                <p className="mt-6 text-xs tracking-[0.24em] text-muted-foreground uppercase">
+                  Batch #01
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setOpen(false)}
+                  className="mt-8 inline-block cursor-pointer border border-primary bg-primary px-7 py-3 text-sm tracking-[0.14em] text-primary-foreground uppercase transition-colors duration-300 hover:bg-transparent hover:text-primary"
+                >
+                  Close
+                </button>
+              </div>
+            ) : (
+              <>
+                <h3 className="text-2xl tracking-[-0.02em]">Reserve your AIRA.</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  Join early access and pre-book for free.
+                </p>
+                <form
+                  action={PREBOOK_FORM_ACTION}
+                  method="POST"
+                  target="aira-prebook-sink"
+                  onSubmit={(e: FormEvent<HTMLFormElement>) => {
+                    const form = e.currentTarget;
+                    // Let the native submission to the hidden iframe complete before
+                    // React unmounts the form, otherwise the browser cancels it.
+                    setTimeout(() => {
+                      form.reset();
+                      setStatus("done");
+                    }, 400);
+                  }}
+                  className="mt-8 flex flex-col gap-6"
+                >
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="prebook-name" className="text-sm font-medium">
+                      Name
+                    </label>
+                    <input
+                      id="prebook-name"
+                      name={PREBOOK_ENTRY.name}
+                      type="text"
+                      required
+                      placeholder="Your name"
+                      className="w-full border border-border bg-transparent px-4 py-3 text-base text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                    />
+                  </div>
+
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="prebook-email" className="text-sm font-medium">
+                      Email
+                    </label>
+                    <input
+                      id="prebook-email"
+                      name={PREBOOK_ENTRY.email}
+                      type="email"
+                      required
+                      placeholder="you@example.com"
+                      className="w-full border border-border bg-transparent px-4 py-3 text-base text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                    />
+                  </div>
+
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="prebook-country" className="text-sm font-medium">
+                      Country
+                    </label>
+                    <input
+                      id="prebook-country"
+                      name={PREBOOK_ENTRY.country}
+                      type="text"
+                      required
+                      placeholder="Your country"
+                      className="w-full border border-border bg-transparent px-4 py-3 text-base text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                    />
+                  </div>
+
+                  <fieldset className="flex flex-col gap-3">
+                    <legend className="mb-1 text-sm font-medium">
+                      What would you use AIRA for?
+                    </legend>
+                    {prebookUsageOptions.map((option) => (
+                      <label
+                        key={option}
+                        className="flex cursor-pointer items-center gap-3 text-sm text-muted-foreground"
+                      >
+                        <input
+                          type="checkbox"
+                          name={PREBOOK_ENTRY.usage}
+                          value={option}
+                          className="h-4 w-4 shrink-0 accent-primary"
+                        />
+                        {option}
+                      </label>
+                    ))}
+                  </fieldset>
+
+                  <fieldset className="flex flex-col gap-3">
+                    <legend className="mb-1 text-sm font-medium">Which device?</legend>
+                    <div className="grid grid-cols-2 gap-3">
+                      {prebookDeviceOptions.map((option) => (
+                        <label
+                          key={option.value}
+                          className="group flex cursor-pointer flex-col items-center gap-2 border border-border p-3 text-center transition-colors hover:border-ring has-[:checked]:border-primary has-[:checked]:bg-primary/5"
+                        >
+                          <input
+                            type="radio"
+                            name={PREBOOK_ENTRY.device}
+                            value={option.value}
+                            required
+                            className="peer sr-only"
+                          />
+                          <img
+                            src={option.image}
+                            alt={option.label}
+                            loading="lazy"
+                            draggable={false}
+                           className="h-24 w-full select-none object-contain [mask-image:radial-gradient(ellipse_at_center,black_60%,transparent_100%)] [-webkit-mask-image:radial-gradient(ellipse_at_center,black_60%,transparent_100%)]"
+                          />
+                          <span className="text-sm font-medium text-foreground">
+                            {option.label}
+                          </span>
+                          <span className="text-xs text-muted-foreground">{option.caption}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </fieldset>
+
+                  <label className="flex cursor-pointer items-start gap-3 text-xs leading-relaxed text-muted-foreground">
+                    <input
+                      type="checkbox"
+                      name={PREBOOK_ENTRY.consent}
+                      value={PREBOOK_CONSENT_VALUE}
+                      required
+                      className="mt-0.5 h-4 w-4 shrink-0 accent-primary"
+                    />
+                    <span>
+                      I agree to AIRA&rsquo;s{" "}
+                      <Link
+                        to="/privacy"
+                        className="underline underline-offset-2 transition-colors hover:text-foreground"
+                      >
+                        Privacy &amp; Terms
+                      </Link>
+                      , consent to the processing of my personal information, and agree to receive
+                      communications from AIRA via email.
+                    </span>
+                  </label>
+
+                  <button
+                    type="submit"
+                    className="mt-2 cursor-pointer border border-primary bg-primary px-7 py-4 text-sm tracking-[0.14em] text-primary-foreground uppercase transition-colors duration-300 hover:bg-transparent hover:text-primary focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none"
+                  >
+                    Submit
+                  </button>
+                </form>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </>
   );
 }
@@ -323,6 +575,7 @@ function Index() {
               Join the early access list and be among the first to experience AIRA.
             </p>
             <WaitlistForm />
+            <PreBookingForm />
           </div>
         </section>
       </main>
