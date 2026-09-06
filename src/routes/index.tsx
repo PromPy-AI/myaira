@@ -28,11 +28,11 @@ export const Route = createFileRoute("/")({
       },
       {
         property: "og:image",
-        content: `https://useaira.netlify.app/assets/man-aira-sense-BQjR8dKc.png`,
+        content: `https://obpgdfxxqufrzhbplgty.supabase.co/storage/v1/object/public/aira-public/man-aira-sense1.png`,
       },
       {
         name: "twitter:image",
-        content: `https://useaira.netlify.app/assets/man-aira-sense-BQjR8dKc.png`,
+        content: `https://obpgdfxxqufrzhbplgty.supabase.co/storage/v1/object/public/aira-public/man-aira-sense1.png`,
       },
       { property: "og:url", content: "https://useaira.netlify.app/" },
     ],
