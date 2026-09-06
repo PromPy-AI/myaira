@@ -18,8 +18,8 @@ export const Route = createFileRoute("/use-cases")({
         content:
           "From daily health signals to preserved voices and digital legacy — the ways AIRA fits into a life.",
       },
-      { property: "og:image", content: `https://useaira.netlify.app${logo.url}` },
-      { name: "twitter:image", content: `https://useaira.netlify.app${logo.url}` },
+      { property: "og:image", content: `https://obpgdfxxqufrzhbplgty.supabase.co/storage/v1/object/public/aira-public/man-aira-sense1.png` },
+      { name: "twitter:image", content: `https://obpgdfxxqufrzhbplgty.supabase.co/storage/v1/object/public/aira-public/man-aira-sense1.png` },
       { property: "og:url", content: "https://useaira.netlify.app/use-cases" },
     ],
     links: [{ rel: "canonical", href: "https://useaira.netlify.app/use-cases" }],
