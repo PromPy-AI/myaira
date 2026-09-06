@@ -490,7 +490,7 @@ function Index() {
               className="reveal mt-10 max-w-[46ch] text-base leading-relaxed text-[oklch(0.97_0.015_88)]/72 sm:text-lg"
               style={{ animationDelay: "220ms" }}
             >
-              AIRA is a wearable that learns from your life, monitors your health, preserves
+              AIRA is an AI wearable assistant that learns from your life, monitors your health, preserves
               what matters, and helps your legacy live on.
             </p>
 
