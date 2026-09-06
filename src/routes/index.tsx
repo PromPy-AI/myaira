@@ -446,6 +446,30 @@ function Index() {
       <main id="top">
         {/* Hero */}
         <section className="surface-hero surface-grain relative flex min-h-[100svh] items-end overflow-hidden">
+          {/* Pre-seed story floating pill */}
+          <div className="absolute inset-x-0 top-24 z-10 flex justify-center">
+            <a
+              href="?src=pre-seed-badge"
+              className="inline-flex items-center gap-2 border border-[oklch(0.95_0.03_88)]/25 bg-[oklch(0.95_0.03_88)]/8 px-4 py-2 text-[0.68rem] tracking-[0.22em] text-[oklch(0.95_0.015_88)]/80 uppercase backdrop-blur-sm transition-colors duration-300 hover:border-[oklch(0.95_0.03_88)]/50 hover:text-[oklch(0.95_0.015_88)]"
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-[oklch(0.85_0.06_88)] opacity-80" />
+              Our Pre-seed
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="10"
+                height="10"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
           <div
             aria-hidden
             className="pointer-events-none absolute -top-[18%] -right-[22%] h-[78vmax] w-[78vmax] rounded-full opacity-[0.14]"
@@ -472,6 +496,34 @@ function Index() {
 
           </div>
         </section>
+
+        {/* Feature marquee */}
+        <div className="overflow-hidden border-y border-border bg-background py-4">
+          <div className="animate-marquee flex w-max gap-0">
+            {[0, 1].map((i) => (
+              <div key={i} className="flex shrink-0 items-center" aria-hidden={i === 1}>
+                {[
+                  "Personal AI Assistant",
+                  "Meetings & Summarisation",
+                  "Voice Capture",
+                  "Memory Preservation",
+                  "Health & Wellness",
+                  "AI Assistant",
+                  "Legacy & Stories",
+                  "Everyday Conversations",
+                  "Personal Timeline",
+                ].map((item) => (
+                  <span key={item} className="flex items-center gap-6 px-6">
+                    <span className="text-xs tracking-[0.22em] text-muted-foreground uppercase whitespace-nowrap">
+                      {item}
+                    </span>
+                    <span className="h-px w-8 bg-border" aria-hidden />
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
 
         {/* The idea */}
         <section className="py-32 sm:py-48">
