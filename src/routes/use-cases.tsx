@@ -6,20 +6,20 @@ export const Route = createFileRoute("/use-cases")({
   component: UseCases,
   head: () => ({
     meta: [
-      { title: "AIRA Use Cases — Health, Memory, Legacy" },
+      { title: "AIRA Use Cases" },
       {
         name: "description",
         content:
           "How people use AIRA: everyday health and sleep, private memory, family stories, voice preservation and digital legacy.",
       },
-      { property: "og:title", content: "AIRA Use Cases — Health, Memory, Legacy" },
+      { property: "og:title", content: "AIRA Use Cases" },
       {
         property: "og:description",
         content:
-          "From daily health signals to preserved voices and digital legacy — the ways AIRA fits into a life.",
+          "From daily health signals to preserved voices and digital legacy - the ways AIRA fits into a life.",
       },
-      { property: "og:image", content: `https://obpgdfxxqufrzhbplgty.supabase.co/storage/v1/object/public/aira-public/man-aira-sense1.png` },
-      { name: "twitter:image", content: `https://obpgdfxxqufrzhbplgty.supabase.co/storage/v1/object/public/aira-public/man-aira-sense1.png` },
+      { property: "og:image", content: `https://obpgdfxxqufrzhbplgty.supabase.co/storage/v1/object/public/aira-public/man-aira-loop.png` },
+      { name: "twitter:image", content: `https://obpgdfxxqufrzhbplgty.supabase.co/storage/v1/object/public/aira-public/man-aira-loop.png` },
       { property: "og:url", content: "https://useaira.netlify.app/use-cases" },
     ],
     links: [{ rel: "canonical", href: "https://useaira.netlify.app/use-cases" }],
@@ -63,13 +63,13 @@ const cases: { index: string; title: string; lead: string; body: string; note?: 
     index: "02",
     title: "Your Everyday Memory",
     lead: "Remember the things your mind lets go.",
-    body: "Conversations, ideas, names, plans, places and little moments—AIRA helps turn everyday experiences into a searchable personal memory.",
+    body: "Conversations, ideas, names, plans, places and little moments, AIRA helps turn everyday experiences into a searchable personal memory.",
   },
   {
     index: "03",
     title: "Everyday Conversations",
     lead: "Stay present. Remember later.",
-    body: "Whether it's a conversation with a friend, a family discussion, an important call or a spontaneous idea, AIRA can help preserve what matters—with appropriate consent.",
+    body: "Whether it's a conversation with a friend, a family discussion, an important call or a spontaneous idea, AIRA can help preserve what matters - with appropriate consent.",
   },
   {
     index: "04",
@@ -81,7 +81,7 @@ const cases: { index: string; title: string; lead: string; body: string; note?: 
     index: "05",
     title: "Meetings",
     lead: "Be in the conversation, not in your notes.",
-    body: "AIRA can capture meetings, summarize discussions, surface decisions and identify follow-ups—with appropriate consent.",
+    body: "AIRA can capture meetings, summarize discussions, surface decisions and identify follow-ups, with appropriate consent.",
   },
   {
     index: "06",
@@ -111,7 +111,7 @@ const cases: { index: string; title: string; lead: string; body: string; note?: 
     index: "10",
     title: "Ideas & Creativity",
     lead: "Great ideas don't wait for a notebook.",
-    body: "Capture ideas while walking, travelling, creating, designing or simply thinking—and return to them whenever you're ready.",
+    body: "Capture ideas while walking, travelling, creating, designing or simply thinking, and return to them whenever you're ready.",
   },
   {
     index: "11",
@@ -147,7 +147,7 @@ const cases: { index: string; title: string; lead: string; body: string; note?: 
     index: "16",
     title: "Personal AI",
     lead: "The AI You. Built from your life.",
-    body: "AIRA gradually understands your experiences, preferences, memories, relationships and context—creating an AI that becomes increasingly personal over time.",
+    body: "AIRA gradually understands your experiences, preferences, memories, relationships and context - creating an AI that becomes increasingly personal over time.",
   },
   {
     index: "17",
@@ -161,35 +161,65 @@ const cases: { index: string; title: string; lead: string; body: string; note?: 
     lead: "Look back with context.",
     body: "Revisit important periods, experiences and conversations and see how your life has changed over time.",
   },
+  {
+    index: "19",
+    title: "Doctors & Healthcare Professionals",
+    lead: "Keep the learning from a demanding day.",
+    body: "Keep personal learning notes, recall professional discussions captured with consent and organize follow-up questions. Explore sleep and recovery patterns around demanding shifts.",
+  },
+  {
+    index: "20",
+    title: "Researchers",
+    lead: "Return to the detail behind the discovery.",
+    body: "Capture interviews with consent, record field observations and preserve research discussions. Search your saved material, revisit ideas and keep track of next steps.",
+  },
+  {
+    index: "21",
+    title: "Study Groups & Exam Preparation",
+    lead: "Turn shared explanations into revision material.",
+    body: "Save study discussions with permission, revisit difficult concepts and ask questions about your notes. Keep track of revision tasks alongside sleep and activity during busy exam periods.",
+  },
+  {
+    index: "22",
+    title: "Teachers & Educators",
+    lead: "Carry good teaching ideas into the next lesson.",
+    body: "Capture lesson ideas, personal teaching reflections and planning discussions with permission. Recall feedback, organize follow-ups and return to useful explanations when preparing your next class.",
+  },
+  {
+    index: "23",
+    title: "Consultants & Client Teams",
+    lead: "Keep every next step connected to the conversation.",
+    body: "Capture client discussions with consent, recall requirements and surface agreed actions. Ask AIRA what was decided and keep commitments organized across projects.",
+  },
 ];
 
 const legacyCases: { index: string; title: string; lead: string; body: string }[] = [
   {
-    index: "19",
+    index: "24",
     title: "Stories Worth Keeping",
     lead: "Some stories deserve more than a moment.",
     body: "Preserve the stories, experiences, wisdom and memories shared by the people you love.",
   },
   {
-    index: "20",
+    index: "25",
     title: "Your Voice, Your Way",
     lead: "Preserve the voice that makes you, you.",
     body: "With your permission, AIRA can preserve selected voice samples as part of your personal memory and future experiences.",
   },
   {
-    index: "21",
+    index: "26",
     title: "Messages for the Future",
     lead: "Say something to someone you haven't met yet.",
     body: "Leave stories, advice, memories and personal messages for your children, grandchildren and future generations.",
   },
   {
-    index: "22",
+    index: "27",
     title: "Family History",
     lead: "Give future generations a way to know you.",
     body: "Preserve family stories, traditions, experiences and memories that might otherwise disappear from one generation to the next.",
   },
   {
-    index: "23",
+    index: "28",
     title: "Speak to Their Memories",
     lead: "You decide what lives on.",
     body: "Choose what AIRA remembers, what gets deleted, and who can access your memories and legacy after you're gone.",
@@ -225,7 +255,7 @@ function UseCases() {
         <section className="pt-24 pb-16 sm:pt-32">
           <div className={shell}>
             <p className="text-xs tracking-[0.3em] text-muted-foreground uppercase">
-              AIRA — Use Cases
+              AIRA - Use Cases
             </p>
             <h1 className="mt-10 max-w-[20ch] text-[clamp(2.2rem,6vw,4.75rem)] leading-[1.02] tracking-[-0.03em]">
               Every way a life can be remembered.
