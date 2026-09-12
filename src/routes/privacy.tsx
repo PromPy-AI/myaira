@@ -5,13 +5,13 @@ export const Route = createFileRoute("/privacy")({
   component: Privacy,
   head: () => ({
     meta: [
-      { title: "Privacy Policy — AIRA" },
+      { title: "Privacy Policy - AIRA" },
       {
         name: "description",
         content:
           "AIRA Privacy Policy. Your life. Your data. Your control. Learn how AIRA collects, uses, and protects your personal information.",
       },
-      { property: "og:title", content: "Privacy Policy — AIRA" },
+      { property: "og:title", content: "Privacy Policy - AIRA" },
       {
         property: "og:description",
         content:
@@ -124,9 +124,9 @@ function Privacy() {
               preserve your stories, voice, experiences, and personal memories.
             </p>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Because AIRA may process highly personal information—including voice recordings,
+              Because AIRA may process highly personal information, including voice recordings,
               conversations, memories, wellness information, biometric information, and, for
-              certain devices, EEG signals—we design our services around privacy, security,
+              certain devices, EEG signals, we design our services around privacy, security,
               transparency, and user control.
             </p>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
