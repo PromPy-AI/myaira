@@ -1,11 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
-import logo from "@/assets/aira-logo.png.asset.json";
+import { LoopFeatures } from "@/components/LoopFeatures";
 import logoImg from "@/assets/logo.png";
-import manAiraSenseImg from "@/assets/man-aira-sense.png";
-import AiraloopImg from "@/assets/Aira-loop-fade.png"
-import airaSenseImg from "@/assets/aira-sense-inhand.png"
-
+import loopstackimages from "@/assets/loop-stack-image.png";
+import AiraloopImg from "@/assets/Aira-loop-fade.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -19,20 +17,21 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "AIRA is a wearable that learns from your life, your health, your voice, your stories, and the moments that matter.",
+          "Meet AIRA Loop, a screenless AI wristband designed to help you recall conversations, track your health and understand your daily patterns.",
       },
       { property: "og:title", content: "AIRA" },
       {
         property: "og:description",
-        content: "A wearable that learns from your life, monitors your health, preserves what matters, and helps your legacy live on.",
+        content:
+          "Your AI second brain and health companion. AIRA Loop brings conversation memory, wellness insights and a personal AI together in one screenless wristband.",
       },
       {
         property: "og:image",
-        content: `https://obpgdfxxqufrzhbplgty.supabase.co/storage/v1/object/public/aira-public/man-aira-sense1.png`,
+        content: `https://obpgdfxxqufrzhbplgty.supabase.co/storage/v1/object/public/aira-public/man-aira-loop.png`,
       },
       {
         name: "twitter:image",
-        content: `https://obpgdfxxqufrzhbplgty.supabase.co/storage/v1/object/public/aira-public/man-aira-sense1.png`,
+        content: `https://obpgdfxxqufrzhbplgty.supabase.co/storage/v1/object/public/aira-public/man-aira-loop.png`,
       },
       { property: "og:url", content: "https://useaira.netlify.app/" },
     ],
@@ -45,21 +44,21 @@ const shell = "mx-auto w-full max-w-[1320px] px-6 sm:px-10 lg:px-16";
 const ideas = [
   {
     index: "01",
-    label: "LIVE",
-    title: "Understand yourself today.",
-    body: "Health and wellness insights designed to help you understand your body, activity, sleep, stress, and everyday patterns.",
+    label: "REMEMBER",
+    title: "Your everyday second brain.",
+    body: "Stay present in the conversation. AIRA turns what you capture into searchable memories, clear summaries and commitments you can come back to. Ask your AI when you need a detail.",
   },
   {
     index: "02",
-    label: "REMEMBER",
-    title: "Preserve what matters.",
-    body: "AIRA builds a private, evolving memory of the moments, conversations, stories, and experiences you choose to keep.",
+    label: "UNDERSTAND",
+    title: "Your health, in perspective.",
+    body: "Explore your sleep, activity, recovery and stress-related signals. A daily health summary helps you see your personal baseline and understand what changed today.",
   },
   {
     index: "03",
-    label: "LEGACY",
-    title: "Leave something behind.",
-    body: "Your memories can become part of a legacy you intentionally leave for the people who matter most.",
+    label: "CONNECT",
+    title: "See your day as a whole.",
+    body: "Bring your conversations and health patterns into one personal AI. Explore connections across your routines and wellness, recall what matters, and follow through on your day.",
   },
 ];
 
@@ -69,8 +68,7 @@ const controls = [
   { state: "BLOCK", action: "Don't remember" },
 ];
 
-const products = ["AIRA Loop (wristband)", "AIRA Sense", "AIRA Life"];
-
+const products = ["AIRA Loop", "Screenless wristband + companion app"];
 
 const GOOGLE_FORM_ACTION =
   "https://docs.google.com/forms/d/e/1FAIpQLSe3beJyYrFt3ZAhtMRYrLtnU-_YdqdC5DV45e6wF7OZqyIDew/formResponse";
@@ -154,12 +152,6 @@ const prebookDeviceOptions = [
     caption: "Wrist band",
     image: AiraloopImg,
   },
-  {
-    value: "AIRA Sense (Head patch device)",
-    label: "AIRA Sense",
-    caption: "Head patch device",
-    image: airaSenseImg,
-  },
 ];
 
 function PreBookingForm() {
@@ -207,9 +199,9 @@ function PreBookingForm() {
               <div className="py-8 text-center">
                 <h3 className="text-2xl tracking-[-0.02em]">You're on the list.</h3>
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  You're among the first to join the AIRA community. Early access will be offered
-                  to the first 500 selected members in this batch. If your early access is
-                  confirmed, we'll reach out to you directly via email.
+                  You're among the first to join the AIRA community. Early access will be offered to
+                  the first 500 selected members in this batch. If your early access is confirmed,
+                  we'll reach out to you directly via email.
                 </p>
                 <p className="mt-6 text-xs tracking-[0.24em] text-muted-foreground uppercase">
                   Batch #01
@@ -306,8 +298,8 @@ function PreBookingForm() {
                   </fieldset>
 
                   <fieldset className="flex flex-col gap-3">
-                    <legend className="mb-1 text-sm font-medium">Which device?</legend>
-                    <div className="grid grid-cols-2 gap-3">
+                    <legend className="mb-1 text-sm font-medium">Your device</legend>
+                    <div className="grid grid-cols-1 gap-3">
                       {prebookDeviceOptions.map((option) => (
                         <label
                           key={option.value}
@@ -317,6 +309,7 @@ function PreBookingForm() {
                             type="radio"
                             name={PREBOOK_ENTRY.device}
                             value={option.value}
+                            defaultChecked
                             required
                             className="peer sr-only"
                           />
@@ -325,7 +318,7 @@ function PreBookingForm() {
                             alt={option.label}
                             loading="lazy"
                             draggable={false}
-                           className="h-24 w-full select-none object-contain [mask-image:radial-gradient(ellipse_at_center,black_60%,transparent_100%)] [-webkit-mask-image:radial-gradient(ellipse_at_center,black_60%,transparent_100%)]"
+                            className="h-24 w-full select-none object-contain [mask-image:radial-gradient(ellipse_at_center,black_60%,transparent_100%)] [-webkit-mask-image:radial-gradient(ellipse_at_center,black_60%,transparent_100%)]"
                           />
                           <span className="text-sm font-medium text-foreground">
                             {option.label}
@@ -377,7 +370,6 @@ function ControlToggle() {
   const [active, setActive] = useState<string>(controls[0]!.state);
   const current = controls.find((c) => c.state === active) ?? controls[0]!;
 
-
   return (
     <div className="mt-16">
       <div
@@ -414,7 +406,6 @@ function ControlToggle() {
     </div>
   );
 }
-
 
 function Index() {
   return (
@@ -474,8 +465,7 @@ function Index() {
             aria-hidden
             className="pointer-events-none absolute -top-[18%] -right-[22%] h-[78vmax] w-[78vmax] rounded-full opacity-[0.14]"
             style={{
-              background:
-                "radial-gradient(closest-side, oklch(0.95 0.03 88) 0%, transparent 72%)",
+              background: "radial-gradient(closest-side, oklch(0.95 0.03 88) 0%, transparent 72%)",
             }}
           />
           <div
@@ -490,10 +480,9 @@ function Index() {
               className="reveal mt-10 max-w-[46ch] text-base leading-relaxed text-[oklch(0.97_0.015_88)]/72 sm:text-lg"
               style={{ animationDelay: "220ms" }}
             >
-              AIRA is an AI wearable assistant that learns from your life, monitors your health, preserves
-              what matters, and helps your legacy live on.
+              AIRA Loop is a screenless AI wristband designed to help you remember everyday
+              conversations, track your health and ask questions about your day.
             </p>
-
           </div>
         </section>
 
@@ -506,10 +495,10 @@ function Index() {
                   "Personal AI Assistant",
                   "Meetings & Summarisation",
                   "Voice Capture",
-                  "Memory Preservation",
+                  "AI Second Brain",
                   "Health & Wellness",
-                  "AI Assistant",
-                  "Legacy & Stories",
+                  "Daily Health Summary",
+                  "Tasks & Commitments",
                   "Everyday Conversations",
                   "Personal Timeline",
                 ].map((item) => (
@@ -547,14 +536,13 @@ function Index() {
               </div>
               <figure className="relative overflow-hidden rounded-2xl">
                 <img
-                  src={manAiraSenseImg}
-                  alt="A person wearing AIRA Sense, eyes closed, in low light"
+                  src={loopstackimages}
+                  alt="AIRA Loop wristband product concepts in three finishes"
                   loading="lazy"
                   draggable={false}
                   className="h-full w-full rounded-2xl object-cover select-none"
                   style={{
-                    maskImage:
-                      "radial-gradient(120% 120% at 50% 50%, #000 62%, transparent 100%)",
+                    maskImage: "radial-gradient(120% 120% at 50% 50%, #000 62%, transparent 100%)",
                     WebkitMaskImage:
                       "radial-gradient(120% 120% at 50% 50%, #000 62%, transparent 100%)",
                   }}
@@ -564,10 +552,11 @@ function Index() {
           </div>
         </section>
 
-
         {/* Three ideas */}
         <section className="pb-32 sm:pb-48">
-          <div className={`${shell} grid gap-16 border-t border-border pt-16 sm:grid-cols-3 sm:gap-10`}>
+          <div
+            className={`${shell} grid gap-16 border-t border-border pt-16 sm:grid-cols-3 sm:gap-10`}
+          >
             {ideas.map((idea) => (
               <article key={idea.index} className="max-w-[34ch]">
                 <p className="text-xs tracking-[0.28em] text-muted-foreground uppercase">
@@ -593,12 +582,12 @@ function Index() {
                 </h2>
                 <p className="mt-10 max-w-[56ch] text-base leading-relaxed text-[oklch(0.95_0.015_88)]/65">
                   AIRA is designed around control. Pause it. Mute it. Block it. Delete what you
-                  don't want remembered. Decide what stays, what goes, and who can access your
-                  legacy.
+                  don't want remembered. You decide which conversations and memories become part of
+                  your second brain.
                 </p>
                 <ControlToggle />
               </div>
-              <figure className="relative overflow-hidden rounded-2xl">
+              <figure className="relative overflow-hidden rounded-2xl lg:order-first">
                 <img
                   src={AiraloopImg}
                   alt="Aira loop demo device"
@@ -606,8 +595,7 @@ function Index() {
                   draggable={false}
                   className="h-full w-full rounded-2xl object-cover opacity-[0.2] select-none"
                   style={{
-                    maskImage:
-                      "radial-gradient(120% 120% at 50% 50%, #000 62%, transparent 100%)",
+                    maskImage: "radial-gradient(120% 120% at 50% 50%, #000 62%, transparent 100%)",
                     WebkitMaskImage:
                       "radial-gradient(120% 120% at 50% 50%, #000 62%, transparent 100%)",
                   }}
@@ -616,6 +604,8 @@ function Index() {
             </div>
           </div>
         </section>
+
+        <LoopFeatures />
 
         {/* Final CTA */}
         <section id="early-access" className="py-32 sm:py-48">
@@ -641,11 +631,10 @@ function Index() {
             <Link to="/privacy" className="transition-colors hover:text-foreground">
               Privacy & Terms
             </Link>
-             <a href="use-cases" className="transition-colors hover:text-foreground">
+            <a href="use-cases" className="transition-colors hover:text-foreground">
               Use Cases
             </a>
-            <Link
-            to="/" hash="early-access">
+            <Link to="/" hash="early-access">
               Contact
             </Link>
           </nav>
