@@ -1,12 +1,12 @@
 import { r as __toESM } from "../_runtime.mjs";
-import { i as PREBOOK_ENTRY, n as GOOGLE_FORM_EMAIL_ENTRY, o as prebookUsageOptions, r as PREBOOK_DEVICE, s as signupSchema, t as GOOGLE_FORM_ACTION } from "./google-form-config-DVOa25mc.mjs";
 import { t as logo_default } from "./logo-aw0wNKq8.mjs";
-import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tanstack__react-query.mjs";
+import { a as require_jsx_runtime, o as require_react } from "../_libs/@radix-ui/react-collection+[...].mjs";
 import { h as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { t as getServerFnById } from "../__23tanstack-start-server-fn-resolver-BZK_1iZM.mjs";
+import { S as Activity, _ as CheckCheck, a as Moon, b as AudioLines, d as Lightbulb, f as History, g as ClipboardList, i as Search, l as ListChecks, m as Footprints, n as Thermometer, o as Mic, p as HeartPulse, r as ShieldCheck, s as MessageCircle, t as TrendingUp, u as Link2, v as CalendarDays, y as Brain } from "../_libs/lucide-react.mjs";
+import { i as PREBOOK_ENTRY, n as GOOGLE_FORM_EMAIL_ENTRY, o as prebookUsageOptions, r as PREBOOK_DEVICE, s as signupSchema, t as GOOGLE_FORM_ACTION } from "./google-form-config-CjL_vFaA.mjs";
+import { t as getServerFnById } from "../__23tanstack-start-server-fn-resolver-wVW30vS2.mjs";
 import { c as createServerFn, i as TSS_SERVER_FUNCTION } from "./createServerFn-CIHAFgYl.mjs";
-import { _ as Brain, a as Moon, c as ListChecks, d as History, f as HeartPulse, g as CalendarDays, h as CheckCheck, i as Search, l as Link2, m as ClipboardList, n as Thermometer, o as Mic, p as Footprints, r as ShieldCheck, s as MessageCircle, t as TrendingUp, u as Lightbulb, v as AudioLines, y as Activity } from "../_libs/lucide-react.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-D1JQAZjM.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-DwAePZf2.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var createSsrRpc = (functionId) => {
@@ -192,7 +192,11 @@ function LoopFeatures() {
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "mt-8 flex flex-wrap gap-x-6 gap-y-3 text-xs tracking-[0.12em] text-champagne uppercase",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Screenless wristband" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Companion app" })]
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Screenless wristband" }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Companion app" }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Up to 3-day battery" })
+							]
 						})
 					] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("figure", {
 						className: "mx-auto w-full max-w-[380px]",
@@ -464,15 +468,21 @@ function PreBookingForm() {
 			submitting.current = false;
 		}
 	}
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-		type: "button",
-		onClick: () => {
-			setStatus("idle");
-			setError("");
-			setOpen(true);
-		},
-		className: "mt-6 inline-block cursor-pointer rounded-none border border-primary bg-secondary px-7 py-4 text-sm tracking-[0.14em] text-primary uppercase transition-colors duration-300 hover:bg-transparent hover:text-primary focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none",
-		children: "Reserve Early Access"
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "relative mt-6 inline-flex",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+			type: "button",
+			onClick: () => {
+				setStatus("idle");
+				setError("");
+				setOpen(true);
+			},
+			className: "inline-block cursor-pointer rounded-none border border-primary bg-secondary px-7 py-5 text-sm tracking-[0.14em] text-primary uppercase transition-colors duration-300 hover:bg-transparent hover:text-primary focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none",
+			children: "Reserve Early Access"
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+			className: "absolute right-0 top-0 rounded-sm bg-primary px-2 py-0.5 text-[10px] font-semibold tracking-[0.12em] text-background uppercase",
+			children: "FREE"
+		})]
 	}), open && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6",
 		role: "dialog",
@@ -605,7 +615,7 @@ function PreBookingForm() {
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
 										htmlFor: "prebook-currency",
 										className: "text-xs text-muted-foreground",
-										children: "Select payment currency"
+										children: "Select your currency"
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
 										id: "prebook-currency",
 										value: currency,
@@ -638,7 +648,7 @@ function PreBookingForm() {
 												children: [
 													/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 														className: "absolute top-4 left-4 text-[0.6rem] tracking-[0.18em] text-champagne uppercase",
-														children: "Early access"
+														children: "Early access deal"
 													}),
 													/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 														className: "absolute top-3 right-3 rounded-full border border-emerald-300/25 bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-900",
@@ -786,10 +796,18 @@ function Index() {
 							className: "text-sm leading-none tracking-[0.42em] text-[oklch(0.95_0.02_88)] uppercase",
 							children: "AIRA"
 						})]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
-						href: "#early-access",
-						className: "text-xs tracking-[0.22em] text-[oklch(0.95_0.02_88)]/70 uppercase transition-colors duration-300 hover:text-[oklch(0.95_0.02_88)]",
-						children: "Join Waitlist"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", {
+						"aria-label": "Main navigation",
+						className: "flex items-center gap-5 sm:gap-8",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+							to: "/events",
+							className: "text-xs tracking-[0.12em] text-[oklch(0.95_0.02_88)]/70 uppercase transition-colors duration-300 hover:text-[oklch(0.95_0.02_88)]",
+							children: "Events"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+							href: "#early-access",
+							className: "text-xs tracking-[0.12em] text-[oklch(0.95_0.02_88)]/70 uppercase transition-colors duration-300 hover:text-[oklch(0.95_0.02_88)]",
+							children: "Join Waitlist"
+						})]
 					})]
 				})
 			}),
@@ -1010,7 +1028,7 @@ function Index() {
 							children: "AIRA"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", {
-							className: "flex gap-8 text-sm text-muted-foreground",
+							className: "flex flex-wrap gap-x-8 gap-y-4 text-sm text-muted-foreground",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
 									to: "/privacy",
@@ -1021,6 +1039,11 @@ function Index() {
 									href: "use-cases",
 									className: "transition-colors hover:text-foreground",
 									children: "Use Cases"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+									to: "/events",
+									className: "transition-colors hover:text-foreground",
+									children: "Events"
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
 									to: "/",

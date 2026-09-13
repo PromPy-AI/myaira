@@ -27,7 +27,7 @@ export const prebookUsageOptions = [
   "Personal AI",
   "Family memories",
   "Preserving my voice & stories",
-  "Everything or Something else",
+  "Something else",
 ] as const;
 
 const emailSchema = z.string().trim().email("Enter a valid email address.").max(254);

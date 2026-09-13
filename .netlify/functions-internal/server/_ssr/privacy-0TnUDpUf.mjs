@@ -1,5 +1,5 @@
 import { t as logo_default } from "./logo-aw0wNKq8.mjs";
-import { n as require_jsx_runtime } from "../_libs/react+tanstack__react-query.mjs";
+import { a as require_jsx_runtime } from "../_libs/@radix-ui/react-collection+[...].mjs";
 import { h as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/privacy-0TnUDpUf.js
 var import_jsx_runtime = require_jsx_runtime();

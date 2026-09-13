@@ -193,6 +193,7 @@ export function LoopFeatures() {
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-xs tracking-[0.12em] text-champagne uppercase">
               <span>Screenless wristband</span>
               <span>Companion app</span>
+              <span>Up to 3-day battery</span>
             </div>
           </div>
           <figure className="mx-auto w-full max-w-[380px]">

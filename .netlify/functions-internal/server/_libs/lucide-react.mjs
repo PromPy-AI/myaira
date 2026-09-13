@@ -1,5 +1,5 @@
 import { r as __toESM } from "../_runtime.mjs";
-import { r as require_react } from "./react+tanstack__react-query.mjs";
+import { o as require_react } from "./@radix-ui/react-collection+[...].mjs";
 //#region node_modules/lucide-react/dist/esm/shared/src/utils/mergeClasses.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 /**
@@ -118,6 +118,19 @@ var createLucideIcon = (iconName, iconNode) => {
 var Activity = createLucideIcon("activity", [["path", {
 	d: "M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2",
 	key: "169zse"
+}]]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var ArrowUpRight = createLucideIcon("arrow-up-right", [["path", {
+	d: "M7 7h10v10",
+	key: "1tivn9"
+}], ["path", {
+	d: "M7 17 17 7",
+	key: "1vkiza"
 }]]);
 /**
 * @license lucide-react v0.575.0 - ISC
@@ -299,6 +312,21 @@ var ClipboardList = createLucideIcon("clipboard-list", [
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var Clock3 = createLucideIcon("clock-3", [["circle", {
+	cx: "12",
+	cy: "12",
+	r: "10",
+	key: "1mglay"
+}], ["path", {
+	d: "M12 6v6h4",
+	key: "135r8i"
+}]]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var Footprints = createLucideIcon("footprints", [
 	["path", {
 		d: "M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z",
@@ -427,6 +455,21 @@ var ListChecks = createLucideIcon("list-checks", [
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var MapPin = createLucideIcon("map-pin", [["path", {
+	d: "M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0",
+	key: "1r0f0z"
+}], ["circle", {
+	cx: "12",
+	cy: "10",
+	r: "3",
+	key: "ilqhr7"
+}]]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var MessageCircle = createLucideIcon("message-circle", [["path", {
 	d: "M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719",
 	key: "1sd12s"
@@ -517,4 +560,4 @@ var TrendingUp = createLucideIcon("trending-up", [["path", {
 	key: "1t1m79"
 }]]);
 //#endregion
-export { Brain as _, Moon as a, ListChecks as c, History as d, HeartPulse as f, CalendarDays as g, CheckCheck as h, Search as i, Link2 as l, ClipboardList as m, Thermometer as n, Mic as o, Footprints as p, ShieldCheck as r, MessageCircle as s, TrendingUp as t, Lightbulb as u, AudioLines as v, Activity as y };
+export { Activity as S, CheckCheck as _, Moon as a, AudioLines as b, MapPin as c, Lightbulb as d, History as f, ClipboardList as g, Clock3 as h, Search as i, ListChecks as l, Footprints as m, Thermometer as n, Mic as o, HeartPulse as p, ShieldCheck as r, MessageCircle as s, TrendingUp as t, Link2 as u, CalendarDays as v, ArrowUpRight as x, Brain as y };

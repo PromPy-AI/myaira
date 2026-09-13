@@ -238,17 +238,22 @@ function PreBookingForm() {
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => {
-          setStatus("idle");
-          setError("");
-          setOpen(true);
-        }}
-        className="mt-6 inline-block cursor-pointer rounded-none border border-primary bg-secondary px-7 py-4 text-sm tracking-[0.14em] text-primary uppercase transition-colors duration-300 hover:bg-transparent hover:text-primary focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none"
-      >
-        Reserve Early Access
-      </button>
+      <div className="relative mt-6 inline-flex">
+        <button
+          type="button"
+          onClick={() => {
+            setStatus("idle");
+            setError("");
+            setOpen(true);
+          }}
+          className="inline-block cursor-pointer rounded-none border border-primary bg-secondary px-7 py-5 text-sm tracking-[0.14em] text-primary uppercase transition-colors duration-300 hover:bg-transparent hover:text-primary focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none"
+        >
+          Reserve Early Access
+        </button>
+        <span className="absolute right-0 top-0 rounded-sm bg-primary px-2 py-0.5 text-[10px] font-semibold tracking-[0.12em] text-background uppercase">
+          FREE
+        </span>
+      </div>
 
       {open && (
         <div
@@ -376,7 +381,7 @@ function PreBookingForm() {
                     <legend className="mb-1 text-sm font-medium">Your device</legend>
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <label htmlFor="prebook-currency" className="text-xs text-muted-foreground">
-                        Select payment currency
+                        Select your currency
                       </label>
                       <select
                         id="prebook-currency"
@@ -406,7 +411,7 @@ function PreBookingForm() {
                           />
                           <span className="relative block w-full bg-deep px-5 pt-12 pb-4">
                             <span className="absolute top-4 left-4 text-[0.6rem] tracking-[0.18em] text-champagne uppercase">
-                              Early access
+                              Early access deal
                             </span>
                             <span className="absolute top-3 right-3 rounded-full border border-emerald-300/25 bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-900">
                               Save {formatPrice(price.regular - price.early)}
@@ -449,7 +454,7 @@ function PreBookingForm() {
                               </span>
                             </span>
                             <span className="border-t border-border pt-4 text-xs leading-relaxed text-muted-foreground">
-                              2-month free subscription trial for pre-booking users.
+                              Enjoy a 2-month free subscription trial as a pre-booking customer.
                               <span className="mt-2 block font-medium text-primary">
                                 Free reservation. No payment today.
                               </span>
@@ -562,12 +567,20 @@ function Index() {
               AIRA
             </span>
           </a>
-          <a
-            href="#early-access"
-            className="text-xs tracking-[0.22em] text-[oklch(0.95_0.02_88)]/70 uppercase transition-colors duration-300 hover:text-[oklch(0.95_0.02_88)]"
-          >
-            Join Waitlist
-          </a>
+          <nav aria-label="Main navigation" className="flex items-center gap-5 sm:gap-8">
+            {/* <Link
+              to="/events"
+              className="text-xs tracking-[0.12em] text-[oklch(0.95_0.02_88)]/70 uppercase transition-colors duration-300 hover:text-[oklch(0.95_0.02_88)]"
+            >
+              Events
+            </Link> */}
+            <a
+              href="#early-access"
+              className="text-xs tracking-[0.12em] text-[oklch(0.95_0.02_88)]/70 uppercase transition-colors duration-300 hover:text-[oklch(0.95_0.02_88)]"
+            >
+              Join Waitlist
+            </a>
+          </nav>
         </div>
       </header>
 
@@ -764,13 +777,16 @@ function Index() {
           className={`${shell} flex flex-col gap-8 py-12 sm:flex-row sm:items-center sm:justify-between`}
         >
           <span className="text-sm tracking-[0.42em] uppercase">AIRA</span>
-          <nav className="flex gap-8 text-sm text-muted-foreground">
+          <nav className="flex flex-wrap gap-x-8 gap-y-4 text-sm text-muted-foreground">
             <Link to="/privacy" className="transition-colors hover:text-foreground">
               Privacy & Terms
             </Link>
             <a href="use-cases" className="transition-colors hover:text-foreground">
               Use Cases
             </a>
+            <Link to="/events" className="transition-colors hover:text-foreground">
+              Events
+            </Link>
             <Link to="/" hash="early-access">
               Contact
             </Link>

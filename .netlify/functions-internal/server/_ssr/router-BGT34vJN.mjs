@@ -1,11 +1,12 @@
 import { r as __toESM } from "../_runtime.mjs";
-import { n as require_jsx_runtime, r as require_react, t as QueryClientProvider } from "../_libs/react+tanstack__react-query.mjs";
+import { a as require_jsx_runtime, o as require_react } from "../_libs/@radix-ui/react-collection+[...].mjs";
 import { c as HeadContent, d as Outlet, f as lazyRouteComponent, g as useRouter, h as Link, m as createRootRouteWithContext, p as createFileRoute, s as Scripts, u as createRouter } from "../_libs/@tanstack/react-router+[...].mjs";
+import { t as QueryClientProvider } from "../_libs/tanstack__react-query.mjs";
 import { t as QueryClient } from "../_libs/tanstack__query-core.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-BWnBGqX0.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-BGT34vJN.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
-var styles_default = "/assets/styles-BQ6a_WRb.css";
+var styles_default = "/assets/styles-DxXR3eTl.css";
 function reportLovableError(error, context = {}) {
 	if (typeof window === "undefined") return;
 	window.__lovableEvents?.captureException?.(error, {
@@ -93,7 +94,7 @@ function ErrorComponent({ error, reset }) {
 		})
 	});
 }
-var Route$3 = createRootRouteWithContext()({
+var Route$4 = createRootRouteWithContext()({
 	head: () => ({
 		meta: [
 			{ charSet: "utf-8" },
@@ -172,15 +173,15 @@ function RootShell({ children }) {
 	});
 }
 function RootComponent() {
-	const { queryClient } = Route$3.useRouteContext();
+	const { queryClient } = Route$4.useRouteContext();
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryClientProvider, {
 		client: queryClient,
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Outlet, {})
 	});
 }
-var $$splitComponentImporter$2 = () => import("./routes-D1JQAZjM.mjs");
-var Route$2 = createFileRoute("/")({
-	component: lazyRouteComponent($$splitComponentImporter$2, "component"),
+var $$splitComponentImporter$3 = () => import("./routes-DwAePZf2.mjs");
+var Route$3 = createFileRoute("/")({
+	component: lazyRouteComponent($$splitComponentImporter$3, "component"),
 	head: () => ({
 		meta: [
 			{ title: "AIRA" },
@@ -216,6 +217,35 @@ var Route$2 = createFileRoute("/")({
 		links: [{
 			rel: "canonical",
 			href: "https://useaira.netlify.app/"
+		}]
+	})
+});
+var $$splitComponentImporter$2 = () => import("./events-uPZQtGQ6.mjs");
+var Route$2 = createFileRoute("/events")({
+	component: lazyRouteComponent($$splitComponentImporter$2, "component"),
+	head: () => ({
+		meta: [
+			{ title: "AIRA Events — Experience what we're building" },
+			{
+				name: "description",
+				content: "Explore upcoming AIRA events and revisit past gatherings. Meet the people behind AIRA and discover what we're building."
+			},
+			{
+				property: "og:title",
+				content: "AIRA Events"
+			},
+			{
+				property: "og:description",
+				content: "Meet the people behind AIRA. Explore upcoming events, conversations and product experiences."
+			},
+			{
+				property: "og:url",
+				content: "https://useaira.netlify.app/events"
+			}
+		],
+		links: [{
+			rel: "canonical",
+			href: "https://useaira.netlify.app/events"
 		}]
 	})
 });
@@ -286,23 +316,28 @@ var Route = createFileRoute("/use-cases")({
 	})
 });
 var rootRouteChildren = {
-	IndexRoute: Route$2.update({
+	IndexRoute: Route$3.update({
 		id: "/",
 		path: "/",
-		getParentRoute: () => Route$3
+		getParentRoute: () => Route$4
+	}),
+	EventsRoute: Route$2.update({
+		id: "/events",
+		path: "/events",
+		getParentRoute: () => Route$4
 	}),
 	PrivacyRoute: Route$1.update({
 		id: "/privacy",
 		path: "/privacy",
-		getParentRoute: () => Route$3
+		getParentRoute: () => Route$4
 	}),
 	UseCasesRoute: Route.update({
 		id: "/use-cases",
 		path: "/use-cases",
-		getParentRoute: () => Route$3
+		getParentRoute: () => Route$4
 	})
 };
-var routeTree = Route$3._addFileChildren(rootRouteChildren)._addFileTypes();
+var routeTree = Route$4._addFileChildren(rootRouteChildren)._addFileTypes();
 var getRouter = () => {
 	const queryClient = new QueryClient();
 	return createRouter({

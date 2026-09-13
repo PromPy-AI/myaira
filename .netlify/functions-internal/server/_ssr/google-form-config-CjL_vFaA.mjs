@@ -1,5 +1,5 @@
 import { a as objectType, i as literalType, n as discriminatedUnionType, o as stringType, r as enumType, t as arrayType } from "../_libs/zod.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/google-form-config-DVOa25mc.js
+//#region node_modules/.nitro/vite/services/ssr/assets/google-form-config-CjL_vFaA.js
 var GOOGLE_FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSe3beJyYrFt3ZAhtMRYrLtnU-_YdqdC5DV45e6wF7OZqyIDew/formResponse";
 var GOOGLE_FORM_EMAIL_ENTRY = "entry.1695628208";
 var PREBOOK_FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSd1mh1cEgaaCWwTavEu1OojHRF7L0YJ9wCwQBzgVYOKGPKDqg/formResponse";
@@ -21,7 +21,7 @@ var prebookUsageOptions = [
 	"Personal AI",
 	"Family memories",
 	"Preserving my voice & stories",
-	"Everything or Something else"
+	"Something else"
 ];
 var emailSchema = stringType().trim().email("Enter a valid email address.").max(254);
 var signupSchema = discriminatedUnionType("kind", [objectType({
