@@ -1,0 +1,40 @@
+﻿Connector,Contact,Net,Function,Release_status
+J1 — external charge pads,1,VBUS5_IN,Dock protected 5 V input,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+J1 — external charge pads,2,GND,Dock return,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+"J2 — optical flex, 8 contacts",1,GND,Return,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+"J2 — optical flex, 8 contacts",2,1V8_PPG,U2 core supply proposal,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+"J2 — optical flex, 8 contacts",3,3V3_LED,U2 LED supply proposal,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+"J2 — optical flex, 8 contacts",4,I2C_SCL_1V8,From U11,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+"J2 — optical flex, 8 contacts",5,I2C_SDA_1V8,From U11,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+"J2 — optical flex, 8 contacts",6,PPG_INT_1V8,To U12 A,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+"J2 — optical flex, 8 contacts",7,GND,Return,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+"J2 — optical flex, 8 contacts",8,GND_SHIELD,Optional shield return; no signal,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+"J3 — microphone flex, 6 contacts",1,MIC_3V0,Gated supply from U8,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+"J3 — microphone flex, 6 contacts",2,GND,Return,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+"J3 — microphone flex, 6 contacts",3,PDM_CLK_MIC,U9 channel 1 output,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+"J3 — microphone flex, 6 contacts",4,PDM_DATA_MIC,U9 channel 2 input,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+"J3 — microphone flex, 6 contacts",5,MIC_LR_STRAP,GND for proposed mono selection; verify MIC1 convention,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+"J3 — microphone flex, 6 contacts",6,GND,Return,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+"J4 — battery harness, 3 contacts",1,BAT+,Protected cell positive,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+"J4 — battery harness, 3 contacts",2,BAT_NTC,Pack thermistor to PMIC per supplier circuit,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+"J4 — battery harness, 3 contacts",3,BAT- / GND,Protected cell negative,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+J5 — proposed 10-pin debug interface,1,VTREF_3V0,"Voltage reference sense, not a power input",Proposed contact numbering only; check mating-side orientation and exact connector drawing
+J5 — proposed 10-pin debug interface,2,SWDIO,MCU dedicated SWDIO,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+J5 — proposed 10-pin debug interface,3,GND,Return,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+J5 — proposed 10-pin debug interface,4,SWDCLK,MCU dedicated SWDCLK,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+J5 — proposed 10-pin debug interface,5,GND,Return,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+J5 — proposed 10-pin debug interface,6,SWO_OPTION,P1.00 proposal; verify mux,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+J5 — proposed 10-pin debug interface,7,KEY / NO PAD,Polarization,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+J5 — proposed 10-pin debug interface,8,NC,Unused,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+J5 — proposed 10-pin debug interface,9,GND_DETECT,Return,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+J5 — proposed 10-pin debug interface,10,NRESET,P0.18 reset,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+"J6 — temperature flex, 4 contacts",1,3V0,Temperature supply,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+"J6 — temperature flex, 4 contacts",2,GND,Return,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+"J6 — temperature flex, 4 contacts",3,I2C_SCL_3V0,Clock,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+"J6 — temperature flex, 4 contacts",4,I2C_SDA_3V0,Data,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+"J7 — factory test pads, 6 contacts",1,GND,Return,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+"J7 — factory test pads, 6 contacts",2,FACTORY_TX,P0.06,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+"J7 — factory test pads, 6 contacts",3,FACTORY_RX,P0.08,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+"J7 — factory test pads, 6 contacts",4,NRESET,P0.18,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+"J7 — factory test pads, 6 contacts",5,3V0_SENSE,Sense only,Proposed contact numbering only; check mating-side orientation and exact connector drawing
+"J7 — factory test pads, 6 contacts",6,BLOCK_BUTTON_N,P1.01 test stimulus,Proposed contact numbering only; check mating-side orientation and exact connector drawing

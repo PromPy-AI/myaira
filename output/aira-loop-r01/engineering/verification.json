@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "individual_meshes": 23,
+  "internal_bounding_box_pairs": 66,
+  "checks": [
+    "JavaScript parses and executes in isolated DOM fixture",
+    "Privacy state transitions",
+    "Power estimates at 0 / 16 / 24 capture hours",
+    "ADPCM and PCM storage formulas",
+    "Tab visibility",
+    "Component selection and reset",
+    "Skin-side camera orientation",
+    "All download targets exist",
+    "No bounding-box penetration between internal allocation blocks"
+  ],
+  "limits": [
+    "Not a browser render or real Bluetooth/audio test",
+    "No electrical or OpenSCAD-kernel validation",
+    "No enclosure tolerance or flex/cable collision validation"
+  ]
+}

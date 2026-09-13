@@ -1,0 +1,28 @@
+﻿Reference,Function,Quantity,Starting_specification,Connection,Open_validation
+R1-R2,3V0 I2C pullups,2,"4.7 kohm, 1%, 0402 starting value",SCL/SDA to 3V0,Measure rise time and low-state current
+R3-R4,1V8 I2C pullups,2,"4.7 kohm, 1%, 0402 starting value",PPG SCL/SDA to 1V8,Use translator reference bias; verify effective pullup loading
+R5,MCU mic request pulldown,1,"47 kohm, 0402 starting value",MCU_MIC_REQUEST to GND,Keeps request low before firmware config
+R6,Physical slider default,1,"100 kohm, 0402 starting value",SW_ACTIVE to GND,Fail-disabled if switch signal is open
+R7,Capture LED limit,1,Starting 22 kohm; final value measured,MIC_3V0 to LED branch,Brightness and current are release gates
+R8-R9,PDM source termination,2,33 ohm starting values,Clock/data at respective source,Tune on scope; never place by arbitrary connector side
+R10-R11,Optional battery ADC divider,2,"2 Mohm upper / 1 Mohm lower, 1%",Gated VBAT to ADC / GND,4.2 V maps to 1.4 V; gate topology and settling pending
+R12,PPG interrupt pullup,1,10 kohm starting value,PPG_INT_1V8 to 1V8,Confirm U2 output type
+R13,NOR chip select default,1,100 kohm starting value,QSPI_CS_N to 3V0,Confirm flash boot requirements
+R14,Reset pullup option,0 or 1,10 kohm starting value,NRESET to 3V0,Review Nordic reset guidance
+R15-R17,Rail measurement links,3,0 ohm removable links,"MCU/radio, optical, microphone branches",Allow fixture current measurements; avoid RF return disruption
+R18,PDM buffer input idle,1,100 kohm starting pulldown,PDM_DATA_MIC to GND at U9 input,Avoid a floating enabled buffer input after mic power-off; include active-state pull current in budget
+C1-C14,Local bypass allocations,14 provisional,"100 nF, X7R, 10 V, 0402",At digital/analogue supply pins,"Final count comes from actual pin-level schematics, not this allowance"
+C15,Battery-side local reservoir,1,10 uF starting value,Protected VBAT to GND,Effective capacitance and PMIC reference design control final value
+C16,Dock input reservoir,1,10 uF starting value,Protected VBUS5 to GND,Input inrush and charger reference design control final value
+C17-C18,Optical LED bypass,2,22 uF + 100 nF starting values,3V3_LED to sensor return,"Check LED pulse droop, regulator stability and DC-bias derating"
+C19,Microphone bypass,1,1 uF starting value,MIC_3V0 to GND,MIC1 datasheet controls final selection
+C20,Flash reservoir,1,10 uF starting value,U5 3V0 to GND,Verify write pulse and rail droop
+C21,MCU local reservoir,1,4.7 uF starting value,U1 3V0 to GND,Additional DEC pin capacitors are separately required
+C22,ADC input filter,1,10 nF starting value,VBAT_SENSE to GND,"Check leakage, enable settling and SAADC acquisition"
+MCU_DEC_NETWORK,Required MCU regulator passives,TBD,EXACT NORDIC REFERENCE REQUIRED,All DEC/DCC/regulator pins,No values or connections inferred; blocks schematic release
+L_PMIC1/L_PMIC2 + C_PMIC*,PMIC buck inductors/output caps,TBD,EXACT nPM1300 REFERENCE REQUIRED,BUCK1/BUCK2,"Saturation, ripple and stability require datasheet"
+L_BOOST + C_BOOST*,LED buck-boost power network,TBD,EXACT TPS63031 REFERENCE REQUIRED,U7 switching/output loop,"Placement, saturation current and compensation cannot be guessed"
+C_XTAL*,Crystal load caps,TBD,Per selected Y1/Y2 and MCU,Oscillator networks,Compute from crystal load and layout parasitics
+L_RF*/C_RF*,RF matching network,TBD,Nordic reference plus VNA tuning,ANT to ANT1,No generic RF values supplied
+R_LEVEL*/C_LEVEL*,Translator bias and bypass,TBD,Exact U11/U12 reference network,Level translation supplies/enable,PCA9306 reference bias is not just two supply wires
+PROTECTION*,Input ESD/reverse/short network,TBD,Designed against dock and battery limits,Power entry,Do not connect exposed pads directly to cell

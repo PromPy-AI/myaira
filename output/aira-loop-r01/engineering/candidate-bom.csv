@@ -1,0 +1,27 @@
+Reference,Function,Quantity,Candidate_or_specification,Interface,Selection_status,Manufacturer_validation
+U1,BLE audio processor,1,Nordic nRF5340,PDM / QSPI / I2C / SPI / BLE,Candidate,Confirm package voltage firmware memory codec power and availability
+U2,Optical sensor module,1,Analog Devices MAXM86161 family,I2C + IRQ,Candidate,Confirm optical module fit skin optics LED rails and algorithm scope
+U3,Motion sensor,1,Bosch BMI270,I2C or SPI + IRQ,Candidate,Confirm package rails mode and current
+U4,Skin temperature,1,Analog Devices MAX30208,I2C,Candidate,Design skin coupling and thermal isolation
+U5,Local audio storage,1,Winbond W25N04KV family 4 Gbit,QSPI NAND,Candidate,Validate package ECC bad blocks wear current and driver
+U6,Charger and regulators,1,Nordic nPM1300-class candidate,I2C / power path,Candidate,Check cell charging limits and add all required auxiliary rails
+U7,Mic power switch and data isolation,1,Power-off-safe load gate and bus isolation,Hardware switch + PDM,Unselected,No microphone back-power via clock or data when muted
+U8,Haptic driver,1,Match selected actuator,I2C or PWM,Unselected,Confirm peak current and actuator waveform
+MIC1,Primary microphone,1,Digital PDM MEMS,PDM,Unselected,Confirm supply SNR port orientation gasket and active current
+MIC2,Optional second microphone,0 or 1,Digital PDM MEMS matched to MIC1,PDM,Optional,Populate only if acoustic comparison justifies it
+BAT1,Protected rechargeable cell,1,1S LiPo target 220 mAh in 18x28x4 mm package,Power + NTC,Unverified target,Supplier drawing must include protection tabs capacity expansion and safety documents
+ANT1,2.4 GHz antenna,1,PCB or chip antenna per approved reference,RF,Unselected,On-body tuning and exact all-layer keepout
+Y1-Y2,Clock references,As required,Per selected MCU reference circuit,Clock,Unselected,Confirm radio and RTC accuracy requirements
+SW1,Physical privacy control,1,Maintained two-position miniature slider,Hardware mic gate,Unselected,Select travel sealing force life and polarity
+LED1,Capture indication,1,Low-current visible LED + light pipe,Hardware permit + firmware check,Unselected,Define failure response and daytime visibility
+M1,Haptic actuator,1,Envelope 7x5x2.1 mm,Driver output,Envelope only,Exact motor dimensions may revise enclosure
+J1-J2,Recessed charge contacts,2,Gold-plated sealed contact system,Protected 5 V dock input,Unselected,Confirm sealing spacing wear short protection and corrosion
+PCB1,Main board,1,23x42x0.8 mm four-layer PCB,All buses,Placement envelope,Electrical schematic layout ERC DRC and panelisation absent
+FPC1,Sensor and microphone flex,As required,Custom flex with strain relief,Sensor / PDM / power,Unrouted,Verify bend radius routes connectors and assembly clearance
+MECH1,Lower shell,1,Matte polymer 48x27x11.8 mm body,Mechanical,Parametric concept,Resolve skin safety RF fit lugs tolerances and closure
+MECH2,Upper cover,1,Matte polymer 1.2 mm cover,Mechanical,Parametric concept,Resolve lip ports seals slider and fastening
+MECH3,Optical window and baffle,1 set,10x14x0.8 mm window + black isolation,Optical,Allocation,Confirm optical transmission leakage skin contact and adhesive
+MECH4,Strap,1,22 mm replaceable textile band,Mechanical,Concept,Confirm lug-slot threading wrist range and retention
+MECH5,Acoustic membrane and gasket,1 or 2,Per microphone port design,Acoustic,Unselected,Measure attenuation water/sweat resistance and sealing
+DOCK1,External charging dock,1,5 V source with USB-C power input and two contacts,Power,Architecture only,Design input detection protection magnet/retention and enclosure
+MISC,Passives ESD connectors test pads,As designed,Derived from selected reference circuits,Various,Not enumerated,Complete schematic and sourcing review before procurement

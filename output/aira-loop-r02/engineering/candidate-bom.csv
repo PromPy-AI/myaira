@@ -1,0 +1,34 @@
+﻿Reference,Function,Candidate_or_specification,Quantity,Proposed_supply,Interface,Selection_notes
+U1,BLE controller,"Nordic nRF52840, QIAA package candidate",1,3V0,"PDM, QSPI, I2C, GPIO, BLE","MCU scheduling, light ADPCM framing, timestamps and encryption only. No AI inference. Package pad map pending."
+U2,Optical pulse sensor,Analog Devices MAX30101,1,1V8 core / 3V3 LED proposed,I2C + active-low interrupt,"Green/red/IR architecture. Planned scheduled PPG windows. Confirm exact package, supply limits, optics and algorithm."
+U3,Low-power accelerometer,Bosch BMA400,1,3V0 proposed,I2C + INT1/INT2,No gyroscope in R02. 25 Hz starting target; select a supported low-power mode during validation.
+U4,Skin temperature sensor,Texas Instruments TMP117,1,3V0 proposed,I2C,Skin-adjacent flex island; one sample per minute target. Not core body temperature.
+U5,Reconnect audio buffer,"Winbond W25Q512JV family, 512 Mbit NOR",1,3V0 proposed,QSPI,"64 MiB nominal; reserve 20%. Exact ordering code, package and write current pending."
+U6,Charger and regulator PMIC,Nordic nPM1300,1,VBAT / VBUS5 input,I2C + IRQ; BUCK1/BUCK2,"Proposed 3V0 system and 1V8 optical rails. Exact programming, reference passives and pin map pending."
+U7,Optical LED buck-boost,Texas Instruments TPS63031,1,VBAT to 3V3_LED proposed,EN from MCU,"Avoid assuming a buck can maintain 3.3 V from a discharged cell. Confirm peak current, inductor and capacitors."
+U8,Microphone supply gate,Texas Instruments TPS22916,1,3V0 to MIC_3V0,ON from CAPTURE_EN,Select exact discharge variant. Physical switch and firmware permit must both be true.
+U9,PDM isolation buffers,Texas Instruments SN74LVC2G126,1,3V0 proposed,"CLK one channel, DATA reverse path on second",OE follows CAPTURE_EN; check power-off and input behavior. Prevent microphone back-power.
+U10,Capture permission gate,Texas Instruments SN74LVC1G08,1,3V0 proposed,AND of SW_ACTIVE and MCU_MIC_REQUEST,External pulldowns hold capture disabled at reset. Gate schematic still needs design review.
+U11,Optical I2C level translator,Texas Instruments PCA9306,1,1V8 / 3V0 domains,SCL/SDA bidirectional,Reference-bias and enable network per datasheet. Do not directly connect 3 V pullups to a 1.8 V-only pin.
+U12,Optical interrupt translator,Texas Instruments SN74LVC1T45,1,"VCCA=1V8, VCCB=3V0 proposed","A=PPG_INT_1V8, B=PPG_INT_3V0",Proposed A-to-B direction; exact package wiring and powered-off state require datasheet confirmation.
+U13,Haptic driver,Texas Instruments DRV2605L,0 or 1,3V0 proposed,"I2C, EN, optional trigger",Optional population. Driver/actuator current must remain within the power budget.
+MIC1,Single digital microphone,TDK/InvenSense ICS-41351 candidate,1,MIC_3V0 proposed,"PDM CLK/DATA, L/R strap","Confirm lifecycle, PDM clock/current, SNR and package. Use one microphone for the small-cell budget."
+BAT1,Rechargeable protected cell,"1S conventional 4.2 V LiPo, 230 mAh target",1,VBAT,"BAT+, NTC, BAT-",200–230 mAh constraint. 18x28x4 mm allocation is unverified and must include tabs/protection. Do not order by envelope alone.
+SW1,Physical mic privacy switch,Maintained miniature SPDT slider; exact MPN open,1,3V0 / GND,Common=SW_ACTIVE; throws=3V0 and GND,"Physical Mute cannot be overridden by app. Supplier to confirm travel, actuation and seal."
+SW2,Block / marker input,Momentary tactile switch; exact MPN open,1,3V0 logic,BLOCK_BUTTON_N to GND,"Long press requests Block; debounced firmware behavior, not a third slider position."
+D1,Visible capture indicator,High-efficiency low-current LED; exact MPN open,1,MIC_3V0,Series resistor to GND,Continuously visible while mic supply is enabled. Brightness target needs testing; no fail-safe LED claim.
+M1,Optional haptic actuator,"Supplier-selected miniature LRA, envelope 7x5x2.1 mm",0 or 1,U13 outputs,OUT+ / OUT-,Envelope may not fit a purchasable motor; revise if needed. Do not substitute ERM without driver review.
+Y1,Radio crystal,32 MHz crystal per Nordic reference,1,MCU oscillator,XC1/XC2,"Load, ESR, accuracy and capacitance per exact MCU reference layout."
+Y2,Low-frequency crystal,32.768 kHz crystal per Nordic reference,1,MCU oscillator,"P0.00/XL1, P0.01/XL2","Confirm load, ESR, routing and whether crystal gives best total power versus calibrated RC."
+ANT1,BLE antenna,2.4 GHz PCB antenna or chip antenna; supplier choice,1,RF,MCU ANT through matching network,Final antenna and keepout must be tuned on body. No copied WHOOP or NeoSapien antenna design.
+ESD1,Dock transient protection,Low-leakage protection appropriate for 5 V input,1 set,VBUS5 / GND,Dock contacts to PMIC protected input,"Exact TVS, short/reverse protection and input current limit require circuit design."
+FPC1,Optical sensor flex,Custom 8-conductor flex; connector exact MPN open,1,3V3_LED / 1V8 / GND,J2 proposed pinout,Includes optical baffle and window. Routing and bend allowance are not modeled.
+FPC2,Microphone flex,Custom 6-conductor flex; connector exact MPN open,1,MIC_3V0 / GND,J3 proposed pinout,Gasket routes to one outward-facing port; do not cover the acoustic port with adhesive.
+FPC3,Temperature flex,Custom 4-conductor thermally isolated flex,1,3V0 / GND,J6 proposed pinout,Physically isolate from PMIC and cell heating.
+PCB1,Custom main PCB,"23x42x0.8 mm, four layers, corner radius 4",1,All rails,"See GPIO, connector and rail schedules","Floorplan only. No fabricated footprint, routed copper, Gerbers, drill file or ERC/DRC release."
+CASE1,Lower housing,Matte nonconductive polymer; 48x27 body,1,Mechanical,"Optical aperture, recess, dock bores, strap lugs","CAD concept; material, skin safety, seals and closure open."
+CASE2,Upper cover,1.2 mm nonconductive polymer cover,1,Mechanical,"One mic port, light pipe, privacy access",Metal coating may detune BLE. Validate RF with final finish.
+OPT1,Optical insert and baffle,10x14x0.8 mm insert plus black light barrier,1 set,Optical,Sensor to skin,"Optical transmission, ambient rejection and adhesive bondline require tests."
+MEM1,Acoustic membrane and gasket,Supplier selected for MIC1,1 set,Acoustic,Port to microphone,No ingress rating claimed.
+STRAP1,Textile strap,22 mm replaceable textile band,1,Mechanical,22.4 mm CAD lug slots,"Buckle, wrist range, retention and cut pattern not released."
+DOCK1,Charging dock,External protected 5 V input and two contacts,1,USB-C to VBUS5/GND,Dock J1,Dock is a separate PCB/enclosure design. Its USB-C CC network is required but not designed here.

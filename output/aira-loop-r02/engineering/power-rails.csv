@@ -1,0 +1,8 @@
+﻿Net,Source,Voltage_target,Loads,Validation
+VBUS5_IN,J1.1 / external dock,5 V nominal,"Input protection, U6 charger",Separate dock USB-C configuration and short protection required
+VBAT,Protected BAT1,"Cell-specific operating range, max 4.2 V target",U6 and U7,"Approved cell, NTC, protection and charging limits first"
+3V0,U6 BUCK1 proposal,3.0 V,U1/U3/U4/U5/U8-U10/U13 and logic,Verify every part and PMIC I/O domain before wiring
+1V8_PPG,U6 BUCK2 proposal,1.8 V,U2 core; translator low side,PPG rail sequencing and safe shutdown required
+3V3_LED,U7 buck-boost,3.3 V target,U2 LED supply,Peak pulse capability and noise must be checked
+MIC_3V0,U8 output,3.0 V when permitted,MIC1 and capture indication,Mute cuts supply AND isolates CLK/DATA
+GND,Board reference,0 V,All returns with engineered current paths,Continuous reference plane; manage optical and switch-current loops

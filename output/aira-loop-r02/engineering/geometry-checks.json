@@ -1,0 +1,128 @@
+[
+  {
+    "part": "base",
+    "closed_edge_manifold": true,
+    "volume_mm3": 3371.399
+  },
+  {
+    "part": "lens",
+    "closed_edge_manifold": true,
+    "volume_mm3": 107.637
+  },
+  {
+    "part": "sensor",
+    "closed_edge_manifold": true,
+    "volume_mm3": 245.68
+  },
+  {
+    "part": "pcb",
+    "closed_edge_manifold": true,
+    "volume_mm3": 761.448
+  },
+  {
+    "part": "mcu",
+    "closed_edge_manifold": true,
+    "volume_mm3": 53.806
+  },
+  {
+    "part": "flash",
+    "closed_edge_manifold": true,
+    "volume_mm3": 52.637
+  },
+  {
+    "part": "pmic",
+    "closed_edge_manifold": true,
+    "volume_mm3": 29.9
+  },
+  {
+    "part": "imu",
+    "closed_edge_manifold": true,
+    "volume_mm3": 8.919
+  },
+  {
+    "part": "temp",
+    "closed_edge_manifold": true,
+    "volume_mm3": 7.136
+  },
+  {
+    "part": "haptic",
+    "closed_edge_manifold": true,
+    "volume_mm3": 71.657
+  },
+  {
+    "part": "antenna",
+    "closed_edge_manifold": true,
+    "volume_mm3": 5.911
+  },
+  {
+    "part": "ledpower",
+    "closed_edge_manifold": true,
+    "volume_mm3": 10.703
+  },
+  {
+    "part": "level",
+    "closed_edge_manifold": true,
+    "volume_mm3": 13.111
+  },
+  {
+    "part": "privacygate",
+    "closed_edge_manifold": true,
+    "volume_mm3": 32.906
+  },
+  {
+    "part": "battery",
+    "closed_edge_manifold": true,
+    "volume_mm3": 2008.768
+  },
+  {
+    "part": "mic1",
+    "closed_edge_manifold": true,
+    "volume_mm3": 16.601
+  },
+  {
+    "part": "lid",
+    "closed_edge_manifold": true,
+    "volume_mm3": 1517.234
+  },
+  {
+    "part": "led",
+    "closed_edge_manifold": true,
+    "volume_mm3": 1.129
+  },
+  {
+    "part": "switch",
+    "closed_edge_manifold": true,
+    "volume_mm3": 18.38
+  },
+  {
+    "part": "portA",
+    "closed_edge_manifold": true,
+    "volume_mm3": 0.078
+  },
+  {
+    "part": "contact-3",
+    "closed_edge_manifold": true,
+    "volume_mm3": 1.099
+  },
+  {
+    "part": "contact3",
+    "closed_edge_manifold": true,
+    "volume_mm3": 1.099
+  },
+  {
+    "part": "strap-1",
+    "closed_edge_manifold": true,
+    "volume_mm3": 1576.687
+  },
+  {
+    "part": "strap1",
+    "closed_edge_manifold": true,
+    "volume_mm3": 1576.687
+  },
+  {
+    "battery_top_clearance_mm": 1.0,
+    "battery_to_tallest_under_battery_block_mm": 1.4,
+    "pcb_to_optical_module_mm": 0.3,
+    "note": "Nominal allocation gaps only; adhesives, flex bends, tolerance and swelling budgets still require mechanical engineering."
+  }
+]

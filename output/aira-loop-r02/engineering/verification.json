@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "individual_meshes": 24,
+  "internal_bounding_box_pairs": 91,
+  "checks": [
+    "JavaScript parses and executes in isolated DOM fixture",
+    "Privacy state transitions",
+    "Power targets at 200 / 220 / 230 mAh",
+    "Continuous optical sensitivity budget misses 72 hours",
+    "Raw PCM explicitly unbudgeted for battery life",
+    "ADPCM and PCM storage formulas",
+    "All 48 unique MCU GPIO ports accounted for",
+    "Tab visibility",
+    "Component selection and reset",
+    "Skin-side camera orientation",
+    "All viewer download targets exist",
+    "No bounding-box penetration between internal allocation blocks"
+  ],
+  "limits": [
+    "Not a browser render or real Bluetooth/audio test",
+    "Battery currents are allocations, not measured predictions",
+    "Physical IC pad mapping and reference schematics unverified",
+    "No electrical or OpenSCAD-kernel validation",
+    "No enclosure tolerance or flex/cable collision validation"
+  ]
+}

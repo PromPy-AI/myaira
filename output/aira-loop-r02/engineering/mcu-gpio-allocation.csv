@@ -1,0 +1,49 @@
+﻿MCU_port_ID,Net,Destination,Direction,Behavior,Physical_pad_status
+P0.00,XL1,32.768 kHz crystal Y2,Oscillator,Reserved LF clock,UNVERIFIED — physical package pad number not assigned
+P0.01,XL2,32.768 kHz crystal Y2,Oscillator,Reserved LF clock,UNVERIFIED — physical package pad number not assigned
+P0.02,VBAT_SENSE,Optional gated battery divider,Analog in,2 Mohm / 1 Mohm starting divider; ADC acquisition settling must be verified,UNVERIFIED — physical package pad number not assigned
+P0.03,SPARE_NC,No connection,Unused,Disable digital input where appropriate; no floating enabled input. Reserve until verified schematic.,UNVERIFIED — physical package pad number not assigned
+P0.04,SPARE_NC,No connection,Unused,Disable digital input where appropriate; no floating enabled input. Reserve until verified schematic.,UNVERIFIED — physical package pad number not assigned
+P0.05,SPARE_NC,No connection,Unused,Disable digital input where appropriate; no floating enabled input. Reserve until verified schematic.,UNVERIFIED — physical package pad number not assigned
+P0.06,FACTORY_TX,Factory test interface J7.2,Output,Disabled in normal operation,UNVERIFIED — physical package pad number not assigned
+P0.07,SPARE_NC,No connection,Unused,Disable digital input where appropriate; no floating enabled input. Reserve until verified schematic.,UNVERIFIED — physical package pad number not assigned
+P0.08,FACTORY_RX,Factory test interface J7.3,Input,"Defined idle, no exposed production console",UNVERIFIED — physical package pad number not assigned
+P0.09,NFC1_RESERVED,No connection in R02,Reserved,Do not repurpose without UICR/NFC configuration review,UNVERIFIED — physical package pad number not assigned
+P0.10,NFC2_RESERVED,No connection in R02,Reserved,Do not repurpose without UICR/NFC configuration review,UNVERIFIED — physical package pad number not assigned
+P0.11,SW_ACTIVE_SENSE,SW1 common and U10 input A,Input,Physical slider sense; pulldown,UNVERIFIED — physical package pad number not assigned
+P0.12,MCU_MIC_REQUEST,U10 input B,Output,"External pulldown; LOW on reset, Mute, Block, full buffer and fault",UNVERIFIED — physical package pad number not assigned
+P0.13,I2C_SCL_3V0,U3/U4/U6/U13 and U11 high side,Open drain,400 kHz proposed; supported speed and bus capacitance to verify,UNVERIFIED — physical package pad number not assigned
+P0.14,I2C_SDA_3V0,U3/U4/U6/U13 and U11 high side,Open drain,Pullups to 3V0; low-voltage PPG via U11,UNVERIFIED — physical package pad number not assigned
+P0.15,PMIC_IRQ_N,U6 interrupt output,Input,"Pin type, voltage and pullup per U6 datasheet",UNVERIFIED — physical package pad number not assigned
+P0.16,ACCEL_INT1,U3 INT1,Input,Motion/FIFO wake,UNVERIFIED — physical package pad number not assigned
+P0.17,ACCEL_INT2,U3 INT2,Input,Optional second interrupt; otherwise disable,UNVERIFIED — physical package pad number not assigned
+P0.18,NRESET,J5.10 and J7.4,Reset,Configure dedicated reset function; not an ordinary GPIO in this design,UNVERIFIED — physical package pad number not assigned
+P0.19,QSPI_SCK,U5 serial clock,Output,Routing and slew/current tuning required,UNVERIFIED — physical package pad number not assigned
+P0.20,QSPI_CS_N,U5 chip select,Output,100 kohm starting pullup to 3V0,UNVERIFIED — physical package pad number not assigned
+P0.21,QSPI_IO0,U5 IO0,Bidirectional,3V0 logic proposed,UNVERIFIED — physical package pad number not assigned
+P0.22,QSPI_IO1,U5 IO1,Bidirectional,3V0 logic proposed,UNVERIFIED — physical package pad number not assigned
+P0.23,QSPI_IO2,U5 IO2 / WP function,Bidirectional,Define boot state before quad mode,UNVERIFIED — physical package pad number not assigned
+P0.24,QSPI_IO3,U5 IO3 / HOLD or RESET function,Bidirectional,Exact flash variant determines alternate function,UNVERIFIED — physical package pad number not assigned
+P0.25,PDM_CLK_MCU,U9 channel 1 input,Output,U9 channel 1 output drives MIC1 clock only while enabled,UNVERIFIED — physical package pad number not assigned
+P0.26,PDM_DATA_MCU,U9 channel 2 output,Input,MIC1 data feeds U9 channel 2 input; defined idle when disabled,UNVERIFIED — physical package pad number not assigned
+P0.27,PPG_LED_EN,U7 enable,Output,Off before sensor init; ensure no bus back-power,UNVERIFIED — physical package pad number not assigned
+P0.28,HAPTIC_TRIG,U13 IN/TRIG if populated,Output,"Optional, otherwise no-connect",UNVERIFIED — physical package pad number not assigned
+P0.29,STATUS_AUX,Reserved status output,Output / spare,"D1 capture LED is hardware-coupled, not controlled by this pin",UNVERIFIED — physical package pad number not assigned
+P0.30,VBAT_DIV_EN,Optional divider high-side gate,Output,Actual gate topology unresolved; default off,UNVERIFIED — physical package pad number not assigned
+P0.31,PPG_INT_3V0,U12 output B,Input,U2 interrupt translated from 1V8 domain,UNVERIFIED — physical package pad number not assigned
+P1.00,SWO_OPTION,J5.6,Trace / optional,Confirm trace mux on selected MCU package; off in production,UNVERIFIED — physical package pad number not assigned
+P1.01,BLOCK_BUTTON_N,SW2 and J7.6,Input,Pullup; short/long-press semantics handled by firmware,UNVERIFIED — physical package pad number not assigned
+P1.02,HAPTIC_EN,U13 enable if populated,Output,Default low,UNVERIFIED — physical package pad number not assigned
+P1.03,SPARE_NC,No connection,Unused,Disable digital input where appropriate; no floating enabled input. Reserve until verified schematic.,UNVERIFIED — physical package pad number not assigned
+P1.04,SPARE_NC,No connection,Unused,Disable digital input where appropriate; no floating enabled input. Reserve until verified schematic.,UNVERIFIED — physical package pad number not assigned
+P1.05,SPARE_NC,No connection,Unused,Disable digital input where appropriate; no floating enabled input. Reserve until verified schematic.,UNVERIFIED — physical package pad number not assigned
+P1.06,SPARE_NC,No connection,Unused,Disable digital input where appropriate; no floating enabled input. Reserve until verified schematic.,UNVERIFIED — physical package pad number not assigned
+P1.07,SPARE_NC,No connection,Unused,Disable digital input where appropriate; no floating enabled input. Reserve until verified schematic.,UNVERIFIED — physical package pad number not assigned
+P1.08,SPARE_NC,No connection,Unused,Disable digital input where appropriate; no floating enabled input. Reserve until verified schematic.,UNVERIFIED — physical package pad number not assigned
+P1.09,SPARE_NC,No connection,Unused,Disable digital input where appropriate; no floating enabled input. Reserve until verified schematic.,UNVERIFIED — physical package pad number not assigned
+P1.10,SPARE_NC,No connection,Unused,Disable digital input where appropriate; no floating enabled input. Reserve until verified schematic.,UNVERIFIED — physical package pad number not assigned
+P1.11,SPARE_NC,No connection,Unused,Disable digital input where appropriate; no floating enabled input. Reserve until verified schematic.,UNVERIFIED — physical package pad number not assigned
+P1.12,SPARE_NC,No connection,Unused,Disable digital input where appropriate; no floating enabled input. Reserve until verified schematic.,UNVERIFIED — physical package pad number not assigned
+P1.13,SPARE_NC,No connection,Unused,Disable digital input where appropriate; no floating enabled input. Reserve until verified schematic.,UNVERIFIED — physical package pad number not assigned
+P1.14,SPARE_NC,No connection,Unused,Disable digital input where appropriate; no floating enabled input. Reserve until verified schematic.,UNVERIFIED — physical package pad number not assigned
+P1.15,SPARE_NC,No connection,Unused,Disable digital input where appropriate; no floating enabled input. Reserve until verified schematic.,UNVERIFIED — physical package pad number not assigned

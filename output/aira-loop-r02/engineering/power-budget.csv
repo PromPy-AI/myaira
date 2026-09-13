@@ -1,0 +1,13 @@
+﻿Load,Battery_equivalent_target_mA,Conditions
+U1 digital / PDM / DMA / simple ADPCM,0.55,Optimized acquisition and transport; CPU sleeps between buffers
+U1 BLE radio,0.5,"70 kbps framed mono stream, nearby phone and favorable RF; must measure retries"
+MIC1,0.17,One low-power microphone at the actual PDM clock; unverified target
+U2 optical acquisition incl. LEDs,0.42,"Scheduled 5-minute windows each 15 minutes; allocation, not datasheet derivation"
+U3 accelerometer,0.015,Supported low-power motion mode to be selected
+U4 temperature,0.005,One conversion per minute target
+U5 NOR buffer,0.08,Phone-connected batching/deep power-down; full-offline writes may exceed this
+"PMIC, converter quiescent current and losses",0.16,Battery-equivalent allowance across all rails
+D1 capture indicator,0.05,Must still pass visibility test; increasing LED current reduces runtime
+Optional haptics,0.02,"Short, limited events averaged over full test"
+"Pullups, translators and miscellaneous leakage",0.03,Include all PCB and powered-off leakage
+Engineering contingency,0.4,20% of 2.00 mA subtotal; not measured
