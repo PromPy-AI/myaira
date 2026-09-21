@@ -1,6 +1,7 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
+@import "./design-refresh.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -49,9 +50,9 @@
   --forest: oklch(0.4 0.028 165);
   --deep: oklch(0.27 0.027 178);
 
-  --background: oklch(0.96 0.008 90);
+  --background: #ffffff;
   --foreground: var(--deep);
-  --card: oklch(0.98 0.005 90);
+  --card: #ffffff;
   --card-foreground: var(--deep);
   --popover: oklch(0.98 0.005 90);
   --popover-foreground: var(--deep);

@@ -125,6 +125,45 @@ var Activity = createLucideIcon("activity", [["path", {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var ArrowDown = createLucideIcon("arrow-down", [["path", {
+	d: "M12 5v14",
+	key: "s699le"
+}], ["path", {
+	d: "m19 12-7 7-7-7",
+	key: "1idqje"
+}]]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var ArrowLeft = createLucideIcon("arrow-left", [["path", {
+	d: "m12 19-7-7 7-7",
+	key: "1l729n"
+}], ["path", {
+	d: "M19 12H5",
+	key: "x3x0zl"
+}]]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var ArrowRight = createLucideIcon("arrow-right", [["path", {
+	d: "M5 12h14",
+	key: "1ays0h"
+}], ["path", {
+	d: "m12 5 7 7-7 7",
+	key: "xquz4c"
+}]]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var ArrowUpRight = createLucideIcon("arrow-up-right", [["path", {
 	d: "M7 7h10v10",
 	key: "1tivn9"
@@ -262,12 +301,50 @@ var CalendarDays = createLucideIcon("calendar-days", [
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var Car = createLucideIcon("car", [
+	["path", {
+		d: "M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2",
+		key: "5owen"
+	}],
+	["circle", {
+		cx: "7",
+		cy: "17",
+		r: "2",
+		key: "u2ysq9"
+	}],
+	["path", {
+		d: "M9 17h6",
+		key: "r8uit2"
+	}],
+	["circle", {
+		cx: "17",
+		cy: "17",
+		r: "2",
+		key: "axvx0g"
+	}]
+]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var CheckCheck = createLucideIcon("check-check", [["path", {
 	d: "M18 6 7 17l-5-5",
 	key: "116fxf"
 }], ["path", {
 	d: "m22 10-7.5 7.5L13 16",
 	key: "ke71qq"
+}]]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var Check = createLucideIcon("check", [["path", {
+	d: "M20 6 9 17l-5-5",
+	key: "1gmf2c"
 }]]);
 /**
 * @license lucide-react v0.575.0 - ISC
@@ -455,6 +532,23 @@ var ListChecks = createLucideIcon("list-checks", [
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var Mail = createLucideIcon("mail", [["path", {
+	d: "m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7",
+	key: "132q7q"
+}], ["rect", {
+	x: "2",
+	y: "4",
+	width: "20",
+	height: "16",
+	rx: "2",
+	key: "izxlao"
+}]]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var MapPin = createLucideIcon("map-pin", [["path", {
 	d: "M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0",
 	key: "1r0f0z"
@@ -514,6 +608,37 @@ var Moon = createLucideIcon("moon", [["path", {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var Pause = createLucideIcon("pause", [["rect", {
+	x: "14",
+	y: "3",
+	width: "5",
+	height: "18",
+	rx: "1",
+	key: "kaeet6"
+}], ["rect", {
+	x: "5",
+	y: "3",
+	width: "5",
+	height: "18",
+	rx: "1",
+	key: "1wsw3u"
+}]]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var Play = createLucideIcon("play", [["path", {
+	d: "M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z",
+	key: "10ikf1"
+}]]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var Search = createLucideIcon("search", [["path", {
 	d: "m21 21-4.34-4.34",
 	key: "14j7rj"
@@ -542,6 +667,42 @@ var ShieldCheck = createLucideIcon("shield-check", [["path", {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var ShoppingBasket = createLucideIcon("shopping-basket", [
+	["path", {
+		d: "m15 11-1 9",
+		key: "5wnq3a"
+	}],
+	["path", {
+		d: "m19 11-4-7",
+		key: "cnml18"
+	}],
+	["path", {
+		d: "M2 11h20",
+		key: "3eubbj"
+	}],
+	["path", {
+		d: "m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4",
+		key: "yiazzp"
+	}],
+	["path", {
+		d: "M4.5 15.5h15",
+		key: "13mye1"
+	}],
+	["path", {
+		d: "m5 11 4-7",
+		key: "116ra9"
+	}],
+	["path", {
+		d: "m9 11 1 9",
+		key: "1ojof7"
+	}]
+]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var Thermometer = createLucideIcon("thermometer", [["path", {
 	d: "M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z",
 	key: "17jzev"
@@ -559,5 +720,18 @@ var TrendingUp = createLucideIcon("trending-up", [["path", {
 	d: "m22 7-8.5 8.5-5-5L2 17",
 	key: "1t1m79"
 }]]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var X = createLucideIcon("x", [["path", {
+	d: "M18 6 6 18",
+	key: "1bl5f8"
+}], ["path", {
+	d: "m6 6 12 12",
+	key: "d8bk6v"
+}]]);
 //#endregion
-export { Activity as S, CheckCheck as _, Moon as a, AudioLines as b, MapPin as c, Lightbulb as d, History as f, ClipboardList as g, Clock3 as h, Search as i, ListChecks as l, Footprints as m, Thermometer as n, Mic as o, HeartPulse as p, ShieldCheck as r, MessageCircle as s, TrendingUp as t, Link2 as u, CalendarDays as v, ArrowUpRight as x, Brain as y };
+export { ArrowLeft as A, CheckCheck as C, AudioLines as D, Brain as E, Activity as M, ArrowUpRight as O, Check as S, CalendarDays as T, History as _, ShieldCheck as a, Clock3 as b, Pause as c, MessageCircle as d, MapPin as f, Lightbulb as g, Link2 as h, ShoppingBasket as i, ArrowDown as j, ArrowRight as k, Moon as l, ListChecks as m, TrendingUp as n, Search as o, Mail as p, Thermometer as r, Play as s, X as t, Mic as u, HeartPulse as v, Car as w, ClipboardList as x, Footprints as y };

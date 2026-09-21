@@ -170,9 +170,9 @@ export function LoopFeatures() {
     <section
       id="loop-features"
       aria-labelledby="loop-features-title"
-      className="overflow-hidden bg-[#101916] text-white"
+      className="aira-features overflow-hidden bg-[#101916] text-white"
     >
-      <div className="mx-auto w-full max-w-[1320px] px-6 py-24 sm:px-10 sm:py-32 lg:px-16">
+      <div className="mx-auto w-full max-w-[1200px] px-6 py-24 sm:px-10 sm:py-32 lg:px-16">
         <div className="grid items-center gap-10 pb-20 md:grid-cols-[1.25fr_1fr] md:gap-16">
           <div>
             <p className="text-xs tracking-[0.3em] text-champagne uppercase">Explore AIRA Loop</p>
@@ -198,15 +198,16 @@ export function LoopFeatures() {
           </div>
           <figure className="mx-auto w-full max-w-[380px]">
             <img
-              src={loopImage}
+              src="https://obpgdfxxqufrzhbplgty.supabase.co/storage/v1/object/public/aira-public/orange-loop1.png"
               alt="AIRA Loop wristband product concept"
+              draggable={false}
               loading="lazy"
               width={480}
               height={480}
               className="aspect-square w-full object-contain [mask-image:radial-gradient(ellipse_at_center,black_48%,transparent_72%)]"
             />
             <figcaption className="mt-3 text-center text-xs tracking-[0.2em] text-white/60 uppercase">
-              AIRA Loop 
+              AIRA Loop
             </figcaption>
           </figure>
         </div>

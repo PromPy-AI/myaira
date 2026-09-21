@@ -1,20 +1,19 @@
+import { AiraFooter } from "@/components/ui/aira-footer";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import {
   GOOGLE_FORM_ACTION,
   GOOGLE_FORM_EMAIL_ENTRY,
-  PREBOOK_FORM_ACTION,
-  PREBOOK_ENTRY,
-  PREBOOK_DEVICE,
-  PREBOOK_CONSENT_VALUE,
-  prebookUsageOptions,
   signupSchema,
 } from "@/lib/google-form-config";
 import { submitSignup } from "@/lib/submit-signup";
+import { PreBookingForm } from "@/components/PreBookingForm";
 import { LoopFeatures } from "@/components/LoopFeatures";
+import { LoopExperienceCarousel } from "@/components/LoopExperienceCarousel";
 import logoImg from "@/assets/logo.png";
 import loopstackimages from "@/assets/loop-stack-image.png";
 import AiraloopImg from "@/assets/aira-loop-nobg.png";
+import { AgentIconStack } from "@/components/ui/agent-icon-stack";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -50,7 +49,7 @@ export const Route = createFileRoute("/")({
   }),
 });
 
-const shell = "mx-auto w-full max-w-[1320px] px-6 sm:px-10 lg:px-16";
+const shell = "mx-auto w-full max-w-[1200px] px-6 sm:px-10 lg:px-16";
 
 const ideas = [
   {
@@ -167,347 +166,6 @@ function WaitlistForm() {
   );
 }
 
-const prebookDeviceOptions = [
-  {
-    value: PREBOOK_DEVICE,
-    label: "AIRA Loop",
-    caption: "Wrist band",
-    image: AiraloopImg,
-  },
-];
-
-const earlyAccessPrices = {
-  USD: { early: 250, regular: 300, locale: "en-US" },
-  INR: { early: 23500, regular: 28500, locale: "en-IN" },
-} as const;
-
-function PreBookingForm() {
-  const [open, setOpen] = useState(false);
-  const [status, setStatus] = useState<SubmissionStatus>("idle");
-  const [error, setError] = useState("");
-  const submitting = useRef(false);
-  const modalContent = useRef<HTMLDivElement>(null);
-  const [currency, setCurrency] = useState<keyof typeof earlyAccessPrices>("USD");
-  const price = earlyAccessPrices[currency];
-  const formatPrice = (amount: number) =>
-    new Intl.NumberFormat(price.locale, {
-      style: "currency",
-      currency,
-      maximumFractionDigits: 0,
-    }).format(amount);
-
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (submitting.current) return;
-    const form = event.currentTarget;
-    const fields = new FormData(form);
-    const parsed = signupSchema.safeParse({
-      kind: "prebook",
-      name: fields.get(PREBOOK_ENTRY.name),
-      email: fields.get(PREBOOK_ENTRY.email),
-      country: fields.get(PREBOOK_ENTRY.country),
-      usage: fields.getAll(PREBOOK_ENTRY.usage),
-      device: fields.get(PREBOOK_ENTRY.device),
-      consent: fields.get(PREBOOK_ENTRY.consent),
-    });
-    if (!parsed.success) {
-      setError(parsed.error.issues[0]?.message ?? "Check your details and consent.");
-      setStatus("error");
-      return;
-    }
-    submitting.current = true;
-    setStatus("submitting");
-    setError("");
-    try {
-      const result = await submitSignup({ data: parsed.data });
-      if (!result.ok) {
-        setError(result.message);
-        setStatus("error");
-        return;
-      }
-      form.reset();
-      setStatus("done");
-      modalContent.current?.scrollTo({ top: 0 });
-    } catch {
-      setError(submissionError);
-      setStatus("error");
-    } finally {
-      submitting.current = false;
-    }
-  }
-
-  return (
-    <>
-      <div className="relative mt-6 inline-flex">
-        <button
-          type="button"
-          onClick={() => {
-            setStatus("idle");
-            setError("");
-            setOpen(true);
-          }}
-          className="inline-block cursor-pointer rounded-none border border-primary bg-secondary px-7 py-5 text-sm tracking-[0.14em] text-primary uppercase transition-colors duration-300 hover:bg-transparent hover:text-primary focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none"
-        >
-          Reserve Early Access
-        </button>
-        <span className="absolute right-0 top-0 rounded-sm bg-primary px-2 py-0.5 text-[10px] font-semibold tracking-[0.12em] text-background uppercase">
-          FREE
-        </span>
-      </div>
-
-      {open && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Early access and free pre-booking"
-        >
-          <div
-            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
-            onClick={() => {
-              if (!submitting.current) setOpen(false);
-            }}
-            aria-hidden
-          />
-          <div
-            ref={modalContent}
-            className="relative z-10 max-h-[90vh] w-full max-w-lg overflow-y-auto border border-border bg-background p-8 shadow-2xl sm:p-10"
-          >
-            <button
-              type="button"
-              onClick={() => setOpen(false)}
-              aria-label="Close"
-              disabled={status === "submitting"}
-              className="absolute top-5 right-5 cursor-pointer text-2xl leading-none text-muted-foreground transition-colors hover:text-foreground"
-            >
-              &times;
-            </button>
-
-            {status === "done" ? (
-              <div role="status" className="py-8 text-center">
-                <h3 className="text-2xl tracking-[-0.02em]">You're on the list.</h3>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  You're among the first to join the AIRA community. Early access will be offered to
-                  the first 500 selected members in this batch. If your early access is confirmed,
-                  we'll reach out to you directly via email.
-                </p>
-                <p className="mt-6 text-xs tracking-[0.24em] text-muted-foreground uppercase">
-                  Batch #01
-                </p>
-                <button
-                  type="button"
-                  onClick={() => setOpen(false)}
-                  className="mt-8 inline-block cursor-pointer border border-primary bg-primary px-7 py-3 text-sm tracking-[0.14em] text-primary-foreground uppercase transition-colors duration-300 hover:bg-transparent hover:text-primary"
-                >
-                  Close
-                </button>
-              </div>
-            ) : (
-              <>
-                <h3 className="text-2xl tracking-[-0.02em]">Reserve your AIRA.</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  Join early access and pre-book for free.
-                </p>
-                <form
-                  action={PREBOOK_FORM_ACTION}
-                  method="POST"
-                  onSubmit={handleSubmit}
-                  aria-busy={status === "submitting"}
-                  className="mt-8 flex flex-col gap-6"
-                >
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="prebook-name" className="text-sm font-medium">
-                      Name
-                    </label>
-                    <input
-                      id="prebook-name"
-                      name={PREBOOK_ENTRY.name}
-                      type="text"
-                      required
-                      placeholder="Your name"
-                      className="w-full border border-border bg-transparent px-4 py-3 text-base text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-                    />
-                  </div>
-
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="prebook-email" className="text-sm font-medium">
-                      Email
-                    </label>
-                    <input
-                      id="prebook-email"
-                      name={PREBOOK_ENTRY.email}
-                      type="email"
-                      required
-                      placeholder="you@example.com"
-                      className="w-full border border-border bg-transparent px-4 py-3 text-base text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-                    />
-                  </div>
-
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="prebook-country" className="text-sm font-medium">
-                      Country
-                    </label>
-                    <input
-                      id="prebook-country"
-                      name={PREBOOK_ENTRY.country}
-                      type="text"
-                      required
-                      placeholder="Your country"
-                      className="w-full border border-border bg-transparent px-4 py-3 text-base text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-                    />
-                  </div>
-
-                  <fieldset className="flex flex-col gap-3">
-                    <legend className="mb-1 text-sm font-medium">
-                      What would you use AIRA for?
-                    </legend>
-                    {prebookUsageOptions.map((option) => (
-                      <label
-                        key={option}
-                        className="flex cursor-pointer items-center gap-3 text-sm text-muted-foreground"
-                      >
-                        <input
-                          type="checkbox"
-                          name={PREBOOK_ENTRY.usage}
-                          value={option}
-                          className="h-4 w-4 shrink-0 accent-primary"
-                        />
-                        {option}
-                      </label>
-                    ))}
-                  </fieldset>
-
-                  <fieldset className="flex flex-col gap-3">
-                    <legend className="mb-1 text-sm font-medium">Your device</legend>
-                    <div className="flex flex-wrap items-center justify-between gap-2">
-                      <label htmlFor="prebook-currency" className="text-xs text-muted-foreground">
-                        Select your currency
-                      </label>
-                      <select
-                        id="prebook-currency"
-                        value={currency}
-                        onChange={(event) =>
-                          setCurrency(event.target.value === "INR" ? "INR" : "USD")
-                        }
-                        className="cursor-pointer rounded-md border border-border bg-card px-3 py-2 text-xs font-medium text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                      >
-                        <option value="USD">USD</option>
-                        <option value="INR">INR</option>
-                      </select>
-                    </div>
-                    <div className="grid grid-cols-1 gap-3">
-                      {prebookDeviceOptions.map((option) => (
-                        <label
-                          key={option.value}
-                          className="group flex cursor-pointer flex-col overflow-hidden rounded-xl border border-border bg-card transition-colors hover:border-ring has-[:checked]:border-primary has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring has-[:focus-visible]:ring-offset-2"
-                        >
-                          <input
-                            type="radio"
-                            name={PREBOOK_ENTRY.device}
-                            value={option.value}
-                            defaultChecked
-                            required
-                            className="peer sr-only"
-                          />
-                          <span className="relative block w-full bg-deep px-5 pt-12 pb-4">
-                            <span className="absolute top-4 left-4 text-[0.6rem] tracking-[0.18em] text-champagne uppercase">
-                              Early access deal
-                            </span>
-                            <span className="absolute top-3 right-3 rounded-full border border-emerald-300/25 bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-900">
-                              Save {formatPrice(price.regular - price.early)}
-                            </span>
-                            <img
-                              src={option.image}
-                              alt={option.label}
-                              loading="lazy"
-                              draggable={false}
-                              className="mx-auto h-40 w-full select-none object-contain [mask-image:radial-gradient(ellipse_at_center,black_55%,transparent_100%)]"
-                            />
-                          </span>
-                          <span className="flex flex-col gap-4 p-5">
-                            <span className="flex flex-wrap items-end justify-between gap-4">
-                              <span>
-                                <span className="block text-base font-medium text-foreground">
-                                  {option.label}
-                                </span>
-                                <span className="mt-1 block text-xs text-muted-foreground">
-                                  {option.caption}
-                                </span>
-                              </span>
-                              <span>
-                                <span className="block text-xs text-muted-foreground">
-                                  Starts at
-                                </span>
-                                <span
-                                  className="mt-1 flex flex-wrap items-baseline gap-2"
-                                  aria-live="polite"
-                                  aria-atomic="true"
-                                >
-                                  <span className="text-3xl font-medium tracking-[-0.04em] text-primary">
-                                    {formatPrice(price.early)}
-                                  </span>
-                                  <span className="text-sm text-muted-foreground">
-                                    <span className="sr-only">Regular price </span>
-                                    <s>{formatPrice(price.regular)}</s>
-                                  </span>
-                                </span>
-                              </span>
-                            </span>
-                            <span className="border-t border-border pt-4 text-xs leading-relaxed text-muted-foreground">
-                              Enjoy a 2-month free subscription trial as a pre-booking customer.
-                              <span className="mt-2 block font-medium text-primary">
-                                Free reservation. No payment today.
-                              </span>
-                            </span>
-                          </span>
-                        </label>
-                      ))}
-                    </div>
-                  </fieldset>
-
-                  <label className="flex cursor-pointer items-start gap-3 text-xs leading-relaxed text-muted-foreground">
-                    <input
-                      type="checkbox"
-                      name={PREBOOK_ENTRY.consent}
-                      value={PREBOOK_CONSENT_VALUE}
-                      required
-                      className="mt-0.5 h-4 w-4 shrink-0 accent-primary"
-                    />
-                    <span>
-                      I agree to AIRA&rsquo;s{" "}
-                      <Link
-                        to="/privacy"
-                        className="underline underline-offset-2 transition-colors hover:text-foreground"
-                      >
-                        Privacy &amp; Terms
-                      </Link>
-                      , consent to the processing of my personal information, and agree to receive
-                      communications from AIRA via email.
-                    </span>
-                  </label>
-
-                  {status === "error" && (
-                    <p role="alert" className="text-sm leading-relaxed text-destructive">
-                      {error}
-                    </p>
-                  )}
-                  <button
-                    type="submit"
-                    disabled={status === "submitting"}
-                    className="mt-2 cursor-pointer border border-primary bg-primary px-7 py-4 text-sm tracking-[0.14em] text-primary-foreground uppercase transition-colors duration-300 hover:bg-transparent hover:text-primary focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none"
-                  >
-                    {status === "submitting" ? "Submitting…" : "Submit"}
-                  </button>
-                </form>
-              </>
-            )}
-          </div>
-        </div>
-      )}
-    </>
-  );
-}
-
 function ControlToggle() {
   const [active, setActive] = useState<string>(controls[0]!.state);
   const current = controls.find((c) => c.state === active) ?? controls[0]!;
@@ -550,9 +208,19 @@ function ControlToggle() {
 }
 
 function Index() {
+  const heroImage = useRef<HTMLImageElement>(null);
+  const [heroImageReady, setHeroImageReady] = useState(false);
+
+  useEffect(() => {
+    // Cached images can finish loading before React attaches the load handler.
+    if (heroImage.current?.complete && heroImage.current.naturalWidth > 0) {
+      setHeroImageReady(true);
+    }
+  }, []);
+
   return (
-    <div className="min-h-screen bg-background">
-      <header className="absolute inset-x-0 top-0 z-20">
+    <div className="aira-site aira-home min-h-screen bg-background">
+      <header className="aira-header">
         <div className={`${shell} flex items-center justify-between py-8`}>
           <a href="?ref=src-nav" className="flex items-center gap-3">
             <img
@@ -568,12 +236,6 @@ function Index() {
             </span>
           </a>
           <nav aria-label="Main navigation" className="flex items-center gap-5 sm:gap-8">
-            {/* <Link
-              to="/events"
-              className="text-xs tracking-[0.12em] text-[oklch(0.95_0.02_88)]/70 uppercase transition-colors duration-300 hover:text-[oklch(0.95_0.02_88)]"
-            >
-              Events
-            </Link> */}
             <a
               href="#early-access"
               className="text-xs tracking-[0.12em] text-[oklch(0.95_0.02_88)]/70 uppercase transition-colors duration-300 hover:text-[oklch(0.95_0.02_88)]"
@@ -586,9 +248,9 @@ function Index() {
 
       <main id="top">
         {/* Hero */}
-        <section className="surface-hero surface-grain relative flex min-h-[100svh] items-end overflow-hidden">
+        <section className="aira-hero">
           {/* Pre-seed story floating pill */}
-          <div className="absolute inset-x-0 top-24 z-10 flex justify-center">
+          <div className="aira-hero-badge">
             <a
               href="?src=pre-seed-badge"
               className="inline-flex items-center gap-2 border border-[oklch(0.95_0.03_88)]/25 bg-[oklch(0.95_0.03_88)]/8 px-4 py-2 text-[0.68rem] tracking-[0.22em] text-[oklch(0.95_0.015_88)]/80 uppercase backdrop-blur-sm transition-colors duration-300 hover:border-[oklch(0.95_0.03_88)]/50 hover:text-[oklch(0.95_0.015_88)]"
@@ -611,18 +273,7 @@ function Index() {
               </svg>
             </a>
           </div>
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -top-[18%] -right-[22%] h-[78vmax] w-[78vmax] rounded-full opacity-[0.14]"
-            style={{
-              background: "radial-gradient(closest-side, oklch(0.95 0.03 88) 0%, transparent 72%)",
-            }}
-          />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -bottom-[46%] left-[8%] h-[86vmax] w-[86vmax] rounded-[50%] border border-[oklch(0.95_0.03_88)]/12"
-          />
-          <div className={`${shell} relative z-10 pt-40 pb-24 sm:pb-32`}>
+          <div className="aira-hero-copy">
             <h1 className="reveal max-w-[16ch] text-[clamp(2.9rem,9vw,7.5rem)] leading-[0.94] font-normal tracking-[-0.035em] text-[oklch(0.97_0.015_88)]">
               Remember what makes you, you.
             </h1>
@@ -633,11 +284,47 @@ function Index() {
               AIRA Loop is a screenless AI wristband designed to help you remember everyday
               conversations, track your health and ask questions about your day.
             </p>
+            <div className="aira-hero-actions">
+              <a
+                href="#early-access"
+                className="aira-button"
+                onClick={(event) => {
+                  const trigger = document.getElementById("early-prebooking-trigger");
+                  if (trigger) {
+                    event.preventDefault();
+                    trigger.click();
+                  }
+                }}
+              >
+                Early pre-booking <span aria-hidden="true">↗</span>
+              </a>
+              <a href="#loop-features" className="aira-text-link">
+                Explore AIRA Loop <span aria-hidden="true">↓</span>
+              </a>
+            </div>
           </div>
+          <figure className="aira-hero-visual">
+            <img
+              ref={heroImage}
+              data-ready={heroImageReady}
+              src="https://obpgdfxxqufrzhbplgty.supabase.co/storage/v1/object/public/aira-public/aira-hand-loop-hero.png"
+              alt="AIRA Loop worn on a wrist"
+              fetchPriority="high"
+              draggable={false}
+              decoding="async"
+              onLoad={() => setHeroImageReady(true)}
+              onError={(event) => {
+                setHeroImageReady(false);
+                event.currentTarget.onerror = null;
+                if (!event.currentTarget.src.endsWith(AiraloopImg))
+                  event.currentTarget.src = AiraloopImg;
+              }}
+            />
+          </figure>
         </section>
 
         {/* Feature marquee */}
-        <div className="overflow-hidden border-y border-border bg-background py-4">
+        <div className="aira-marquee overflow-hidden border-y border-border bg-background py-4">
           <div className="animate-marquee flex w-max gap-0">
             {[0, 1].map((i) => (
               <div key={i} className="flex shrink-0 items-center" aria-hidden={i === 1}>
@@ -665,7 +352,7 @@ function Index() {
         </div>
 
         {/* The idea */}
-        <section className="py-32 sm:py-48">
+        <section className="aira-story py-32 sm:py-48">
           <div className={shell}>
             <p className="text-xs tracking-[0.3em] text-muted-foreground uppercase">
               A life, remembered.
@@ -703,7 +390,7 @@ function Index() {
         </section>
 
         {/* Three ideas */}
-        <section className="pb-32 sm:pb-48">
+        <section className="aira-pillars pb-32 sm:pb-48">
           <div
             className={`${shell} grid gap-16 border-t border-border pt-16 sm:grid-cols-3 sm:gap-10`}
           >
@@ -720,7 +407,7 @@ function Index() {
         </section>
 
         {/* Privacy */}
-        <section className="bg-deep text-[oklch(0.95_0.015_88)]">
+        <section className="aira-privacy bg-deep text-[oklch(0.95_0.015_88)]">
           <div className={`${shell} py-28 sm:py-40`}>
             <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
               <div>
@@ -755,10 +442,33 @@ function Index() {
           </div>
         </section>
 
+        <div className={`${shell} aira-agent-statement`}>
+          <p>
+            <span className="aira-agent-name">
+              AIRA
+              <img
+                src="https://obpgdfxxqufrzhbplgty.supabase.co/storage/v1/object/public/aira-public/aira-blog-agent.png"
+                alt=""
+                width={64}
+                draggable={false}
+                height={64}
+                loading="lazy"
+                className="aira-agent-avatar"
+              />
+            </span>
+            , your AI second brain{" "}
+            <span className="aira-agent-action">
+              that gets <AgentIconStack /> done
+            </span>
+          </p>
+        </div>
+
+        <LoopExperienceCarousel />
+
         <LoopFeatures />
 
         {/* Final CTA */}
-        <section id="early-access" className="py-32 sm:py-48">
+        <section id="early-access" className="aira-access py-32 sm:py-48">
           <div className={shell}>
             <h2 className="max-w-[16ch] text-[clamp(2rem,5.4vw,4.25rem)] leading-[1.02] tracking-[-0.03em]">
               Something worth remembering is coming.
@@ -772,28 +482,7 @@ function Index() {
         </section>
       </main>
 
-      <footer className="border-t border-border">
-        <div
-          className={`${shell} flex flex-col gap-8 py-12 sm:flex-row sm:items-center sm:justify-between`}
-        >
-          <span className="text-sm tracking-[0.42em] uppercase">AIRA</span>
-          <nav className="flex flex-wrap gap-x-8 gap-y-4 text-sm text-muted-foreground">
-            <Link to="/privacy" className="transition-colors hover:text-foreground">
-              Privacy & Terms
-            </Link>
-            <a href="use-cases" className="transition-colors hover:text-foreground">
-              Use Cases
-            </a>
-            <Link to="/events" className="transition-colors hover:text-foreground">
-              Events
-            </Link>
-            <Link to="/" hash="early-access">
-              Contact
-            </Link>
-          </nav>
-          <p className="text-xs text-muted-foreground">© 2026 AIRA. All rights reserved.</p>
-        </div>
-      </footer>
+      <AiraFooter />
     </div>
   );
 }

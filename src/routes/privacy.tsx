@@ -1,3 +1,4 @@
+import { AiraFooter } from "@/components/ui/aira-footer";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import logoImg from "@/assets/logo.png";
 
@@ -23,7 +24,7 @@ export const Route = createFileRoute("/privacy")({
   }),
 });
 
-const shell = "mx-auto w-full max-w-[1320px] px-6 sm:px-10 lg:px-16";
+const shell = "mx-auto w-full max-w-[1200px] px-6 sm:px-10 lg:px-16";
 
 const principles = [
   {
@@ -77,8 +78,8 @@ function BulletList({ items }: { items: string[] }) {
 
 function Privacy() {
   return (
-    <div className="min-h-screen bg-background">
-      <header className="border-b border-border">
+    <div className="aira-site aira-legal min-h-screen bg-background">
+      <header className="aira-header border-b border-border">
         <div className={`${shell} flex items-center justify-between py-8`}>
           <Link to="/" className="flex items-center gap-3">
             <img
@@ -91,25 +92,22 @@ function Privacy() {
             />
             <span className="text-sm leading-none tracking-[0.42em] uppercase">AIRA</span>
           </Link>
-          <Link
-            to="/"
-            className="text-xs tracking-[0.22em] text-muted-foreground uppercase transition-colors hover:text-foreground"
-          >
-            Back
-          </Link>
+          <nav aria-label="Main navigation">
+            <Link to="/" hash="early-access">
+              Join Waitlist
+            </Link>
+          </nav>
         </div>
       </header>
 
       <main>
-        <section className="pt-24 pb-16 sm:pt-32">
+        <section className="aira-page-intro pt-24 pb-16 sm:pt-32">
           <div className={shell}>
-            <p className="text-xs tracking-[0.3em] text-muted-foreground uppercase">
-              Legal
-            </p>
+            <p className="text-xs tracking-[0.3em] text-muted-foreground uppercase">Legal</p>
             <h1 className="mt-10 max-w-[20ch] text-[clamp(2.2rem,6vw,4.75rem)] leading-[1.02] tracking-[-0.03em]">
               AIRA Privacy Policy
             </h1>
-            <p className="mt-6 text-sm text-muted-foreground">Last updated: August 2026</p>
+            <p className="mt-6 text-sm text-muted-foreground">Last updated: September 2026</p>
           </div>
         </section>
 
@@ -125,9 +123,9 @@ function Privacy() {
             </p>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
               Because AIRA may process highly personal information, including voice recordings,
-              conversations, memories, wellness information, biometric information, and, for
-              certain devices, EEG signals, we design our services around privacy, security,
-              transparency, and user control.
+              conversations, memories, wellness information, biometric information, and, for certain
+              devices, EEG signals, we design our services around privacy, security, transparency,
+              and user control.
             </p>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
               This Privacy Policy explains what information AIRA collects, how we use it, how we
@@ -139,9 +137,7 @@ function Privacy() {
             <p className="text-lg font-medium tracking-[-0.01em]">
               Your life. Your data. Your control.
             </p>
-            <p className="mt-4 text-sm text-muted-foreground">
-              AIRA follows these principles:
-            </p>
+            <p className="mt-4 text-sm text-muted-foreground">AIRA follows these principles:</p>
             <div className="mt-6 space-y-6">
               {principles.map((p) => (
                 <div key={p.title}>
@@ -178,6 +174,25 @@ function Privacy() {
 
             {/* 3. Information We Collect */}
             <SectionHeading number="3" title="Information We Collect" />
+            <h3 className="mt-6 text-base font-medium">Early pre-bookings &amp; payments</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              For early pre-bookings, we store your name, email, country, intended uses of AIRA,
+              selected device, consent record, payment status, payment references and ticket ID in
+              Supabase. Razorpay processes your deposit; AIRA does not store your card details. We
+              use this information to manage your pre-booking, refunds, customer support and the
+              pre-booking communications and monthly updates you agree to receive. This browser
+              stores a private receipt token so you can return to check your payment status.
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              India Batch #1 requires a fully refundable ₹99 deposit, credited toward your device
+              order. It includes a ₹5,000 device discount, six months of free subscription, one year
+              of device warranty and monthly insider updates. A deposit does not complete a device
+              purchase. To request a refund or help with your pre-booking data, email{" "}
+              <a href="mailto:nandigiridhar29@gmail.com" className="underline">
+                nandigiridhar29@gmail.com
+              </a>{" "}
+              with your ticket ID or payment reference.
+            </p>
             <h3 className="mt-6 text-base font-medium">A. Account Information</h3>
             <p className="mt-2 text-sm text-muted-foreground">We may collect:</p>
             <BulletList
@@ -214,12 +229,12 @@ function Privacy() {
 
             <h4 className="mt-6 text-sm font-medium">Raw Audio</h4>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              AIRA is designed around a local-first capture architecture. Where supported, audio
-              may initially be stored temporarily on the device rather than continuously
-              transmitted to the cloud. Audio may subsequently be transferred for processing when
-              the device synchronizes according to the product's operating mode. After the
-              necessary processing has been completed, raw audio may be deleted according to our
-              retention architecture, your settings, and applicable legal requirements.
+              AIRA is designed around a local-first capture architecture. Where supported, audio may
+              initially be stored temporarily on the device rather than continuously transmitted to
+              the cloud. Audio may subsequently be transferred for processing when the device
+              synchronizes according to the product's operating mode. After the necessary processing
+              has been completed, raw audio may be deleted according to our retention architecture,
+              your settings, and applicable legal requirements.
             </p>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               We will clearly describe the actual retention period and deletion behavior of each
@@ -248,17 +263,17 @@ function Privacy() {
               ]}
             />
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              AIRA Sense and AIRA Life may additionally collect EEG signals and other
-              physiological signals supported by the device.
+              AIRA Sense and AIRA Life may additionally collect EEG signals and other physiological
+              signals supported by the device.
             </p>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              These measurements may be processed to provide wellness insights, trends,
-              summaries, and personalized experiences.
+              These measurements may be processed to provide wellness insights, trends, summaries,
+              and personalized experiences.
             </p>
             <p className="mt-4 text-xs font-medium text-muted-foreground">
-              Important: Unless expressly stated otherwise and supported by appropriate
-              regulatory authorization, AIRA's wellness features are not intended to diagnose,
-              treat, cure, or prevent disease.
+              Important: Unless expressly stated otherwise and supported by appropriate regulatory
+              authorization, AIRA's wellness features are not intended to diagnose, treat, cure, or
+              prevent disease.
             </p>
 
             {/* 5. Memories & Personal Information */}
@@ -287,17 +302,17 @@ function Privacy() {
               ]}
             />
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              AIRA may combine these memories with information generated from your device sensors
-              to provide contextual experiences. For example, information may be associated with
-              a particular period, conversation, or event.
+              AIRA may combine these memories with information generated from your device sensors to
+              provide contextual experiences. For example, information may be associated with a
+              particular period, conversation, or event.
             </p>
 
             {/* 6. Voice & Personality Preservation */}
             <SectionHeading number="6" title="Voice & Personality Preservation" />
             <p className="text-sm leading-relaxed text-muted-foreground">
-              If you activate AIRA's legacy or voice-preservation features, we
-              may retain selected voice samples and information necessary to create a
-              personalized voice experience. This may include:
+              If you activate AIRA's legacy or voice-preservation features, we may retain selected
+              voice samples and information necessary to create a personalized voice experience.
+              This may include:
             </p>
             <BulletList
               items={[
@@ -316,19 +331,18 @@ function Privacy() {
             {/* 7. Memory Preservation & Access */}
             <SectionHeading number="7" title="Memory Preservation & Access" />
             <p className="text-sm leading-relaxed text-muted-foreground">
-              AIRA may allow you to designate up to three nominees or other authorized
-              individuals who can access the memories and legacy information you choose to
-              preserve.
+              AIRA may allow you to designate up to three nominees or other authorized individuals
+              who can access the memories and legacy information you choose to preserve.
             </p>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
               Nominees do not automatically receive unrestricted access to your AIRA account or
-              personal information. AIRA will verify the appropriate eligibility and
-              authorization before enabling preserved-memory access, and additional
-              authentication may be required.
+              personal information. AIRA will verify the appropriate eligibility and authorization
+              before enabling preserved-memory access, and additional authentication may be
+              required.
             </p>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              You remain in control of what you choose to preserve, what remains private, and
-              who you allow to access it.
+              You remain in control of what you choose to preserve, what remains private, and who
+              you allow to access it.
             </p>
 
             {/* 8. Active, Mute & Block Controls */}
@@ -366,8 +380,8 @@ function Privacy() {
               </div>
             </div>
             <p className="mt-4 text-xs text-muted-foreground">
-              The exact technical behavior of these controls will depend on the device and
-              software version.
+              The exact technical behavior of these controls will depend on the device and software
+              version.
             </p>
 
             {/* 9. Information About Other People */}
@@ -375,15 +389,15 @@ function Privacy() {
             <p className="text-sm leading-relaxed text-muted-foreground">
               AIRA may inadvertently capture information about people around you. You are
               responsible for using AIRA lawfully and respectfully and for obtaining any consent
-              required by applicable law before recording or processing another person's voice
-              or conversation.
+              required by applicable law before recording or processing another person's voice or
+              conversation.
             </p>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
               AIRA may use technical measures such as speaker identification to distinguish the
-              registered user's voice from other speakers. However, speaker identification
-              cannot guarantee that every third-party voice or piece of third-party information
-              will be detected or excluded. Users should therefore use MUTE/BLOCK controls when
-              recording is inappropriate.
+              registered user's voice from other speakers. However, speaker identification cannot
+              guarantee that every third-party voice or piece of third-party information will be
+              detected or excluded. Users should therefore use MUTE/BLOCK controls when recording is
+              inappropriate.
             </p>
 
             {/* 10. How We Use Information */}
@@ -435,13 +449,13 @@ function Privacy() {
               ]}
             />
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Some AI processing may be performed by third-party technology providers. Your
-              private memories are not automatically used to train general AI models.
+              Some AI processing may be performed by third-party technology providers. Your private
+              memories are not automatically used to train general AI models.
             </p>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              If AIRA introduces an optional program that allows users to contribute data to
-              model training or research, we will provide a separate explanation and obtain
-              consent where required.
+              If AIRA introduces an optional program that allows users to contribute data to model
+              training or research, we will provide a separate explanation and obtain consent where
+              required.
             </p>
 
             {/* 12. Third-Party Service Providers */}
@@ -466,26 +480,25 @@ function Privacy() {
               ]}
             />
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              These providers may process information only as necessary to provide their
-              contracted services and subject to appropriate contractual and security
-              protections. We do not authorize service providers to use your personal information
-              for their own unrelated advertising or commercial purposes.
+              These providers may process information only as necessary to provide their contracted
+              services and subject to appropriate contractual and security protections. We do not
+              authorize service providers to use your personal information for their own unrelated
+              advertising or commercial purposes.
             </p>
 
             {/* 13. Payments */}
             <SectionHeading number="13" title="Payments" />
             <p className="text-sm leading-relaxed text-muted-foreground">
-              Payment information may be processed by third-party payment processors. AIRA
-              generally does not need to store your complete payment-card information. Payment
-              providers may independently process your information under their own privacy
-              policies.
+              Payment information may be processed by third-party payment processors. AIRA generally
+              does not need to store your complete payment-card information. Payment providers may
+              independently process your information under their own privacy policies.
             </p>
 
             {/* 14. Security */}
             <SectionHeading number="14" title="Security" />
             <p className="text-sm leading-relaxed text-muted-foreground">
-              We use reasonable technical and organizational measures designed to protect
-              personal information. These may include:
+              We use reasonable technical and organizational measures designed to protect personal
+              information. These may include:
             </p>
             <BulletList
               items={[
@@ -523,8 +536,8 @@ function Privacy() {
               ]}
             />
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Health dashboards may have different access requirements from highly sensitive
-              memory and legacy information.
+              Health dashboards may have different access requirements from highly sensitive memory
+              and legacy information.
             </p>
 
             {/* 16. Data Retention */}
@@ -545,15 +558,15 @@ function Privacy() {
             />
             <h4 className="mt-6 text-sm font-medium">Raw Audio</h4>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Raw audio is intended to have a substantially shorter retention period than
-              processed memories. Where our architecture permits, raw audio will be deleted
-              after the processing necessary to provide the requested feature has been completed.
+              Raw audio is intended to have a substantially shorter retention period than processed
+              memories. Where our architecture permits, raw audio will be deleted after the
+              processing necessary to provide the requested feature has been completed.
             </p>
             <h4 className="mt-6 text-sm font-medium">Memories</h4>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               Structured memories may remain available until you delete them, your account is
-              deleted, the applicable retention period expires, or we are legally required to
-              remove them. Specific retention periods may vary by data type and product.
+              deleted, the applicable retention period expires, or we are legally required to remove
+              them. Specific retention periods may vary by data type and product.
             </p>
 
             {/* 17. Your Privacy Rights */}
@@ -576,8 +589,7 @@ function Privacy() {
               ]}
             />
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              You can exercise applicable rights through the AIRA application or by contacting
-              us.
+              You can exercise applicable rights through the AIRA application or by contacting us.
             </p>
 
             {/* 18. Deleting Your Memories */}
@@ -598,15 +610,15 @@ function Privacy() {
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
               When you delete information, we will take reasonable steps to remove it from active
               systems and handle backups according to our backup lifecycle. Some information may
-              need to be retained where required by law or necessary for legitimate
-              security/legal purposes.
+              need to be retained where required by law or necessary for legitimate security/legal
+              purposes.
             </p>
 
             {/* 19. Data Export */}
             <SectionHeading number="19" title="Data Export" />
             <p className="text-sm leading-relaxed text-muted-foreground">
-              Where technically supported, AIRA may allow you to export your personal
-              information. Depending on the product and information type, exports may include:
+              Where technically supported, AIRA may allow you to export your personal information.
+              Depending on the product and information type, exports may include:
             </p>
             <BulletList
               items={[
@@ -625,8 +637,8 @@ function Privacy() {
             {/* 20. Location Information */}
             <SectionHeading number="20" title="Location Information" />
             <p className="text-sm leading-relaxed text-muted-foreground">
-              AIRA may request location information if a feature requires it. Location may be
-              used for:
+              AIRA may request location information if a feature requires it. Location may be used
+              for:
             </p>
             <BulletList
               items={[
@@ -660,36 +672,35 @@ function Privacy() {
             />
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
               We may use cookies and similar technologies for website functionality, security,
-              preferences, analytics, and performance. We will provide appropriate cookie
-              controls where required.
+              preferences, analytics, and performance. We will provide appropriate cookie controls
+              where required.
             </p>
 
             {/* 22. Advertising & Tracking */}
             <SectionHeading number="22" title="Advertising & Tracking" />
             <p className="text-sm leading-relaxed text-muted-foreground">
               AIRA does not sell personal information to advertisers. We do not use your private
-              memories, health information, or voice data to create advertising profiles. If we
-              use analytics or advertising technologies on our public website, those technologies
-              will be described in our cookie/consent mechanisms as required by applicable law.
+              memories, health information, or voice data to create advertising profiles. If we use
+              analytics or advertising technologies on our public website, those technologies will
+              be described in our cookie/consent mechanisms as required by applicable law.
             </p>
 
             {/* 23. International Data Transfers */}
             <SectionHeading number="23" title="International Data Transfers" />
             <p className="text-sm leading-relaxed text-muted-foreground">
               AIRA may operate internationally. Your information may therefore be processed or
-              stored in countries other than the country where you live. Where required, we will
-              use legally recognized mechanisms and appropriate safeguards for international
-              transfers.
+              stored in countries other than the country where you live. Where required, we will use
+              legally recognized mechanisms and appropriate safeguards for international transfers.
             </p>
 
             {/* 24. Children's Privacy */}
             <SectionHeading number="24" title="Children's Privacy" />
             <p className="text-sm leading-relaxed text-muted-foreground">
               AIRA is not intended for children below the minimum age permitted under applicable
-              law. We do not knowingly collect personal information from children where
-              prohibited by applicable law. If we learn that we have collected information in
-              violation of applicable children's privacy requirements, we will take appropriate
-              steps to delete it.
+              law. We do not knowingly collect personal information from children where prohibited
+              by applicable law. If we learn that we have collected information in violation of
+              applicable children's privacy requirements, we will take appropriate steps to delete
+              it.
             </p>
 
             {/* 26. Changes to This Privacy Policy */}
@@ -710,10 +721,10 @@ function Privacy() {
                 AIRA is built around one simple principle: your memories belong to you.
               </p>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                Your voice, conversations, health information, experiences and memories are
-                deeply personal. We don't sell them. We don't use your private memories to train
-                general AI models without your explicit permission. And we give you control over
-                what AIRA remembers, what it forgets, and who can access your legacy.
+                Your voice, conversations, health information, experiences and memories are deeply
+                personal. We don't sell them. We don't use your private memories to train general AI
+                models without your explicit permission. And we give you control over what AIRA
+                remembers, what it forgets, and who can access your legacy.
               </p>
               <p className="mt-6 text-xs tracking-[0.24em] text-muted-foreground uppercase">
                 Private by design. Personal by nature.
@@ -723,25 +734,7 @@ function Privacy() {
         </section>
       </main>
 
-      <footer className="border-t border-border">
-        <div
-          className={`${shell} flex flex-col gap-8 py-12 sm:flex-row sm:items-center sm:justify-between`}
-        >
-          <span className="text-sm tracking-[0.42em] uppercase">AIRA</span>
-          <nav className="flex gap-8 text-sm text-muted-foreground">
-            <Link to="/use-cases" className="transition-colors hover:text-foreground">
-              Use Cases
-            </Link>
-            <Link to="/privacy" className="transition-colors hover:text-foreground">
-              Privacy
-            </Link>
-            <Link to="/" className="transition-colors hover:text-foreground">
-              Home
-            </Link>
-          </nav>
-          <p className="text-xs text-muted-foreground">© 2026 AIRA. All rights reserved.</p>
-        </div>
-      </footer>
+      <AiraFooter />
     </div>
   );
 }

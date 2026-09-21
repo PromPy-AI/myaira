@@ -1,0 +1,3 @@
+[functions.aira-prebook]
+# Custom guest API-key auth + secret receipt tokens; webhook uses Razorpay HMAC.
+verify_jwt = false

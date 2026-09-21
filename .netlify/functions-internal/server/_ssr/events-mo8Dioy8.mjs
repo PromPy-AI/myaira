@@ -1,12 +1,12 @@
 import { r as __toESM } from "../_runtime.mjs";
-import { t as logo_default } from "./logo-aw0wNKq8.mjs";
 import { a as require_jsx_runtime, o as require_react } from "../_libs/@radix-ui/react-collection+[...].mjs";
 import { h as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { c as MapPin, h as Clock3, v as CalendarDays, x as ArrowUpRight } from "../_libs/lucide-react.mjs";
+import { O as ArrowUpRight, T as CalendarDays, b as Clock3, f as MapPin } from "../_libs/lucide-react.mjs";
+import { n as logo_default, t as AiraFooter } from "./logo-Ba6dgYYj.mjs";
 import { i as Trigger, n as List, r as Root2, t as Content } from "../_libs/radix-ui__react-tabs.mjs";
 import { t as clsx } from "../_libs/clsx.mjs";
 import { t as twMerge } from "../_libs/tailwind-merge.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/events-uPZQtGQ6.js
+//#region node_modules/.nitro/vite/services/ssr/assets/events-mo8Dioy8.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function cn(...inputs) {
@@ -37,7 +37,7 @@ var embeddedEvents = [{
 	status: "past",
 	embedUrl: "https://luma.com/embed/event/evt-E9qLlnX6Cwfo2Cv/simple"
 }];
-var shell = "mx-auto w-full max-w-[1320px] px-6 sm:px-10 lg:px-16";
+var shell = "mx-auto w-full max-w-[1200px] px-6 sm:px-10 lg:px-16";
 var tabs = [{
 	value: "upcoming",
 	label: "Upcoming events"
@@ -132,10 +132,10 @@ function EventCard({ event }) {
 }
 function EventsPage() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "flex min-h-screen flex-col bg-background",
+		className: "aira-site aira-events flex min-h-screen flex-col bg-background",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
-				className: "border-b border-border",
+				className: "aira-header border-b border-border",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: `${shell} flex flex-wrap items-center justify-between gap-5 py-8`,
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
@@ -152,19 +152,13 @@ function EventsPage() {
 							className: "text-sm tracking-[0.42em] uppercase",
 							children: "AIRA"
 						})]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", {
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", {
 						"aria-label": "Main navigation",
-						className: "flex items-center gap-6 text-xs tracking-[0.12em] uppercase sm:gap-8",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
 							to: "/",
-							className: "text-muted-foreground transition-colors hover:text-foreground",
-							children: "Home"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-							to: "/events",
-							"aria-current": "page",
-							className: "text-foreground",
-							children: "Events"
-						})]
+							hash: "early-access",
+							children: "Join Waitlist"
+						})
 					})]
 				})
 			}),
@@ -246,43 +240,7 @@ function EventsPage() {
 					})]
 				})]
 			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("footer", {
-				className: "border-t border-border",
-				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: `${shell} flex flex-col gap-7 py-10 sm:flex-row sm:items-center sm:justify-between`,
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "text-sm tracking-[0.42em] uppercase",
-							children: "AIRA"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", {
-							"aria-label": "Footer navigation",
-							className: "flex flex-wrap gap-6 text-sm text-muted-foreground",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-									to: "/",
-									className: "transition-colors hover:text-foreground",
-									children: "Home"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-									to: "/use-cases",
-									className: "transition-colors hover:text-foreground",
-									children: "Use Cases"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-									to: "/privacy",
-									className: "transition-colors hover:text-foreground",
-									children: "Privacy & Terms"
-								})
-							]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "text-xs text-muted-foreground",
-							children: "© 2026 AIRA. All rights reserved."
-						})
-					]
-				})
-			})
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AiraFooter, {})
 		]
 	});
 }

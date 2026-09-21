@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as EventsRouteImport } from './routes/events'
+import { Route as OurVisionRouteImport } from './routes/our-vision'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as UseCasesRouteImport } from './routes/use-cases'
 
@@ -22,6 +23,11 @@ const IndexRoute = IndexRouteImport.update({
 const EventsRoute = EventsRouteImport.update({
   id: '/events',
   path: '/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OurVisionRoute = OurVisionRouteImport.update({
+  id: '/our-vision',
+  path: '/our-vision',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -38,12 +44,14 @@ const UseCasesRoute = UseCasesRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/events': typeof EventsRoute
+  '/our-vision': typeof OurVisionRoute
   '/privacy': typeof PrivacyRoute
   '/use-cases': typeof UseCasesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/events': typeof EventsRoute
+  '/our-vision': typeof OurVisionRoute
   '/privacy': typeof PrivacyRoute
   '/use-cases': typeof UseCasesRoute
 }
@@ -51,20 +59,22 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/events': typeof EventsRoute
+  '/our-vision': typeof OurVisionRoute
   '/privacy': typeof PrivacyRoute
   '/use-cases': typeof UseCasesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/events' | '/privacy' | '/use-cases'
+  fullPaths: '/' | '/events' | '/our-vision' | '/privacy' | '/use-cases'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/events' | '/privacy' | '/use-cases'
-  id: '__root__' | '/' | '/events' | '/privacy' | '/use-cases'
+  to: '/' | '/events' | '/our-vision' | '/privacy' | '/use-cases'
+  id: '__root__' | '/' | '/events' | '/our-vision' | '/privacy' | '/use-cases'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   EventsRoute: typeof EventsRoute
+  OurVisionRoute: typeof OurVisionRoute
   PrivacyRoute: typeof PrivacyRoute
   UseCasesRoute: typeof UseCasesRoute
 }
@@ -83,6 +93,13 @@ declare module '@tanstack/react-router' {
       path: '/events'
       fullPath: '/events'
       preLoaderRoute: typeof EventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/our-vision': {
+      id: '/our-vision'
+      path: '/our-vision'
+      fullPath: '/our-vision'
+      preLoaderRoute: typeof OurVisionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -105,6 +122,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   EventsRoute: EventsRoute,
+  OurVisionRoute: OurVisionRoute,
   PrivacyRoute: PrivacyRoute,
   UseCasesRoute: UseCasesRoute,
 }

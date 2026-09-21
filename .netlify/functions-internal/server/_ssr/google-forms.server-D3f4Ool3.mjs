@@ -1,5 +1,5 @@
-import { a as PREBOOK_FORM_ACTION, i as PREBOOK_ENTRY, n as GOOGLE_FORM_EMAIL_ENTRY, s as signupSchema, t as GOOGLE_FORM_ACTION } from "./google-form-config-CjL_vFaA.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/google-forms.server-CdtvP3-k.js
+import { i as PREBOOK_FORM_ACTION, n as GOOGLE_FORM_EMAIL_ENTRY, o as signupSchema, r as PREBOOK_ENTRY, t as GOOGLE_FORM_ACTION } from "./google-form-config-CxXHXH5F.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/google-forms.server-D3f4Ool3.js
 var unconfirmedMessage = "We couldn't confirm your submission. It may have reached us. Please check your connection before trying again; your details are still here.";
 async function submitGoogleForm(input, send = fetch) {
 	const validation = signupSchema.safeParse(input);

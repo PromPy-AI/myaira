@@ -1,9 +1,9 @@
-import { t as logo_default } from "./logo-aw0wNKq8.mjs";
 import { a as require_jsx_runtime } from "../_libs/@radix-ui/react-collection+[...].mjs";
 import { h as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/privacy-0TnUDpUf.js
+import { n as logo_default, t as AiraFooter } from "./logo-Ba6dgYYj.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/privacy-DA8Sh7CZ.js
 var import_jsx_runtime = require_jsx_runtime();
-var shell = "mx-auto w-full max-w-[1320px] px-6 sm:px-10 lg:px-16";
+var shell = "mx-auto w-full max-w-[1200px] px-6 sm:px-10 lg:px-16";
 var principles = [
 	{
 		title: "Privacy by design",
@@ -51,10 +51,10 @@ function BulletList({ items }) {
 }
 function Privacy() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "min-h-screen bg-background",
+		className: "aira-site aira-legal min-h-screen bg-background",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
-				className: "border-b border-border",
+				className: "aira-header border-b border-border",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: `${shell} flex items-center justify-between py-8`,
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
@@ -71,15 +71,18 @@ function Privacy() {
 							className: "text-sm leading-none tracking-[0.42em] uppercase",
 							children: "AIRA"
 						})]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-						to: "/",
-						className: "text-xs tracking-[0.22em] text-muted-foreground uppercase transition-colors hover:text-foreground",
-						children: "Back"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", {
+						"aria-label": "Main navigation",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+							to: "/",
+							hash: "early-access",
+							children: "Join Waitlist"
+						})
 					})]
 				})
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
-				className: "pt-24 pb-16 sm:pt-32",
+				className: "aira-page-intro pt-24 pb-16 sm:pt-32",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: shell,
 					children: [
@@ -93,7 +96,7 @@ function Privacy() {
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "mt-6 text-sm text-muted-foreground",
-							children: "Last updated: August 2026"
+							children: "Last updated: September 2026"
 						})
 					]
 				})
@@ -169,6 +172,28 @@ function Privacy() {
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHeading, {
 							number: "3",
 							title: "Information We Collect"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+							className: "mt-6 text-base font-medium",
+							children: "Early pre-bookings & payments"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "mt-2 text-sm leading-relaxed text-muted-foreground",
+							children: "For early pre-bookings, we store your name, email, country, intended uses of AIRA, selected device, consent record, payment status, payment references and ticket ID in Supabase. Razorpay processes your deposit; AIRA does not store your card details. We use this information to manage your pre-booking, refunds, customer support and the pre-booking communications and monthly updates you agree to receive. This browser stores a private receipt token so you can return to check your payment status."
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "mt-2 text-sm leading-relaxed text-muted-foreground",
+							children: [
+								"India Batch #1 requires a fully refundable ₹99 deposit, credited toward your device order. It includes a ₹5,000 device discount, six months of free subscription, one year of device warranty and monthly insider updates. A deposit does not complete a device purchase. To request a refund or help with your pre-booking data, email",
+								" ",
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+									href: "mailto:nandigiridhar29@gmail.com",
+									className: "underline",
+									children: "nandigiridhar29@gmail.com"
+								}),
+								" ",
+								"with your ticket ID or payment reference."
+							]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
 							className: "mt-6 text-base font-medium",
@@ -703,42 +728,7 @@ function Privacy() {
 					]
 				})
 			})] }),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("footer", {
-				className: "border-t border-border",
-				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: `${shell} flex flex-col gap-8 py-12 sm:flex-row sm:items-center sm:justify-between`,
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "text-sm tracking-[0.42em] uppercase",
-							children: "AIRA"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", {
-							className: "flex gap-8 text-sm text-muted-foreground",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-									to: "/use-cases",
-									className: "transition-colors hover:text-foreground",
-									children: "Use Cases"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-									to: "/privacy",
-									className: "transition-colors hover:text-foreground",
-									children: "Privacy"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-									to: "/",
-									className: "transition-colors hover:text-foreground",
-									children: "Home"
-								})
-							]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "text-xs text-muted-foreground",
-							children: "© 2026 AIRA. All rights reserved."
-						})
-					]
-				})
-			})
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AiraFooter, {})
 		]
 	});
 }

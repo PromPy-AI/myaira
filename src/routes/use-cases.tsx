@@ -1,3 +1,4 @@
+import { AiraFooter } from "@/components/ui/aira-footer";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import logo from "@/assets/aira-logo.png.asset.json";
 import logoImg from "@/assets/logo.png";
@@ -18,15 +19,21 @@ export const Route = createFileRoute("/use-cases")({
         content:
           "From daily health signals to preserved voices and digital legacy - the ways AIRA fits into a life.",
       },
-      { property: "og:image", content: `https://obpgdfxxqufrzhbplgty.supabase.co/storage/v1/object/public/aira-public/man-aira-loop.png` },
-      { name: "twitter:image", content: `https://obpgdfxxqufrzhbplgty.supabase.co/storage/v1/object/public/aira-public/man-aira-loop.png` },
+      {
+        property: "og:image",
+        content: `https://obpgdfxxqufrzhbplgty.supabase.co/storage/v1/object/public/aira-public/man-aira-loop.png`,
+      },
+      {
+        name: "twitter:image",
+        content: `https://obpgdfxxqufrzhbplgty.supabase.co/storage/v1/object/public/aira-public/man-aira-loop.png`,
+      },
       { property: "og:url", content: "https://useaira.netlify.app/use-cases" },
     ],
     links: [{ rel: "canonical", href: "https://useaira.netlify.app/use-cases" }],
   }),
 });
 
-const shell = "mx-auto w-full max-w-[1320px] px-6 sm:px-10 lg:px-16";
+const shell = "mx-auto w-full max-w-[1200px] px-6 sm:px-10 lg:px-16";
 
 const categories = [
   { label: "Health", items: ["Body", "Sleep", "Stress", "Recovery", "Sports"] },
@@ -75,7 +82,7 @@ const cases: { index: string; title: string; lead: string; body: string; note?: 
     index: "04",
     title: "Ask Your Memory",
     lead: "Your life, searchable.",
-    body: "\"What did we decide yesterday?\" \"What was that restaurant we talked about?\" \"What did Mom tell me last week?\" Ask AIRA about the memories you've chosen to preserve.",
+    body: '"What did we decide yesterday?" "What was that restaurant we talked about?" "What did Mom tell me last week?" Ask AIRA about the memories you\'ve chosen to preserve.',
   },
   {
     index: "05",
@@ -228,8 +235,8 @@ const legacyCases: { index: string; title: string; lead: string; body: string }[
 
 function UseCases() {
   return (
-    <div className="min-h-screen bg-background">
-      <header className="border-b border-border">
+    <div className="aira-site aira-use-cases min-h-screen bg-background">
+      <header className="aira-header border-b border-border">
         <div className={`${shell} flex items-center justify-between py-8`}>
           <Link to="/" className="flex items-center gap-3">
             <img
@@ -242,17 +249,16 @@ function UseCases() {
             />
             <span className="text-sm leading-none tracking-[0.42em] uppercase">AIRA</span>
           </Link>
-          <Link
-            to="/"
-            className="text-xs tracking-[0.22em] text-muted-foreground uppercase transition-colors hover:text-foreground"
-          >
-            Back
-          </Link>
+          <nav aria-label="Main navigation">
+            <Link to="/" hash="early-access">
+              Join Waitlist
+            </Link>
+          </nav>
         </div>
       </header>
 
       <main>
-        <section className="pt-24 pb-16 sm:pt-32">
+        <section className="aira-page-intro pt-24 pb-16 sm:pt-32">
           <div className={shell}>
             <p className="text-xs tracking-[0.3em] text-muted-foreground uppercase">
               AIRA - Use Cases
@@ -264,8 +270,10 @@ function UseCases() {
         </section>
 
         {/* Categories */}
-        <section className="pb-24">
-          <div className={`${shell} grid gap-12 border-t border-border pt-16 sm:grid-cols-2 lg:grid-cols-3`}>
+        <section className="aira-categories pb-24">
+          <div
+            className={`${shell} grid gap-12 border-t border-border pt-16 sm:grid-cols-2 lg:grid-cols-3`}
+          >
             {categories.map((c) => (
               <div key={c.label}>
                 <h2 className="text-[0.68rem] tracking-[0.28em] text-muted-foreground uppercase">
@@ -280,7 +288,7 @@ function UseCases() {
         </section>
 
         {/* Numbered cases */}
-        <section className="pb-28">
+        <section className="aira-case-list pb-28">
           <div className={`${shell} border-t border-border`}>
             <dl>
               {cases.map((c) => (
@@ -363,7 +371,8 @@ function UseCases() {
             </div>
 
             <p className="mt-14 max-w-[58ch] text-base leading-relaxed text-[oklch(0.97_0.015_88)]/70">
-              AIRA responds from the memories they chose to preserve, not from an invented biography.
+              AIRA responds from the memories they chose to preserve, not from an invented
+              biography.
             </p>
           </div>
         </section>
@@ -377,7 +386,7 @@ function UseCases() {
             <h2 className="mt-10 max-w-[20ch] text-[clamp(2rem,5.4vw,4.25rem)] leading-[1.02] tracking-[-0.03em]">
               The longer you wear it, the more of you it remembers.
             </h2>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-3">
               <Link
                 to="/"
                 hash="early-access"
@@ -397,25 +406,7 @@ function UseCases() {
         </section>
       </main>
 
-      <footer className="border-t border-border">
-        <div
-          className={`${shell} flex flex-col gap-8 py-12 sm:flex-row sm:items-center sm:justify-between`}
-        >
-          <span className="text-sm tracking-[0.42em] uppercase">AIRA</span>
-          <nav className="flex gap-8 text-sm text-muted-foreground">
-            <Link to="/use-cases" className="transition-colors hover:text-foreground">
-              Use Cases
-            </Link>
-            <Link to="/privacy" className="transition-colors hover:text-foreground">
-              Privacy
-            </Link>
-            <a href="/?ref=use-case-footer" className="transition-colors hover:text-foreground">
-              Home
-            </a>
-          </nav>
-          <p className="text-xs text-muted-foreground">© 2026 AIRA. All rights reserved.</p>
-        </div>
-      </footer>
+      <AiraFooter />
     </div>
   );
 }

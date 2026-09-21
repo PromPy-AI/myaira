@@ -38,7 +38,12 @@ export const signupSchema = z.discriminatedUnion("kind", [
     kind: z.literal("prebook"),
     name: z.string().trim().min(1, "Enter your name.").max(150),
     email: emailSchema,
-    country: z.string().trim().min(1, "Enter your country.").max(100),
+    country: z.literal("India", {
+      errorMap: () => ({
+        message:
+          "Batch #1 founding access is currently available only in India. Join the global waitlist for Batch #2.",
+      }),
+    }),
     usage: z.array(z.enum(prebookUsageOptions)).min(1, "Select at least one use case.").max(8),
     device: z.literal(PREBOOK_DEVICE),
     consent: z.literal(PREBOOK_CONSENT_VALUE),

@@ -3,10 +3,10 @@ import { a as require_jsx_runtime, o as require_react } from "../_libs/@radix-ui
 import { c as HeadContent, d as Outlet, f as lazyRouteComponent, g as useRouter, h as Link, m as createRootRouteWithContext, p as createFileRoute, s as Scripts, u as createRouter } from "../_libs/@tanstack/react-router+[...].mjs";
 import { t as QueryClientProvider } from "../_libs/tanstack__react-query.mjs";
 import { t as QueryClient } from "../_libs/tanstack__query-core.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-BGT34vJN.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-vQA-_3jc.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
-var styles_default = "/assets/styles-DxXR3eTl.css";
+var styles_default = "/assets/styles-BwIzMM3l.css";
 function reportLovableError(error, context = {}) {
 	if (typeof window === "undefined") return;
 	window.__lovableEvents?.captureException?.(error, {
@@ -94,7 +94,7 @@ function ErrorComponent({ error, reset }) {
 		})
 	});
 }
-var Route$4 = createRootRouteWithContext()({
+var Route$5 = createRootRouteWithContext()({
 	head: () => ({
 		meta: [
 			{ charSet: "utf-8" },
@@ -173,15 +173,15 @@ function RootShell({ children }) {
 	});
 }
 function RootComponent() {
-	const { queryClient } = Route$4.useRouteContext();
+	const { queryClient } = Route$5.useRouteContext();
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryClientProvider, {
 		client: queryClient,
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Outlet, {})
 	});
 }
-var $$splitComponentImporter$3 = () => import("./routes-DwAePZf2.mjs");
-var Route$3 = createFileRoute("/")({
-	component: lazyRouteComponent($$splitComponentImporter$3, "component"),
+var $$splitComponentImporter$4 = () => import("./routes-BDrXxgXb.mjs");
+var Route$4 = createFileRoute("/")({
+	component: lazyRouteComponent($$splitComponentImporter$4, "component"),
 	head: () => ({
 		meta: [
 			{ title: "AIRA" },
@@ -220,9 +220,9 @@ var Route$3 = createFileRoute("/")({
 		}]
 	})
 });
-var $$splitComponentImporter$2 = () => import("./events-uPZQtGQ6.mjs");
-var Route$2 = createFileRoute("/events")({
-	component: lazyRouteComponent($$splitComponentImporter$2, "component"),
+var $$splitComponentImporter$3 = () => import("./events-mo8Dioy8.mjs");
+var Route$3 = createFileRoute("/events")({
+	component: lazyRouteComponent($$splitComponentImporter$3, "component"),
 	head: () => ({
 		meta: [
 			{ title: "AIRA Events — Experience what we're building" },
@@ -249,7 +249,32 @@ var Route$2 = createFileRoute("/events")({
 		}]
 	})
 });
-var $$splitComponentImporter$1 = () => import("./privacy-0TnUDpUf.mjs");
+var $$splitComponentImporter$2 = () => import("./our-vision-CoHm0p7N.mjs");
+var Route$2 = createFileRoute("/our-vision")({
+	component: lazyRouteComponent($$splitComponentImporter$2, "component"),
+	head: () => ({
+		meta: [
+			{ title: "Our Vision At AIRA" },
+			{
+				name: "description",
+				content: "Explore AIRA’s roadmap: from a personal AI memory and health companion to booking rides, ordering essentials and supporting everyday life through voice."
+			},
+			{
+				property: "og:title",
+				content: "Our Vision At AIRA"
+			},
+			{
+				property: "og:description",
+				content: "Your memory. Your health. Your day, made simpler. Explore the AIRA roadmap through early 2028."
+			}
+		],
+		links: [{
+			rel: "canonical",
+			href: "https://useaira.netlify.app/our-vision"
+		}]
+	})
+});
+var $$splitComponentImporter$1 = () => import("./privacy-DA8Sh7CZ.mjs");
 var Route$1 = createFileRoute("/privacy")({
 	component: lazyRouteComponent($$splitComponentImporter$1, "component"),
 	head: () => ({
@@ -278,7 +303,7 @@ var Route$1 = createFileRoute("/privacy")({
 		}]
 	})
 });
-var $$splitComponentImporter = () => import("./use-cases-BJ0S1wBz.mjs");
+var $$splitComponentImporter = () => import("./use-cases-DQSeNDEm.mjs");
 var Route = createFileRoute("/use-cases")({
 	component: lazyRouteComponent($$splitComponentImporter, "component"),
 	head: () => ({
@@ -316,28 +341,33 @@ var Route = createFileRoute("/use-cases")({
 	})
 });
 var rootRouteChildren = {
-	IndexRoute: Route$3.update({
+	IndexRoute: Route$4.update({
 		id: "/",
 		path: "/",
-		getParentRoute: () => Route$4
+		getParentRoute: () => Route$5
 	}),
-	EventsRoute: Route$2.update({
+	EventsRoute: Route$3.update({
 		id: "/events",
 		path: "/events",
-		getParentRoute: () => Route$4
+		getParentRoute: () => Route$5
+	}),
+	OurVisionRoute: Route$2.update({
+		id: "/our-vision",
+		path: "/our-vision",
+		getParentRoute: () => Route$5
 	}),
 	PrivacyRoute: Route$1.update({
 		id: "/privacy",
 		path: "/privacy",
-		getParentRoute: () => Route$4
+		getParentRoute: () => Route$5
 	}),
 	UseCasesRoute: Route.update({
 		id: "/use-cases",
 		path: "/use-cases",
-		getParentRoute: () => Route$4
+		getParentRoute: () => Route$5
 	})
 };
-var routeTree = Route$4._addFileChildren(rootRouteChildren)._addFileTypes();
+var routeTree = Route$5._addFileChildren(rootRouteChildren)._addFileTypes();
 var getRouter = () => {
 	const queryClient = new QueryClient();
 	return createRouter({

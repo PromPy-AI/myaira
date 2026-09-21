@@ -31,6 +31,17 @@ const prebook = {
 };
 const confirmation = '<div class="vHW8K">Your response has been recorded.</div>';
 
+test("Batch 1 rejects non-India prebook interest before sending to Google", async () => {
+  let requests = 0;
+  const result = await submitGoogleForm({ ...prebook, country: "United States" }, async () => {
+    requests++;
+    return googleResponse(confirmation);
+  });
+  assert.equal(result.ok, false);
+  assert.match(result.message, /only in India/);
+  assert.equal(requests, 0);
+});
+
 test("reservation sends all mapped fields and preserves multiple selections", async () => {
   let requests = 0;
   const result = await submitGoogleForm(prebook, async (url, options) => {

@@ -1,9 +1,9 @@
-import { t as logo_default } from "./logo-aw0wNKq8.mjs";
 import { a as require_jsx_runtime } from "../_libs/@radix-ui/react-collection+[...].mjs";
 import { h as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/use-cases-BJ0S1wBz.js
+import { n as logo_default, t as AiraFooter } from "./logo-Ba6dgYYj.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/use-cases-DQSeNDEm.js
 var import_jsx_runtime = require_jsx_runtime();
-var shell = "mx-auto w-full max-w-[1320px] px-6 sm:px-10 lg:px-16";
+var shell = "mx-auto w-full max-w-[1200px] px-6 sm:px-10 lg:px-16";
 var categories = [
 	{
 		label: "Health",
@@ -239,10 +239,10 @@ var legacyCases = [
 ];
 function UseCases() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "min-h-screen bg-background",
+		className: "aira-site aira-use-cases min-h-screen bg-background",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
-				className: "border-b border-border",
+				className: "aira-header border-b border-border",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: `${shell} flex items-center justify-between py-8`,
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
@@ -259,16 +259,19 @@ function UseCases() {
 							className: "text-sm leading-none tracking-[0.42em] uppercase",
 							children: "AIRA"
 						})]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-						to: "/",
-						className: "text-xs tracking-[0.22em] text-muted-foreground uppercase transition-colors hover:text-foreground",
-						children: "Back"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", {
+						"aria-label": "Main navigation",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+							to: "/",
+							hash: "early-access",
+							children: "Join Waitlist"
+						})
 					})]
 				})
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", { children: [
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
-					className: "pt-24 pb-16 sm:pt-32",
+					className: "aira-page-intro pt-24 pb-16 sm:pt-32",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: shell,
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
@@ -281,7 +284,7 @@ function UseCases() {
 					})
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
-					className: "pb-24",
+					className: "aira-categories pb-24",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 						className: `${shell} grid gap-12 border-t border-border pt-16 sm:grid-cols-2 lg:grid-cols-3`,
 						children: categories.map((c) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
@@ -294,7 +297,7 @@ function UseCases() {
 					})
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
-					className: "pb-28",
+					className: "aira-case-list pb-28",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 						className: `${shell} border-t border-border`,
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dl", { children: cases.map((c) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -399,7 +402,7 @@ function UseCases() {
 								children: "The longer you wear it, the more of you it remembers."
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex gap-2",
+								className: "flex flex-wrap gap-3",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
 									to: "/",
 									hash: "early-access",
@@ -416,42 +419,7 @@ function UseCases() {
 					})
 				})
 			] }),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("footer", {
-				className: "border-t border-border",
-				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: `${shell} flex flex-col gap-8 py-12 sm:flex-row sm:items-center sm:justify-between`,
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "text-sm tracking-[0.42em] uppercase",
-							children: "AIRA"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", {
-							className: "flex gap-8 text-sm text-muted-foreground",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-									to: "/use-cases",
-									className: "transition-colors hover:text-foreground",
-									children: "Use Cases"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-									to: "/privacy",
-									className: "transition-colors hover:text-foreground",
-									children: "Privacy"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
-									href: "/?ref=use-case-footer",
-									className: "transition-colors hover:text-foreground",
-									children: "Home"
-								})
-							]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "text-xs text-muted-foreground",
-							children: "© 2026 AIRA. All rights reserved."
-						})
-					]
-				})
-			})
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AiraFooter, {})
 		]
 	});
 }

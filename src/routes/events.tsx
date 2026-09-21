@@ -1,3 +1,4 @@
+import { AiraFooter } from "@/components/ui/aira-footer";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, CalendarDays, Clock3, MapPin } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -26,7 +27,7 @@ export const Route = createFileRoute("/events")({
   }),
 });
 
-const shell = "mx-auto w-full max-w-[1320px] px-6 sm:px-10 lg:px-16";
+const shell = "mx-auto w-full max-w-[1200px] px-6 sm:px-10 lg:px-16";
 const tabs = [
   { value: "upcoming", label: "Upcoming events" },
   { value: "past", label: "Past events" },
@@ -128,22 +129,16 @@ function EventCard({ event }: { event: AiraEvent | EmbeddedAiraEvent }) {
 
 function EventsPage() {
   return (
-    <div className="flex min-h-screen flex-col bg-background">
-      <header className="border-b border-border">
+    <div className="aira-site aira-events flex min-h-screen flex-col bg-background">
+      <header className="aira-header border-b border-border">
         <div className={`${shell} flex flex-wrap items-center justify-between gap-5 py-8`}>
           <Link to="/" aria-label="AIRA home" className="flex items-center gap-3">
             <img src={logoImg} alt="" width={28} height={28} className="h-7 w-7 object-contain" />
             <span className="text-sm tracking-[0.42em] uppercase">AIRA</span>
           </Link>
-          <nav
-            aria-label="Main navigation"
-            className="flex items-center gap-6 text-xs tracking-[0.12em] uppercase sm:gap-8"
-          >
-            <Link to="/" className="text-muted-foreground transition-colors hover:text-foreground">
-              Home
-            </Link>
-            <Link to="/events" aria-current="page" className="text-foreground">
-              Events
+          <nav aria-label="Main navigation">
+            <Link to="/" hash="early-access">
+              Join Waitlist
             </Link>
           </nav>
         </div>
@@ -235,28 +230,7 @@ function EventsPage() {
         </Tabs>
       </main>
 
-      <footer className="border-t border-border">
-        <div
-          className={`${shell} flex flex-col gap-7 py-10 sm:flex-row sm:items-center sm:justify-between`}
-        >
-          <span className="text-sm tracking-[0.42em] uppercase">AIRA</span>
-          <nav
-            aria-label="Footer navigation"
-            className="flex flex-wrap gap-6 text-sm text-muted-foreground"
-          >
-            <Link to="/" className="transition-colors hover:text-foreground">
-              Home
-            </Link>
-            <Link to="/use-cases" className="transition-colors hover:text-foreground">
-              Use Cases
-            </Link>
-            <Link to="/privacy" className="transition-colors hover:text-foreground">
-              Privacy &amp; Terms
-            </Link>
-          </nav>
-          <p className="text-xs text-muted-foreground">© 2026 AIRA. All rights reserved.</p>
-        </div>
-      </footer>
+      <AiraFooter />
     </div>
   );
 }
