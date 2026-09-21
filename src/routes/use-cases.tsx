@@ -27,9 +27,9 @@ export const Route = createFileRoute("/use-cases")({
         name: "twitter:image",
         content: `https://obpgdfxxqufrzhbplgty.supabase.co/storage/v1/object/public/aira-public/man-aira-loop.png`,
       },
-      { property: "og:url", content: "https://useaira.netlify.app/use-cases" },
+      { property: "og:url", content: "https://myaira.life/use-cases" },
     ],
-    links: [{ rel: "canonical", href: "https://useaira.netlify.app/use-cases" }],
+    links: [{ rel: "canonical", href: "https://myaira.life/use-cases" }],
   }),
 });
 

@@ -18,9 +18,9 @@ export const Route = createFileRoute("/privacy")({
         content:
           "Your life. Your data. Your control. Learn how AIRA collects, uses, and protects your personal information.",
       },
-      { property: "og:url", content: "https://useaira.netlify.app/privacy" },
+      { property: "og:url", content: "https://myaira.life/privacy" },
     ],
-    links: [{ rel: "canonical", href: "https://useaira.netlify.app/privacy" }],
+    links: [{ rel: "canonical", href: "https://myaira.life/privacy" }],
   }),
 });
 

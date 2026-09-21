@@ -79,9 +79,7 @@ type RazorpayOptions = {
   order_id: string;
   name: string;
   description: string;
-  image: string;
   prefill?: { name: string; email: string };
-  theme: { color: string; backdrop_color: string };
   modal: { ondismiss: () => void; confirm_close: boolean };
   handler: (result: CheckoutResult) => void;
 };

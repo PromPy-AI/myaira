@@ -1,15 +1,15 @@
 import { r as __toESM } from "../_runtime.mjs";
 import { a as require_jsx_runtime, o as require_react } from "../_libs/@radix-ui/react-collection+[...].mjs";
 import { h as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { A as ArrowLeft, C as CheckCheck, D as AudioLines, E as Brain, M as Activity, S as Check, T as CalendarDays, _ as History, a as ShieldCheck, c as Pause, d as MessageCircle, g as Lightbulb, h as Link2, k as ArrowRight, l as Moon, m as ListChecks, n as TrendingUp, o as Search, r as Thermometer, s as Play, t as X, u as Mic, v as HeartPulse, x as ClipboardList, y as Footprints } from "../_libs/lucide-react.mjs";
-import { n as logo_default, t as AiraFooter } from "./logo-Ba6dgYYj.mjs";
+import { n as logo_default, t as AiraFooter } from "./logo-DrSPY8m2.mjs";
+import { E as AudioLines, O as ArrowRight, S as CheckCheck, T as Brain, _ as HeartPulse, a as ShieldCheck, b as ClipboardList, c as Pause, d as MessageCircle, g as History, h as Lightbulb, j as Activity, k as ArrowLeft, l as Moon, m as Link2, n as TrendingUp, o as Search, p as ListChecks, r as Thermometer, s as Play, t as X, u as Mic, v as Footprints, w as CalendarDays, x as Check } from "../_libs/lucide-react.mjs";
 import { a as prebookUsageOptions, n as GOOGLE_FORM_EMAIL_ENTRY, o as signupSchema, t as GOOGLE_FORM_ACTION } from "./google-form-config-CxXHXH5F.mjs";
 import { t as getServerFnById } from "../__23tanstack-start-server-fn-resolver-BxL3UnHh.mjs";
 import { c as createServerFn, i as TSS_SERVER_FUNCTION } from "./createServerFn-CIHAFgYl.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/aira-loop-nobg-D2UeDTwd.js
 var aira_loop_nobg_default = "/assets/aira-loop-nobg-DG2BgP9v.png";
 //#endregion
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-BDrXxgXb.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-B66LEHpU.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var createSsrRpc = (functionId) => {
@@ -143,7 +143,6 @@ function PreBookingForm() {
 	const [open, setOpen] = (0, import_react.useState)(false);
 	const [phase, setPhase] = (0, import_react.useState)("idle");
 	const [available, setAvailable] = (0, import_react.useState)(null);
-	const [testMode, setTestMode] = (0, import_react.useState)(false);
 	const [receipt, setReceipt] = (0, import_react.useState)(null);
 	const [error, setError] = (0, import_react.useState)("");
 	const [hasPending, setHasPending] = (0, import_react.useState)(false);
@@ -217,9 +216,9 @@ function PreBookingForm() {
 		setHasPending(Boolean(tokenRef.current));
 		try {
 			const config = await prebookingRequest("config");
-			setAvailable(config.enabled);
-			setTestMode(config.mode === "test");
-			if (tokenRef.current && config.enabled) try {
+			const livePaymentsAvailable = config.enabled && config.mode === "live";
+			setAvailable(livePaymentsAvailable);
+			if (tokenRef.current && livePaymentsAvailable) try {
 				await checkStatus();
 			} catch (e) {
 				if (e instanceof PrebookingError && e.status === 404) {
@@ -284,6 +283,7 @@ function PreBookingForm() {
 			return;
 		}
 		if (!order.orderId || !order.keyId) throw new Error("Your checkout is still being prepared. Contact AIRA with the reservation reference below before starting another payment.");
+		if (order.mode !== "live" || !order.keyId.startsWith("rzp_live_")) throw new Error("This checkout is no longer available. Contact AIRA to start a new pre-booking.");
 		await loadRazorpay();
 		const Razorpay = window.Razorpay;
 		let completed = false;
@@ -294,12 +294,7 @@ function PreBookingForm() {
 			currency: order.currency,
 			name: "AIRA",
 			description: "Early pre-booking · India Batch #1 · Refundable ₹99 deposit",
-			image: new URL(logo_default, window.location.origin).href,
 			...prefill ? { prefill } : {},
-			theme: {
-				color: "#40534C",
-				backdrop_color: "#1A3636"
-			},
 			modal: {
 				confirm_close: true,
 				ondismiss: () => {
@@ -488,10 +483,6 @@ function PreBookingForm() {
 					id: "prebook-title",
 					className: "pr-6 text-3xl tracking-[-0.04em]",
 					children: confirmed ? "You’re pre-booked." : refunded ? "Your deposit status." : "Early pre-bookings."
-				}),
-				testMode && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "mt-3 rounded-lg border border-amber-300 bg-amber-50 p-3 text-xs text-amber-950",
-					children: "Test checkout · no real reservation or customer ticket is issued."
 				}),
 				confirmed || refunded ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "mt-6",
@@ -755,14 +746,14 @@ function PreBookingForm() {
 									type: "submit",
 									disabled: isBusy || available !== true,
 									className: buttonClass,
-									children: available === false ? "Payments opening soon" : isBusy ? "Preparing checkout…" : editing ? "Save & continue to payment" : "Pre-book for ₹99"
+									children: available === false ? "Payments temporarily unavailable" : isBusy ? "Preparing checkout…" : editing ? "Save & continue to payment" : "Pre-book for ₹99"
 								})
 							]
 						})
 					}),
 					available === false && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "mt-4 text-center text-xs text-muted-foreground",
-						children: "Payments are not open yet. No deposit will be collected until checkout is available."
+						children: "Payments are temporarily unavailable. Please try again later or contact AIRA."
 					})
 				] }),
 				isBusy && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
@@ -1523,89 +1514,62 @@ function Index() {
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 						className: "aira-hero",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: "aira-hero-badge",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-									href: "?src=pre-seed-badge",
-									className: "inline-flex items-center gap-2 border border-[oklch(0.95_0.03_88)]/25 bg-[oklch(0.95_0.03_88)]/8 px-4 py-2 text-[0.68rem] tracking-[0.22em] text-[oklch(0.95_0.015_88)]/80 uppercase backdrop-blur-sm transition-colors duration-300 hover:border-[oklch(0.95_0.03_88)]/50 hover:text-[oklch(0.95_0.015_88)]",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "h-1.5 w-1.5 rounded-full bg-[oklch(0.85_0.06_88)] opacity-80" }),
-										"Our Pre-seed",
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("svg", {
-											xmlns: "http://www.w3.org/2000/svg",
-											width: "10",
-											height: "10",
-											viewBox: "0 0 24 24",
-											fill: "none",
-											stroke: "currentColor",
-											strokeWidth: "2",
-											strokeLinecap: "round",
-											strokeLinejoin: "round",
-											"aria-hidden": true,
-											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", { d: "M5 12h14M12 5l7 7-7 7" })
-										})
-									]
-								})
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "aira-hero-copy",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-										className: "reveal max-w-[16ch] text-[clamp(2.9rem,9vw,7.5rem)] leading-[0.94] font-normal tracking-[-0.035em] text-[oklch(0.97_0.015_88)]",
-										children: "Remember what makes you, you."
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-										className: "reveal mt-10 max-w-[46ch] text-base leading-relaxed text-[oklch(0.97_0.015_88)]/72 sm:text-lg",
-										style: { animationDelay: "220ms" },
-										children: "AIRA Loop is a screenless AI wristband designed to help you remember everyday conversations, track your health and ask questions about your day."
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "aira-hero-actions",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-											href: "#early-access",
-											className: "aira-button",
-											onClick: (event) => {
-												const trigger = document.getElementById("early-prebooking-trigger");
-												if (trigger) {
-													event.preventDefault();
-													trigger.click();
-												}
-											},
-											children: ["Early pre-booking ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												"aria-hidden": "true",
-												children: "↗"
-											})]
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-											href: "#loop-features",
-											className: "aira-text-link",
-											children: ["Explore AIRA Loop ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												"aria-hidden": "true",
-												children: "↓"
-											})]
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "aira-hero-copy",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+									className: "reveal max-w-[16ch] text-[clamp(2.9rem,9vw,7.5rem)] leading-[0.94] font-normal tracking-[-0.035em] text-[oklch(0.97_0.015_88)]",
+									children: "Remember what makes you, you."
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "reveal mt-10 max-w-[46ch] text-base leading-relaxed text-[oklch(0.97_0.015_88)]/72 sm:text-lg",
+									style: { animationDelay: "220ms" },
+									children: "AIRA Loop is a screenless AI wristband designed to help you remember everyday conversations, track your health and ask questions about your day."
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "aira-hero-actions",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+										href: "#early-access",
+										className: "aira-button",
+										onClick: (event) => {
+											const trigger = document.getElementById("early-prebooking-trigger");
+											if (trigger) {
+												event.preventDefault();
+												trigger.click();
+											}
+										},
+										children: ["Early pre-booking ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											"aria-hidden": "true",
+											children: "↗"
 										})]
-									})
-								]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("figure", {
-								className: "aira-hero-visual",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-									ref: heroImage,
-									"data-ready": heroImageReady,
-									src: "https://obpgdfxxqufrzhbplgty.supabase.co/storage/v1/object/public/aira-public/aira-hand-loop-hero.png",
-									alt: "AIRA Loop worn on a wrist",
-									fetchPriority: "high",
-									draggable: false,
-									decoding: "async",
-									onLoad: () => setHeroImageReady(true),
-									onError: (event) => {
-										setHeroImageReady(false);
-										event.currentTarget.onerror = null;
-										if (!event.currentTarget.src.endsWith("/assets/aira-loop-nobg-DG2BgP9v.png")) event.currentTarget.src = aira_loop_nobg_default;
-									}
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+										href: "#loop-features",
+										className: "aira-text-link",
+										children: ["Explore AIRA Loop ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											"aria-hidden": "true",
+											children: "↓"
+										})]
+									})]
 								})
+							]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("figure", {
+							className: "aira-hero-visual",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+								ref: heroImage,
+								"data-ready": heroImageReady,
+								src: "https://obpgdfxxqufrzhbplgty.supabase.co/storage/v1/object/public/aira-public/aira-hand-loop-hero.png",
+								alt: "AIRA Loop worn on a wrist",
+								fetchPriority: "high",
+								draggable: false,
+								decoding: "async",
+								onLoad: () => setHeroImageReady(true),
+								onError: (event) => {
+									setHeroImageReady(false);
+									event.currentTarget.onerror = null;
+									if (!event.currentTarget.src.endsWith("/assets/aira-loop-nobg-DG2BgP9v.png")) event.currentTarget.src = aira_loop_nobg_default;
+								}
 							})
-						]
+						})]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 						className: "aira-marquee overflow-hidden border-y border-border bg-background py-4",
@@ -1727,7 +1691,7 @@ function Index() {
 									className: "relative overflow-hidden rounded-2xl lg:order-first",
 									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 										src: aira_loop_nobg_default,
-										alt: "Aira loop demo device",
+										alt: "AIRA Loop wristband",
 										loading: "lazy",
 										draggable: false,
 										className: "h-full w-full rounded-2xl object-cover opacity-[0.2] select-none",

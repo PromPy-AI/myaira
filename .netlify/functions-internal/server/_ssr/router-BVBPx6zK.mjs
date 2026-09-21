@@ -3,10 +3,10 @@ import { a as require_jsx_runtime, o as require_react } from "../_libs/@radix-ui
 import { c as HeadContent, d as Outlet, f as lazyRouteComponent, g as useRouter, h as Link, m as createRootRouteWithContext, p as createFileRoute, s as Scripts, u as createRouter } from "../_libs/@tanstack/react-router+[...].mjs";
 import { t as QueryClientProvider } from "../_libs/tanstack__react-query.mjs";
 import { t as QueryClient } from "../_libs/tanstack__query-core.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-vQA-_3jc.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-BVBPx6zK.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
-var styles_default = "/assets/styles-BwIzMM3l.css";
+var styles_default = "/assets/styles-C902YQsz.css";
 function reportLovableError(error, context = {}) {
 	if (typeof window === "undefined") return;
 	window.__lovableEvents?.captureException?.(error, {
@@ -179,7 +179,7 @@ function RootComponent() {
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Outlet, {})
 	});
 }
-var $$splitComponentImporter$4 = () => import("./routes-BDrXxgXb.mjs");
+var $$splitComponentImporter$4 = () => import("./routes-B66LEHpU.mjs");
 var Route$4 = createFileRoute("/")({
 	component: lazyRouteComponent($$splitComponentImporter$4, "component"),
 	head: () => ({
@@ -211,16 +211,16 @@ var Route$4 = createFileRoute("/")({
 			},
 			{
 				property: "og:url",
-				content: "https://useaira.netlify.app/"
+				content: "https://myaira.life/"
 			}
 		],
 		links: [{
 			rel: "canonical",
-			href: "https://useaira.netlify.app/"
+			href: "https://myaira.life/"
 		}]
 	})
 });
-var $$splitComponentImporter$3 = () => import("./events-mo8Dioy8.mjs");
+var $$splitComponentImporter$3 = () => import("./events-EGdBlswh.mjs");
 var Route$3 = createFileRoute("/events")({
 	component: lazyRouteComponent($$splitComponentImporter$3, "component"),
 	head: () => ({
@@ -240,16 +240,16 @@ var Route$3 = createFileRoute("/events")({
 			},
 			{
 				property: "og:url",
-				content: "https://useaira.netlify.app/events"
+				content: "https://myaira.life/events"
 			}
 		],
 		links: [{
 			rel: "canonical",
-			href: "https://useaira.netlify.app/events"
+			href: "https://myaira.life/events"
 		}]
 	})
 });
-var $$splitComponentImporter$2 = () => import("./our-vision-CoHm0p7N.mjs");
+var $$splitComponentImporter$2 = () => import("./our-vision-CLbtuWwY.mjs");
 var Route$2 = createFileRoute("/our-vision")({
 	component: lazyRouteComponent($$splitComponentImporter$2, "component"),
 	head: () => ({
@@ -270,11 +270,11 @@ var Route$2 = createFileRoute("/our-vision")({
 		],
 		links: [{
 			rel: "canonical",
-			href: "https://useaira.netlify.app/our-vision"
+			href: "https://myaira.life/our-vision"
 		}]
 	})
 });
-var $$splitComponentImporter$1 = () => import("./privacy-DA8Sh7CZ.mjs");
+var $$splitComponentImporter$1 = () => import("./privacy-DpX84bPN.mjs");
 var Route$1 = createFileRoute("/privacy")({
 	component: lazyRouteComponent($$splitComponentImporter$1, "component"),
 	head: () => ({
@@ -294,16 +294,16 @@ var Route$1 = createFileRoute("/privacy")({
 			},
 			{
 				property: "og:url",
-				content: "https://useaira.netlify.app/privacy"
+				content: "https://myaira.life/privacy"
 			}
 		],
 		links: [{
 			rel: "canonical",
-			href: "https://useaira.netlify.app/privacy"
+			href: "https://myaira.life/privacy"
 		}]
 	})
 });
-var $$splitComponentImporter = () => import("./use-cases-DQSeNDEm.mjs");
+var $$splitComponentImporter = () => import("./use-cases-DNOO0sqN.mjs");
 var Route = createFileRoute("/use-cases")({
 	component: lazyRouteComponent($$splitComponentImporter, "component"),
 	head: () => ({
@@ -331,12 +331,12 @@ var Route = createFileRoute("/use-cases")({
 			},
 			{
 				property: "og:url",
-				content: "https://useaira.netlify.app/use-cases"
+				content: "https://myaira.life/use-cases"
 			}
 		],
 		links: [{
 			rel: "canonical",
-			href: "https://useaira.netlify.app/use-cases"
+			href: "https://myaira.life/use-cases"
 		}]
 	})
 });

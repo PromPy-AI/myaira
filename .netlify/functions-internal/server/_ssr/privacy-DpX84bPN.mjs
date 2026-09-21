@@ -1,7 +1,7 @@
 import { a as require_jsx_runtime } from "../_libs/@radix-ui/react-collection+[...].mjs";
 import { h as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { n as logo_default, t as AiraFooter } from "./logo-Ba6dgYYj.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/privacy-DA8Sh7CZ.js
+import { n as logo_default, t as AiraFooter } from "./logo-DrSPY8m2.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/privacy-DpX84bPN.js
 var import_jsx_runtime = require_jsx_runtime();
 var shell = "mx-auto w-full max-w-[1200px] px-6 sm:px-10 lg:px-16";
 var principles = [

@@ -43,9 +43,9 @@ export const Route = createFileRoute("/")({
         name: "twitter:image",
         content: `https://obpgdfxxqufrzhbplgty.supabase.co/storage/v1/object/public/aira-public/man-aira-loop.png`,
       },
-      { property: "og:url", content: "https://useaira.netlify.app/" },
+      { property: "og:url", content: "https://myaira.life/" },
     ],
-    links: [{ rel: "canonical", href: "https://useaira.netlify.app/" }],
+    links: [{ rel: "canonical", href: "https://myaira.life/" }],
   }),
 });
 
@@ -250,29 +250,6 @@ function Index() {
         {/* Hero */}
         <section className="aira-hero">
           {/* Pre-seed story floating pill */}
-          <div className="aira-hero-badge">
-            <a
-              href="?src=pre-seed-badge"
-              className="inline-flex items-center gap-2 border border-[oklch(0.95_0.03_88)]/25 bg-[oklch(0.95_0.03_88)]/8 px-4 py-2 text-[0.68rem] tracking-[0.22em] text-[oklch(0.95_0.015_88)]/80 uppercase backdrop-blur-sm transition-colors duration-300 hover:border-[oklch(0.95_0.03_88)]/50 hover:text-[oklch(0.95_0.015_88)]"
-            >
-              <span className="h-1.5 w-1.5 rounded-full bg-[oklch(0.85_0.06_88)] opacity-80" />
-              Our Pre-seed
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="10"
-                height="10"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden
-              >
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </a>
-          </div>
           <div className="aira-hero-copy">
             <h1 className="reveal max-w-[16ch] text-[clamp(2.9rem,9vw,7.5rem)] leading-[0.94] font-normal tracking-[-0.035em] text-[oklch(0.97_0.015_88)]">
               Remember what makes you, you.
@@ -427,7 +404,7 @@ function Index() {
               <figure className="relative overflow-hidden rounded-2xl lg:order-first">
                 <img
                   src={AiraloopImg}
-                  alt="Aira loop demo device"
+                  alt="AIRA Loop wristband"
                   loading="lazy"
                   draggable={false}
                   className="h-full w-full rounded-2xl object-cover opacity-[0.2] select-none"

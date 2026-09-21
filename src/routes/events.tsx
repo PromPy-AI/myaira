@@ -21,9 +21,9 @@ export const Route = createFileRoute("/events")({
         content:
           "Meet the people behind AIRA. Explore upcoming events, conversations and product experiences.",
       },
-      { property: "og:url", content: "https://useaira.netlify.app/events" },
+      { property: "og:url", content: "https://myaira.life/events" },
     ],
-    links: [{ rel: "canonical", href: "https://useaira.netlify.app/events" }],
+    links: [{ rel: "canonical", href: "https://myaira.life/events" }],
   }),
 });
 

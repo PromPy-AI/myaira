@@ -2,7 +2,6 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Link } from "@tanstack/react-router";
 import { Check, ShieldCheck, X } from "lucide-react";
 import loopImage from "@/assets/aira-loop-nobg.png";
-import logo from "@/assets/logo.png";
 import { prebookUsageOptions } from "@/lib/google-form-config";
 import { formatReceipt } from "@/lib/receipt-format";
 import {
@@ -42,7 +41,6 @@ export function PreBookingForm() {
   const [open, setOpen] = useState(false);
   const [phase, setPhase] = useState<Phase>("idle");
   const [available, setAvailable] = useState<boolean | null>(null);
-  const [testMode, setTestMode] = useState(false);
   const [receipt, setReceipt] = useState<Receipt | null>(null);
   const [error, setError] = useState("");
   const [hasPending, setHasPending] = useState(false);
@@ -129,9 +127,9 @@ export function PreBookingForm() {
     setHasPending(Boolean(tokenRef.current));
     try {
       const config = await prebookingRequest<{ enabled: boolean; mode: string | null }>("config");
-      setAvailable(config.enabled);
-      setTestMode(config.mode === "test");
-      if (tokenRef.current && config.enabled) {
+      const livePaymentsAvailable = config.enabled && config.mode === "live";
+      setAvailable(livePaymentsAvailable);
+      if (tokenRef.current && livePaymentsAvailable) {
         try {
           await checkStatus();
         } catch (e) {
@@ -203,6 +201,10 @@ export function PreBookingForm() {
       throw new Error(
         "Your checkout is still being prepared. Contact AIRA with the reservation reference below before starting another payment.",
       );
+    if (order.mode !== "live" || !order.keyId.startsWith("rzp_live_"))
+      throw new Error(
+        "This checkout is no longer available. Contact AIRA to start a new pre-booking.",
+      );
     await loadRazorpay();
     const Razorpay = window.Razorpay!;
     let completed = false;
@@ -213,9 +215,7 @@ export function PreBookingForm() {
       currency: order.currency,
       name: "AIRA",
       description: "Early pre-booking · India Batch #1 · Refundable ₹99 deposit",
-      image: new URL(logo, window.location.origin).href,
       ...(prefill ? { prefill } : {}),
-      theme: { color: "#40534C", backdrop_color: "#1A3636" },
       modal: {
         confirm_close: true,
         ondismiss: () => {
@@ -407,11 +407,6 @@ export function PreBookingForm() {
                   ? "Your deposit status."
                   : "Early pre-bookings."}
             </h3>
-            {testMode && (
-              <p className="mt-3 rounded-lg border border-amber-300 bg-amber-50 p-3 text-xs text-amber-950">
-                Test checkout · no real reservation or customer ticket is issued.
-              </p>
-            )}
 
             {confirmed || refunded ? (
               <div className="mt-6" role="status">
@@ -649,7 +644,7 @@ export function PreBookingForm() {
                         className={buttonClass}
                       >
                         {available === false
-                          ? "Payments opening soon"
+                          ? "Payments temporarily unavailable"
                           : isBusy
                             ? "Preparing checkout…"
                             : editing
@@ -661,8 +656,7 @@ export function PreBookingForm() {
                 )}
                 {available === false && (
                   <p className="mt-4 text-center text-xs text-muted-foreground">
-                    Payments are not open yet. No deposit will be collected until checkout is
-                    available.
+                    Payments are temporarily unavailable. Please try again later or contact AIRA.
                   </p>
                 )}
               </>

@@ -116,9 +116,13 @@ export function receipt(b: Booking) {
 
 const env = (key: string) => Deno.env.get(key) || "";
 const publicKey = "sb_publishable_bKSs08g8dctPvH6v7UBzjA_OJ9GemtR";
-const origins = (env("AIRA_ALLOWED_ORIGINS") || "http://localhost:8080,https://useaira.netlify.app")
-  .split(",")
-  .map((s) => s.trim());
+const origins = [
+  "https://myaira.life",
+  "https://www.myaira.life",
+  ...(env("AIRA_ALLOWED_ORIGINS") || "http://localhost:8080,https://useaira.netlify.app")
+    .split(",")
+    .map((s) => s.trim()),
+];
 const keyId = env("RAZORPAY_KEY_ID");
 const keySecret = env("RAZORPAY_SECRET") || env("RAZORPAY_KEY_SECRET");
 const webhookSecret = env("RAZORPAY_WEBHOOK_SECRET");

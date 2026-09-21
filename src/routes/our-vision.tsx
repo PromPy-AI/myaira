@@ -31,7 +31,7 @@ export const Route = createFileRoute("/our-vision")({
           "Your memory. Your health. Your day, made simpler. Explore the AIRA roadmap through early 2028.",
       },
     ],
-    links: [{ rel: "canonical", href: "https://useaira.netlify.app/our-vision" }],
+    links: [{ rel: "canonical", href: "https://myaira.life/our-vision" }],
   }),
 });
 

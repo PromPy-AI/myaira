@@ -21,6 +21,7 @@ const env = {
 };
 globalThis.Deno = { env: { get: (key) => env[key] }, serve: () => {} };
 const { handleRequest } = await import("../supabase/functions/aira-prebook/index.ts");
+
 delete env.RAZORPAY_SECRET;
 const { handleRequest: disabledHandler } =
   await import("../supabase/functions/aira-prebook/index.ts?disabled");
@@ -74,6 +75,21 @@ function request(action, data = {}) {
     body: JSON.stringify({ action, token, ...data }),
   });
 }
+test("production domains are allowed without allowing lookalike origins", async () => {
+  for (const origin of ["https://myaira.life", "https://www.myaira.life"]) {
+    const req = request("config");
+    req.headers.set("origin", origin);
+    const response = await handleRequest(req);
+    assert.equal(response.status, 200);
+    assert.equal(response.headers.get("Access-Control-Allow-Origin"), origin);
+  }
+  const req = request("config");
+  req.headers.set("origin", "https://myaira.life.example.com");
+  const response = await handleRequest(req);
+  assert.equal(response.status, 403);
+  assert.equal(response.headers.get("Access-Control-Allow-Origin"), null);
+});
+
 function fixture(t, { p = payment, b = booking, isNew = false } = {}) {
   const state = { b: { ...b }, orderCreates: 0, reconciles: [] };
   t.mock.method(globalThis, "fetch", async (url, options = {}) => {
