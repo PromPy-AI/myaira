@@ -471,6 +471,216 @@
     display: inline;
   }
 }
+
+.aira-integrations {
+  padding-block: clamp(56px, 8vw, 112px);
+  background: var(--background);
+}
+.aira-integrations-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  align-items: center;
+  gap: clamp(36px, 7vw, 96px);
+}
+.aira-integrations-copy h2 {
+  max-width: 12ch;
+  margin-top: 18px;
+  color: var(--deep);
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+  font-weight: 500;
+}
+.aira-integrations-copy > p:not(.aira-integrations-eyebrow, .aira-integrations-note) {
+  max-width: 48ch;
+  margin-top: 22px;
+  color: color-mix(in oklab, var(--deep) 72%, white);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+.aira-integrations-eyebrow,
+.aira-integrations-note {
+  color: var(--sage);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.aira-integration-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+.aira-integration-app {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 7px 12px;
+  border: 1px solid color-mix(in oklab, var(--deep) 12%, transparent);
+  border-radius: 999px;
+  color: var(--deep);
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+.aira-integration-app img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+.aira-notion-mark {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid currentColor;
+  border-radius: 5px;
+  color: #171717;
+  font-family: Georgia, serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+}
+.aira-integrations-note {
+  margin-top: 18px;
+  color: color-mix(in oklab, var(--deep) 60%, white);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+}
+.aira-activity-card {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  padding: clamp(20px, 4vw, 44px);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.aira-activity-heading {
+  justify-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 2px;
+  padding: 9px 15px;
+  border: 1px solid rgb(255 255 255 / 45%);
+  border-radius: 999px;
+  background: rgb(45 51 67 / 52%);
+  color: white;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.aira-activity-heading > span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #61d798;
+  box-shadow: 0 0 10px rgb(97 215 152 / 75%);
+}
+.aira-activity-row {
+  display: grid;
+  grid-template-columns: 40px auto minmax(0, 1fr) 16px;
+  align-items: center;
+  gap: 10px;
+  min-height: 62px;
+  padding: 10px 13px;
+  border: 1px solid color-mix(in oklab, var(--deep) 10%, white);
+  border-radius: 17px;
+  background: var(--background);
+  box-shadow: 0 12px 32px rgb(26 54 54 / 9%);
+  color: var(--deep);
+  opacity: 0;
+  animation: aira-notification-pop 650ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+.aira-activity-row:nth-of-type(2) { animation-delay: 160ms; }
+.aira-activity-row:nth-of-type(3) { animation-delay: 360ms; }
+.aira-activity-row:nth-of-type(4) { animation-delay: 560ms; }
+.aira-activity-row:nth-of-type(5) { animation-delay: 760ms; }
+.aira-activity-row:nth-of-type(6) { animation-delay: 960ms; }
+@keyframes aira-notification-pop {
+  from { opacity: 0; transform: translateY(18px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.aira-activity-icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgb(29 43 55 / 8%);
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 8%);
+}
+.aira-activity-icon img {
+  width: 23px;
+  height: 23px;
+  object-fit: contain;
+}
+.aira-activity-icon.aira-notion-mark {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  font-size: 21px;
+}
+.aira-activity-status {
+  padding: 7px 9px;
+  border-radius: 9px;
+  background: rgb(255 255 255 / 90%);
+  font-size: 0.79rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.aira-activity-text {
+  overflow: hidden;
+  color: color-mix(in oklab, var(--deep) 82%, white);
+  font-size: 0.86rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.aira-activity-check {
+  color: #3c9469;
+  font-size: 1.1rem;
+}
+@media (max-width: 760px) {
+  .aira-integrations-grid {
+    grid-template-columns: 1fr;
+  }
+  .aira-integrations-copy h2 {
+    max-width: 16ch;
+  }
+}
+@media (max-width: 460px) {
+  .aira-activity-card {
+    gap: 9px;
+    padding: 16px 12px;
+    border-radius: 20px;
+  }
+  .aira-activity-row {
+    grid-template-columns: 34px auto minmax(0, 1fr) 12px;
+    gap: 7px;
+    min-height: 56px;
+    padding: 8px;
+    border-radius: 14px;
+  }
+  .aira-activity-icon,
+  .aira-activity-icon.aira-notion-mark {
+    width: 32px;
+    height: 32px;
+  }
+  .aira-activity-icon img {
+    width: 20px;
+    height: 20px;
+  }
+  .aira-activity-status {
+    padding: 6px 7px;
+    font-size: 0.68rem;
+  }
+  .aira-activity-text {
+    font-size: 0.72rem;
+  }
+}
 .aira-experiences {
   padding-top: clamp(32px, 5vw, 64px);
   padding-bottom: 16px;

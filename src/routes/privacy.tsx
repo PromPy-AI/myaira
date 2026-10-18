@@ -185,11 +185,12 @@ function Privacy() {
             </p>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               India Batch #1 requires a fully refundable ₹99 deposit, credited toward your device
-              order. It includes a ₹5,000 device discount, six months of free subscription, one year
-              of device warranty and monthly insider updates. A deposit does not complete a device
+              order. It includes a ₹5,000 device discount, 6 months of complimentary subscription
+              of the Legacy feature (optional), one year of device warranty and monthly insider
+              updates. A deposit does not complete a device
               purchase. To request a refund or help with your pre-booking data, email{" "}
-              <a href="mailto:nandigiridhar29@gmail.com" className="underline">
-                nandigiridhar29@gmail.com
+              <a href="mailto:info@myaira.life" className="underline">
+                info@myaira.life
               </a>{" "}
               with your ticket ID or payment reference.
             </p>
@@ -728,6 +729,13 @@ function Privacy() {
               </p>
               <p className="mt-6 text-xs tracking-[0.24em] text-muted-foreground uppercase">
                 Private by design. Personal by nature.
+              </p>
+              <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
+                Questions about this Privacy Policy? Contact us at{" "}
+                <a href="mailto:info@myaira.life" className="underline">
+                  info@myaira.life
+                </a>
+                .
               </p>
             </div>
           </div>

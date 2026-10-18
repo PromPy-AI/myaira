@@ -122,7 +122,7 @@ export const prebookingBenefits = [
   "Reserve a spot in the initial batch",
   "₹99 fully refundable · credited toward your device order",
   "₹5,000 off AIRA Loop",
-  "6 months of complimentary subscription",
+  "6 months of complimentary subscription of the Legacy feature (optional)",
   "Monthly insider updates",
   "Exclusive benefits, enhanced warranty & more surprises to come",
 ];

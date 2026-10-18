@@ -21,7 +21,7 @@ const fieldClass =
   "w-full rounded-xl border border-border bg-white px-4 py-3 text-base outline-none focus-visible:ring-2 focus-visible:ring-ring";
 const secondaryActionClass =
   "whitespace-nowrap border-0 bg-transparent p-0 text-xs leading-6 text-muted-foreground underline underline-offset-4 transition-colors hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring disabled:opacity-50";
-const supportEmail = "nandigiridhar29@gmail.com";
+const supportEmail = "info@myaira.life";
 type Phase = "idle" | "loading" | "checkout" | "verifying";
 
 function Benefits() {

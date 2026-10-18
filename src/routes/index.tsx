@@ -14,6 +14,10 @@ import logoImg from "@/assets/logo.png";
 import loopstackimages from "@/assets/loop-stack-image.png";
 import AiraloopImg from "@/assets/aira-loop-nobg.png";
 import { AgentIconStack } from "@/components/ui/agent-icon-stack";
+import gmailIcon from "@/assets/google-gmail.svg";
+import calendarIcon from "@/assets/google-calendar.svg";
+import meetIcon from "@/assets/google-meet.svg";
+import tasksIcon from "@/assets/google-tasks.webp";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -440,6 +444,62 @@ function Index() {
           </p>
         </div>
 
+        {/* Everyday app connections */}
+        <section className="aira-integrations" aria-labelledby="integrations-title">
+          <div className={`${shell} aira-integrations-grid`}>
+            <div className="aira-integrations-copy">
+              <p className="aira-integrations-eyebrow">AIRA, together with your day</p>
+              <h2 id="integrations-title">Works with the apps you use daily.</h2>
+              <p>
+                Bring your Mail, Calendar, Meet and Notion into one place. Connect the tools you
+                already use in the AIRA companion app, then let AIRA help you keep up with what
+                matters.
+              </p>
+              <div className="aira-integration-logos" aria-label="Mail, Calendar, Meet and Notion">
+                <span className="aira-integration-app"><img src={gmailIcon} alt="" />Mail</span>
+                <span className="aira-integration-app"><img src={calendarIcon} alt="" />Calendar</span>
+                <span className="aira-integration-app"><img src={meetIcon} alt="" />Meet</span>
+                <span className="aira-integration-app"><span className="aira-notion-mark" aria-hidden="true">N</span>Notion</span>
+                <span className="aira-integration-app"><img src={tasksIcon} alt="" />Google Tasks</span>
+              </div>
+              <p className="aira-integrations-note">Connect in the AIRA companion app</p>
+            </div>
+            <div className="aira-activity-card" aria-label="Example of AIRA organizing your day">
+              <div className="aira-activity-heading"><span />What AIRA helped with today</div>
+              <div className="aira-activity-row">
+                <span className="aira-activity-icon aira-notion-mark">N</span>
+                <span className="aira-activity-status">Saved</span>
+                <span className="aira-activity-text">the meeting notes</span>
+                <span className="aira-activity-check" aria-hidden="true">✓</span>
+              </div>
+              <div className="aira-activity-row">
+                <span className="aira-activity-icon"><img src={calendarIcon} alt="" /></span>
+                <span className="aira-activity-status">Planned</span>
+                <span className="aira-activity-text">your day around what's next</span>
+                <span className="aira-activity-check" aria-hidden="true">✓</span>
+              </div>
+              <div className="aira-activity-row">
+                <span className="aira-activity-icon"><img src={gmailIcon} alt="" /></span>
+                <span className="aira-activity-status">Drafted</span>
+                <span className="aira-activity-text">a follow-up after your call</span>
+                <span className="aira-activity-check" aria-hidden="true">✓</span>
+              </div>
+              <div className="aira-activity-row">
+                <span className="aira-activity-icon"><img src={meetIcon} alt="" /></span>
+                <span className="aira-activity-status">Scheduled</span>
+                <span className="aira-activity-text">Meet with Alex · 11:00 AM</span>
+                <span className="aira-activity-check" aria-hidden="true">✓</span>
+              </div>
+              <div className="aira-activity-row">
+                <span className="aira-activity-icon"><img src={tasksIcon} alt="" /></span>
+                <span className="aira-activity-status">Added</span>
+                <span className="aira-activity-text">follow up on your action items</span>
+                <span className="aira-activity-check" aria-hidden="true">✓</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <LoopExperienceCarousel />
 
         <LoopFeatures />
@@ -453,8 +513,8 @@ function Index() {
             <p className="mt-8 max-w-[44ch] text-base leading-relaxed text-muted-foreground sm:text-lg">
               Join the early access list and be among the first to experience AIRA.
             </p>
-            <WaitlistForm />
             <PreBookingForm />
+            <WaitlistForm />
           </div>
         </section>
       </main>
