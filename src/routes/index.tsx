@@ -13,11 +13,17 @@ import { LoopExperienceCarousel } from "@/components/LoopExperienceCarousel";
 import logoImg from "@/assets/logo.png";
 import loopstackimages from "@/assets/loop-stack-image.png";
 import AiraloopImg from "@/assets/aira-loop-nobg.png";
-import { AgentIconStack } from "@/components/ui/agent-icon-stack";
 import gmailIcon from "@/assets/google-gmail.svg";
 import calendarIcon from "@/assets/google-calendar.svg";
 import meetIcon from "@/assets/google-meet.svg";
 import tasksIcon from "@/assets/google-tasks.webp";
+import {
+  Activity,
+  AudioLines,
+  Battery,
+  Globe2,
+  ShieldCheck,
+} from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -352,18 +358,13 @@ function Index() {
                   The AI You. Built from your life.
                 </p>
               </div>
-              <figure className="relative overflow-hidden rounded-2xl">
+              <figure className="relative flex items-center justify-center rounded-2xl">
                 <img
                   src={loopstackimages}
                   alt="AIRA Loop wristband product concepts in three finishes"
                   loading="lazy"
                   draggable={false}
-                  className="h-full w-full rounded-2xl object-cover select-none"
-                  style={{
-                    maskImage: "radial-gradient(120% 120% at 50% 50%, #000 62%, transparent 100%)",
-                    WebkitMaskImage:
-                      "radial-gradient(120% 120% at 50% 50%, #000 62%, transparent 100%)",
-                  }}
+                  className="h-auto max-h-[520px] w-full rounded-2xl object-contain select-none"
                 />
               </figure>
             </div>
@@ -423,26 +424,74 @@ function Index() {
           </div>
         </section>
 
-        <div className={`${shell} aira-agent-statement`}>
-          <p>
-            <span className="aira-agent-name">
-              AIRA
-              <img
-                src="https://obpgdfxxqufrzhbplgty.supabase.co/storage/v1/object/public/aira-public/aira-blog-agent.png"
-                alt=""
-                width={64}
-                draggable={false}
-                height={64}
-                loading="lazy"
-                className="aira-agent-avatar"
-              />
-            </span>
-            , your AI second brain{" "}
-            <span className="aira-agent-action">
-              that gets <AgentIconStack /> done
-            </span>
-          </p>
-        </div>
+        <section className="aira-specs" aria-label="AIRA Loop features">
+          <div className={shell}>
+            <div className="aira-specs-grid">
+              <article className="aira-spec-card aira-spec-premium">
+                <h3>Premium body frame</h3>
+                <p>Thoughtfully crafted for everyday wear.</p>
+              </article>
+              <article className="aira-spec-card aira-spec-light">
+                <svg viewBox="34 28 173 184" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="m53.76 206.48c-5.44-1.57-10-4.26-13.16-8.92a4.45 4.45 0 0 1 -.12-5.45c14.67-23.84 34.14-42.57 58.87-55.77 10.59-5.65 21.28-11.11 31.76-17 12.89-7.15 24.39-16.21 32.89-28.51 3.16-4.58 5.72-9.57 8.54-14.38a3 3 0 0 0 .38-1.65 5.94 5.94 0 0 0 -.55.67c-8.78 14.89-21.49 25.44-37 32.65-10.93 5.08-22.13 9.57-33.21 14.33-16.09 6.91-31.07 15.55-43.75 27.88a8.45 8.45 0 0 1 -.83.63c-4.24-8.7-6.36-17.79-5.3-27.32 2.66-24 15.5-40.45 37.4-50.15 11.45-5.07 23.51-8.07 35.68-10.75 7.45-1.64 14.94-3.18 22.3-5.17 17.85-4.82 25.54-9.66 38.07-23.4a3.57 3.57 0 0 1 .58.67c18.2 34.77 19.41 69.78.51 104.58-12.59 23.19-32.87 36.11-58.58 40.84-13.52 2.49-27 2.4-40.15-2-4.12-1.36-8-3.33-12.31-5.12-9.78 9.22-15.84 21.26-22.02 33.34z" fill="#a3c48a" />
+                </svg>
+                <h3>Lightweight</h3>
+                <p>Comfortable from morning to night.</p>
+              </article>
+              <article className="aira-spec-card aira-spec-battery">
+                <Battery aria-hidden="true" />
+                <h3>3-day battery life</h3>
+                <p>More of your day, between charges.</p>
+              </article>
+              <figure className="aira-spec-product">
+                <img
+                  src={AiraloopImg}
+                  alt="AIRA Loop screenless AI wristband"
+                  loading="lazy"
+                  draggable={false}
+                />
+              </figure>
+              <article className="aira-spec-card aira-spec-mics">
+                <AudioLines aria-hidden="true" />
+                <h3>Two microphones</h3>
+                <p>Whisper when you need to.</p>
+              </article>
+              <article className="aira-spec-card aira-spec-languages">
+                <Globe2 aria-hidden="true" />
+                <h3>100+ languages</h3>
+                <p>Speak in the language that feels like you.</p>
+              </article>
+              <article className="aira-spec-card aira-spec-privacy">
+                <ShieldCheck aria-hidden="true" />
+                <h3>One-switch privacy control</h3>
+                <div className="aira-spec-control" aria-label="Active, mute, or block recording">
+                  <span>Active</span>
+                  <span>Mute</span>
+                  <span>Block</span>
+                </div>
+              </article>
+              <article className="aira-spec-card aira-spec-app">
+                <img
+                  src="https://obpgdfxxqufrzhbplgty.supabase.co/storage/v1/object/public/aira-public/aira-blob-nobg.png"
+                  alt=""
+                  loading="lazy"
+                  draggable={false}
+                />
+                <div>
+                  <h3>Your agentic companion app</h3>
+                  <p>Your day, connected and understood.</p>
+                </div>
+              </article>
+              <article className="aira-spec-card aira-spec-health">
+                <Activity aria-hidden="true" />
+                <div>
+                  <h3>Monitor your health metrics</h3>
+                  <p>Understand sleep, activity, recovery and stress.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
 
         {/* Everyday app connections */}
         <section className="aira-integrations" aria-labelledby="integrations-title">

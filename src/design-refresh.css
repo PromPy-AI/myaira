@@ -301,8 +301,12 @@
   border-radius: 30px;
 }
 .aira-story figure img {
-  min-height: 320px;
-  object-fit: cover;
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  min-height: 0;
+  object-fit: contain;
 }
 .aira-pillars {
   padding-bottom: clamp(72px, 8vw, 112px);
@@ -381,97 +385,183 @@
   letter-spacing: 0.12em;
 }
 
-/* Two complete feature tables, with a quieter and more scannable presentation. */
-.aira-agent-statement {
-  padding-top: clamp(48px, 6vw, 80px);
-  padding-bottom: 16px;
-  text-align: center;
+.aira-specs {
+  padding-block: clamp(42px, 6vw, 82px);
+  background: var(--background);
 }
-.aira-agent-statement p {
-  max-width: 1000px;
-  margin: 0 auto;
-  color: var(--deep);
-  font-size: clamp(27px, 4vw, 52px);
-  line-height: 1.5;
-  font-weight: 500;
-  letter-spacing: -0.04em;
-  text-wrap: balance;
+.aira-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(4, minmax(160px, auto));
+  gap: 16px;
 }
-.aira-agent-name {
-  display: inline-flex;
-  align-items: center;
-  vertical-align: middle;
-  gap: 0.2em;
-}
-.aira-agent-name {
-  white-space: nowrap;
-}
-.aira-agent-avatar {
-  width: 1.2em;
-  height: 1.2em;
-  border-radius: 50%;
-  object-fit: cover;
-  background: #f8f5ee;
-}
-.aira-agent-action {
-  display: block;
-}
-.aira-agent-services {
-  display: inline-block;
-  vertical-align: middle;
-  margin-inline: 0.12em;
-  width: 3.55em;
-  height: 1.2em;
-  overflow: hidden;
-  background: transparent;
-}
-.aira-agent-icon-track {
+.aira-spec-card {
   display: flex;
   flex-direction: column;
-  animation: aira-icons-up 5s cubic-bezier(0.22, 1, 0.36, 1) infinite;
-}
-.aira-agent-icon-row {
-  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.2em;
-  flex: 0 0 1.2em;
-  height: 1.2em;
+  min-width: 0;
+  padding: clamp(20px, 3vw, 34px);
+  border: 1px solid color-mix(in oklab, var(--deep) 4%, transparent);
+  border-radius: 26px;
+  background: #f4f4f6;
+  text-align: center;
+  transition: transform 240ms ease, box-shadow 240ms ease, background-color 240ms ease;
 }
-.aira-agent-services:hover .aira-agent-icon-track {
-  animation-play-state: paused;
+.aira-spec-card:hover {
+  transform: translateY(-4px);
+  background: #f1f2f5;
+  box-shadow: 0 14px 30px rgb(26 54 54 / 7%);
 }
-@keyframes aira-icons-up {
-  0%,
-  40% {
-    transform: translateY(0);
+.aira-spec-card > svg {
+  width: 38px;
+  height: 38px;
+  margin-bottom: 16px;
+  color: #9bbbe9;
+  stroke-width: 1.65;
+  animation: aira-spec-float 4.2s ease-in-out infinite;
+}
+.aira-spec-premium > svg { color: #9ca5b5; animation-delay: 0ms; }
+.aira-spec-light > svg { color: #b4d1a7; animation-delay: 260ms; }
+.aira-spec-battery > svg { color: #43c86b; animation-delay: 500ms; }
+.aira-spec-mics > svg { color: #9ebff0; animation-delay: 720ms; }
+.aira-spec-languages > svg { color: #a7c3ef; animation-delay: 940ms; }
+.aira-spec-privacy > svg { color: #b4d1a7; animation-delay: 1160ms; }
+.aira-spec-health > svg { color: #9ebff0; animation-delay: 1380ms; }
+@keyframes aira-spec-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+.aira-spec-card h3 {
+  color: var(--deep);
+  font-size: clamp(1.05rem, 1.7vw, 1.45rem);
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  font-weight: 500;
+  text-wrap: balance;
+}
+.aira-spec-card p {
+  margin-top: 7px;
+  color: color-mix(in oklab, var(--deep) 66%, white);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+.aira-spec-premium { grid-column: 1 / 3; grid-row: 1; }
+.aira-spec-light { grid-column: 3 / 5; grid-row: 1; }
+.aira-spec-battery { grid-column: 1; grid-row: 2; }
+.aira-spec-product {
+  grid-column: 2 / 4;
+  grid-row: 2 / 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 340px;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 26px;
+  background: radial-gradient(ellipse at 50% 52%, #ece8df 0%, #f7f6f2 66%, #fff 100%);
+  transition: box-shadow 260ms ease;
+}
+.aira-spec-product:hover {
+  box-shadow: 0 16px 36px rgb(26 54 54 / 8%);
+}
+.aira-spec-product img {
+  width: 100%;
+  height: 100%;
+  max-height: 440px;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 24px rgb(26 54 54 / 13%));
+  transition: transform 350ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.aira-spec-product:hover img {
+  transform: scale(1.035);
+}
+.aira-spec-mics { grid-column: 4; grid-row: 2; }
+.aira-spec-languages { grid-column: 1; grid-row: 3; }
+.aira-spec-privacy { grid-column: 4; grid-row: 3; }
+.aira-spec-app { grid-column: 1 / 3; grid-row: 4; }
+.aira-spec-health { grid-column: 3 / 5; grid-row: 4; }
+.aira-spec-app,
+.aira-spec-health {
+  flex-direction: row;
+  gap: 18px;
+  text-align: left;
+}
+.aira-spec-app > img {
+  width: clamp(52px, 7vw, 82px);
+  height: clamp(52px, 7vw, 82px);
+  flex: 0 0 auto;
+  object-fit: contain;
+  animation: aira-spec-float 4.2s ease-in-out 480ms infinite;
+}
+.aira-spec-health > svg {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 auto;
+  margin: 0;
+  color: var(--sage);
+}
+.aira-spec-control {
+  display: inline-flex;
+  gap: 3px;
+  margin-top: 10px;
+  padding: 4px;
+  border: 1px solid color-mix(in oklab, var(--deep) 9%, transparent);
+  border-radius: 999px;
+  background: white;
+}
+.aira-spec-control span {
+  padding: 6px 8px;
+  border-radius: 999px;
+  color: color-mix(in oklab, var(--deep) 66%, white);
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.aira-spec-control span:first-child {
+  background: var(--deep);
+  color: white;
+}
+@media (max-width: 760px) {
+  .aira-specs-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto;
+    gap: 12px;
   }
-  50%,
-  90% {
-    transform: translateY(-33.333333%);
+  .aira-spec-card,
+  .aira-spec-product {
+    grid-column: auto;
+    grid-row: auto;
+    min-height: 190px;
   }
-  100% {
-    transform: translateY(-66.666667%);
+  .aira-spec-product {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    order: -1;
+    min-height: 340px;
   }
+  .aira-spec-product img { max-height: 310px; }
+  .aira-spec-app,
+  .aira-spec-health { grid-column: 1 / -1; }
+}
+@media (max-width: 460px) {
+  .aira-spec-card { padding: 18px 12px; border-radius: 20px; }
+  .aira-spec-card h3 { font-size: 1.02rem; }
+  .aira-spec-card p { font-size: 0.78rem; }
+  .aira-spec-product { min-height: 300px; border-radius: 20px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .aira-agent-services .aira-agent-icon-track {
+  .aira-spec-card,
+  .aira-spec-card > svg,
+  .aira-spec-app > img,
+  .aira-spec-product,
+  .aira-spec-product img {
     animation: none;
-    transform: none;
+    transition: none;
   }
 }
-.aira-agent-services img {
-  display: block;
-  width: 1.05em;
-  height: 1.05em;
-  object-fit: contain;
-}
-@media (max-width: 480px) {
-  .aira-agent-action {
-    display: inline;
-  }
-}
-
 .aira-integrations {
   padding-block: clamp(56px, 8vw, 112px);
   background: var(--background);
