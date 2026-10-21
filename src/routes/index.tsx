@@ -17,6 +17,9 @@ import gmailIcon from "@/assets/google-gmail.svg";
 import calendarIcon from "@/assets/google-calendar.svg";
 import meetIcon from "@/assets/google-meet.svg";
 import tasksIcon from "@/assets/google-tasks.webp";
+import swiggyIcon from "@/assets/swiggy.png";
+import instamartIcon from "@/assets/instamart.png";
+import zeptoIcon from "@/assets/zepto.png";
 import {
   Activity,
   AudioLines,
@@ -89,6 +92,17 @@ const controls = [
 ];
 
 const products = ["AIRA Loop", "Screenless wristband + companion app"];
+
+const integrationNotifications = [
+  { app: "Notion", icon: null, status: "Saved", message: "the meeting notes" },
+  { app: "Calendar", icon: calendarIcon, status: "Planned", message: "your day around what's next" },
+  { app: "Mail", icon: gmailIcon, status: "Drafted", message: "a follow-up after your call" },
+  { app: "Meet", icon: meetIcon, status: "Scheduled", message: "Meet with Alex · 11:00 AM" },
+  { app: "Google Tasks", icon: tasksIcon, status: "Added", message: "follow up on your action items" },
+  { app: "Swiggy", icon: swiggyIcon, status: "On the way", message: "Chicken Biryani from FoodBox · 24 min away" },
+  { app: "Instamart", icon: instamartIcon, status: "Restocked", message: "daily essentials for your home" },
+  { app: "Zepto", icon: zeptoIcon, status: "On the way", message: "fresh groceries, right to your door" },
+];
 
 type SubmissionStatus = "idle" | "submitting" | "done" | "error";
 const submissionError =
@@ -499,51 +513,52 @@ function Index() {
             <div className="aira-integrations-copy">
               <p className="aira-integrations-eyebrow">AIRA, together with your day</p>
               <h2 id="integrations-title">Works with the apps you use daily.</h2>
-              <p>
-                Bring your Mail, Calendar, Meet and Notion into one place. Connect the tools you
-                already use in the AIRA companion app, then let AIRA help you keep up with what
-                matters.
+              <p className="aira-integrations-tagline">
+                The Agentic wristband that monitors, remembers and acts.
               </p>
-              <div className="aira-integration-logos" aria-label="Mail, Calendar, Meet and Notion">
+              <p>
+                Connect Mail, Calendar, Meet, Notion and your grocery apps in the AIRA companion
+                app. Ask AIRA to plan your day or get your everyday groceries delivered home.
+              </p>
+              <div className="aira-integration-logos" aria-label="Mail, Calendar, Meet, Notion and grocery apps">
                 <span className="aira-integration-app"><img src={gmailIcon} alt="" />Mail</span>
                 <span className="aira-integration-app"><img src={calendarIcon} alt="" />Calendar</span>
                 <span className="aira-integration-app"><img src={meetIcon} alt="" />Meet</span>
                 <span className="aira-integration-app"><span className="aira-notion-mark" aria-hidden="true">N</span>Notion</span>
                 <span className="aira-integration-app"><img src={tasksIcon} alt="" />Google Tasks</span>
+                <span className="aira-integration-app aira-grocery-app"><img className="aira-swiggy-logo" src={swiggyIcon} alt="Swiggy" /></span>
+                <span className="aira-integration-app aira-grocery-app"><img className="aira-square-grocery-logo" src={instamartIcon} alt="Instamart" /></span>
+                <span className="aira-integration-app aira-grocery-app"><img className="aira-square-grocery-logo" src={zeptoIcon} alt="Zepto" /></span>
               </div>
               <p className="aira-integrations-note">Connect in the AIRA companion app</p>
             </div>
-            <div className="aira-activity-card" aria-label="Example of AIRA organizing your day">
-              <div className="aira-activity-heading"><span />What AIRA helped with today</div>
-              <div className="aira-activity-row">
-                <span className="aira-activity-icon aira-notion-mark">N</span>
-                <span className="aira-activity-status">Saved</span>
-                <span className="aira-activity-text">the meeting notes</span>
-                <span className="aira-activity-check" aria-hidden="true">✓</span>
-              </div>
-              <div className="aira-activity-row">
-                <span className="aira-activity-icon"><img src={calendarIcon} alt="" /></span>
-                <span className="aira-activity-status">Planned</span>
-                <span className="aira-activity-text">your day around what's next</span>
-                <span className="aira-activity-check" aria-hidden="true">✓</span>
-              </div>
-              <div className="aira-activity-row">
-                <span className="aira-activity-icon"><img src={gmailIcon} alt="" /></span>
-                <span className="aira-activity-status">Drafted</span>
-                <span className="aira-activity-text">a follow-up after your call</span>
-                <span className="aira-activity-check" aria-hidden="true">✓</span>
-              </div>
-              <div className="aira-activity-row">
-                <span className="aira-activity-icon"><img src={meetIcon} alt="" /></span>
-                <span className="aira-activity-status">Scheduled</span>
-                <span className="aira-activity-text">Meet with Alex · 11:00 AM</span>
-                <span className="aira-activity-check" aria-hidden="true">✓</span>
-              </div>
-              <div className="aira-activity-row">
-                <span className="aira-activity-icon"><img src={tasksIcon} alt="" /></span>
-                <span className="aira-activity-status">Added</span>
-                <span className="aira-activity-text">follow up on your action items</span>
-                <span className="aira-activity-check" aria-hidden="true">✓</span>
+            <div
+              className="aira-activity-card"
+              role="group"
+              aria-label="Examples of AIRA organizing your day and delivering groceries"
+            >
+              <div className="aira-activity-heading"><span />What AIRA can take care of today</div>
+              <div className="aira-notification-window" aria-hidden="true">
+                <div className="aira-notification-track">
+                  {[0, 1].map((cycle) => (
+                    <div className="aira-notification-cycle" key={cycle}>
+                      {integrationNotifications.map((notification) => (
+                        <div className="aira-activity-row" key={`${cycle}-${notification.app}`}>
+                          <span className="aira-activity-icon">
+                            {notification.icon ? (
+                              <img src={notification.icon} alt="" />
+                            ) : (
+                              <span className="aira-notion-mark">N</span>
+                            )}
+                          </span>
+                          <span className="aira-activity-status">{notification.status}</span>
+                          <span className="aira-activity-text">{notification.message}</span>
+                          <span className="aira-activity-check" aria-hidden="true">✓</span>
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

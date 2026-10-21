@@ -579,9 +579,18 @@
   font-size: clamp(2.2rem, 5vw, 4rem);
   line-height: 1.02;
   letter-spacing: -0.045em;
-  font-weight: 500;
+  font-weight: 400;
 }
-.aira-integrations-copy > p:not(.aira-integrations-eyebrow, .aira-integrations-note) {
+.aira-integrations-tagline {
+  max-width: 48ch;
+  margin-top: 17px;
+  color: var(--forest);
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  line-height: 1.45;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+.aira-integrations-copy > p:not(.aira-integrations-eyebrow, .aira-integrations-note, .aira-integrations-tagline) {
   max-width: 48ch;
   margin-top: 22px;
   color: color-mix(in oklab, var(--deep) 72%, white);
@@ -616,6 +625,21 @@
 .aira-integration-app img {
   width: 20px;
   height: 20px;
+  object-fit: contain;
+}
+.aira-integration-app.aira-grocery-app {
+  min-height: 42px;
+  padding: 5px 10px;
+}
+.aira-integration-app .aira-swiggy-logo {
+  width: 58px;
+  height: 26px;
+  object-fit: contain;
+}
+.aira-integration-app .aira-square-grocery-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
   object-fit: contain;
 }
 .aira-notion-mark {
@@ -669,6 +693,36 @@
   background: #61d798;
   box-shadow: 0 0 10px rgb(97 215 152 / 75%);
 }
+.aira-notification-window {
+  height: 284px;
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 9%, #000 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 9%, #000 90%, transparent 100%);
+}
+.aira-notification-track {
+  display: flex;
+  flex-direction: column;
+  animation: aira-notification-roll 24s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+.aira-notification-cycle {
+  display: grid;
+  flex: none;
+  gap: 12px;
+}
+.aira-notification-window:hover .aira-notification-track {
+  animation-play-state: paused;
+}
+@keyframes aira-notification-roll {
+  0%, 10% { transform: translateY(0); }
+  12.5%, 22.5% { transform: translateY(-6.25%); }
+  25%, 35% { transform: translateY(-12.5%); }
+  37.5%, 47.5% { transform: translateY(-18.75%); }
+  50%, 60% { transform: translateY(-25%); }
+  62.5%, 72.5% { transform: translateY(-31.25%); }
+  75%, 85% { transform: translateY(-37.5%); }
+  87.5%, 97.5% { transform: translateY(-43.75%); }
+  100% { transform: translateY(-50%); }
+}
 .aira-activity-row {
   display: grid;
   grid-template-columns: 40px auto minmax(0, 1fr) 16px;
@@ -681,17 +735,6 @@
   background: var(--background);
   box-shadow: 0 12px 32px rgb(26 54 54 / 9%);
   color: var(--deep);
-  opacity: 0;
-  animation: aira-notification-pop 650ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-}
-.aira-activity-row:nth-of-type(2) { animation-delay: 160ms; }
-.aira-activity-row:nth-of-type(3) { animation-delay: 360ms; }
-.aira-activity-row:nth-of-type(4) { animation-delay: 560ms; }
-.aira-activity-row:nth-of-type(5) { animation-delay: 760ms; }
-.aira-activity-row:nth-of-type(6) { animation-delay: 960ms; }
-@keyframes aira-notification-pop {
-  from { opacity: 0; transform: translateY(18px) scale(0.97); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 .aira-activity-icon {
   display: grid;
@@ -707,6 +750,10 @@
   width: 23px;
   height: 23px;
   object-fit: contain;
+}
+.aira-activity-icon img[src*="swiggy"] {
+  object-fit: cover;
+  object-position: left center;
 }
 .aira-activity-icon.aira-notion-mark {
   width: 38px;
@@ -754,6 +801,8 @@
     padding: 8px;
     border-radius: 14px;
   }
+  .aira-notification-window { height: 251px; }
+  .aira-notification-cycle { gap: 9px; }
   .aira-activity-icon,
   .aira-activity-icon.aira-notion-mark {
     width: 32px;
@@ -769,6 +818,11 @@
   }
   .aira-activity-text {
     font-size: 0.72rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aira-notification-track {
+    animation: none;
   }
 }
 .aira-experiences {
