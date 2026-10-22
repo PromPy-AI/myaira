@@ -505,6 +505,9 @@
 }
 .aira-spec-control {
   display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
   gap: 3px;
   margin-top: 10px;
   padding: 4px;
@@ -512,15 +515,28 @@
   border-radius: 999px;
   background: white;
 }
-.aira-spec-control span {
-  padding: 6px 8px;
+.aira-spec-control button {
+  min-height: 32px;
+  padding: 5px clamp(5px, 0.8vw, 8px);
+  border: 0;
   border-radius: 999px;
+  background: transparent;
   color: color-mix(in oklab, var(--deep) 66%, white);
   font-size: 0.62rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
 }
-.aira-spec-control span:first-child {
+.aira-spec-control button:hover,
+.aira-spec-control button:focus-visible {
+  color: var(--deep);
+}
+.aira-spec-control button:focus-visible {
+  outline: 2px solid var(--sage);
+  outline-offset: 1px;
+}
+.aira-spec-control button.is-selected {
   background: var(--deep);
   color: white;
 }
@@ -581,16 +597,7 @@
   letter-spacing: -0.045em;
   font-weight: 400;
 }
-.aira-integrations-tagline {
-  max-width: 48ch;
-  margin-top: 17px;
-  color: var(--forest);
-  font-size: clamp(1rem, 1.6vw, 1.2rem);
-  line-height: 1.45;
-  font-weight: 500;
-  letter-spacing: -0.02em;
-}
-.aira-integrations-copy > p:not(.aira-integrations-eyebrow, .aira-integrations-note, .aira-integrations-tagline) {
+.aira-integrations-copy > p:not(.aira-integrations-eyebrow, .aira-integrations-note) {
   max-width: 48ch;
   margin-top: 22px;
   color: color-mix(in oklab, var(--deep) 72%, white);
@@ -605,17 +612,26 @@
   text-transform: uppercase;
 }
 .aira-integration-logos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  display: grid;
+  gap: 8px;
   margin-top: 28px;
 }
+.aira-integration-row {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: center;
+  gap: 6px;
+}
+.aira-integration-daily { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .aira-integration-app {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 5px;
+  min-width: 0;
+  width: 100%;
   min-height: 42px;
-  padding: 7px 12px;
+  padding: 6px 5px;
   border: 1px solid color-mix(in oklab, var(--deep) 12%, transparent);
   border-radius: 999px;
   color: var(--deep);
@@ -625,14 +641,21 @@
 .aira-integration-app img {
   width: 20px;
   height: 20px;
+  flex: 0 0 auto;
   object-fit: contain;
 }
+.aira-app-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .aira-integration-app.aira-grocery-app {
-  min-height: 42px;
+  min-height: 54px;
+  height: 54px;
+  overflow: hidden;
   padding: 5px 10px;
 }
 .aira-integration-app .aira-swiggy-logo {
-  width: 58px;
+  width: 54px;
   height: 26px;
   object-fit: contain;
 }
@@ -641,6 +664,22 @@
   height: 32px;
   border-radius: 8px;
   object-fit: contain;
+}
+.aira-integration-app.aira-namma-app {
+  min-height: 54px;
+  padding: 4px 8px;
+}
+.aira-integration-app .aira-namma-logo {
+  width: 60px;
+  height: 40px;
+  object-fit: contain;
+}
+@media (max-width: 480px) {
+  .aira-integration-tools .aira-app-name { display: none; }
+  .aira-integration-tools .aira-integration-app { padding-inline: 3px; }
+  .aira-integration-app .aira-swiggy-logo { width: 46px; }
+  .aira-integration-app .aira-namma-logo { width: 42px; height: 30px; }
+  .aira-integration-app.aira-grocery-app { padding-inline: 3px; }
 }
 .aira-notion-mark {
   display: inline-grid;
@@ -702,7 +741,7 @@
 .aira-notification-track {
   display: flex;
   flex-direction: column;
-  animation: aira-notification-roll 24s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  animation: aira-notification-roll 33s cubic-bezier(0.22, 1, 0.36, 1) infinite;
 }
 .aira-notification-cycle {
   display: grid;
@@ -713,14 +752,17 @@
   animation-play-state: paused;
 }
 @keyframes aira-notification-roll {
-  0%, 10% { transform: translateY(0); }
-  12.5%, 22.5% { transform: translateY(-6.25%); }
-  25%, 35% { transform: translateY(-12.5%); }
-  37.5%, 47.5% { transform: translateY(-18.75%); }
-  50%, 60% { transform: translateY(-25%); }
-  62.5%, 72.5% { transform: translateY(-31.25%); }
-  75%, 85% { transform: translateY(-37.5%); }
-  87.5%, 97.5% { transform: translateY(-43.75%); }
+  0%, 7.4% { transform: translateY(0); }
+  9.09%, 16.5% { transform: translateY(-4.545%); }
+  18.18%, 25.6% { transform: translateY(-9.091%); }
+  27.27%, 34.7% { transform: translateY(-13.636%); }
+  36.36%, 43.8% { transform: translateY(-18.182%); }
+  45.45%, 52.9% { transform: translateY(-22.727%); }
+  54.54%, 61.9% { transform: translateY(-27.273%); }
+  63.63%, 71% { transform: translateY(-31.818%); }
+  72.72%, 80.1% { transform: translateY(-36.364%); }
+  81.81%, 89.2% { transform: translateY(-40.909%); }
+  90.9%, 98.3% { transform: translateY(-45.455%); }
   100% { transform: translateY(-50%); }
 }
 .aira-activity-row {

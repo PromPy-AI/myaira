@@ -20,6 +20,7 @@ import tasksIcon from "@/assets/google-tasks.webp";
 import swiggyIcon from "@/assets/swiggy.png";
 import instamartIcon from "@/assets/instamart.png";
 import zeptoIcon from "@/assets/zepto.png";
+import nammaYatriIcon from "@/assets/namma-yatri.png";
 import {
   Activity,
   AudioLines,
@@ -102,6 +103,9 @@ const integrationNotifications = [
   { app: "Swiggy", icon: swiggyIcon, status: "On the way", message: "Chicken Biryani from FoodBox · 24 min away" },
   { app: "Instamart", icon: instamartIcon, status: "Restocked", message: "daily essentials for your home" },
   { app: "Zepto", icon: zeptoIcon, status: "On the way", message: "fresh groceries, right to your door" },
+  { app: "Namma Yatri", icon: nammaYatriIcon, status: "Scheduled", message: "your cab is booked for office time every day" },
+  { app: "Namma Yatri", icon: nammaYatriIcon, status: "7 min away", message: "your cab is approaching" },
+  { app: "Namma Yatri", icon: nammaYatriIcon, status: "Ticket ready", message: "your metro ticket is here" },
 ];
 
 type SubmissionStatus = "idle" | "submitting" | "done" | "error";
@@ -231,6 +235,27 @@ function ControlToggle() {
   );
 }
 
+function PrivacySpecControl() {
+  const [mode, setMode] = useState<"Active" | "Mute" | "Block">("Active");
+  const modes = ["Active", "Mute", "Block"] as const;
+
+  return (
+    <div className="aira-spec-control" role="group" aria-label="Privacy control">
+      {modes.map((option) => (
+        <button
+          key={option}
+          type="button"
+          aria-pressed={mode === option}
+          className={mode === option ? "is-selected" : ""}
+          onClick={() => setMode(option)}
+        >
+          {option}
+        </button>
+      ))}
+    </div>
+  );
+}
+
 function Index() {
   const heroImage = useRef<HTMLImageElement>(null);
   const [heroImageReady, setHeroImageReady] = useState(false);
@@ -282,8 +307,7 @@ function Index() {
               className="reveal mt-10 max-w-[46ch] text-base leading-relaxed text-[oklch(0.97_0.015_88)]/72 sm:text-lg"
               style={{ animationDelay: "220ms" }}
             >
-              AIRA Loop is a screenless AI wristband designed to help you remember everyday
-              conversations, track your health and ask questions about your day.
+              AIRA Loop, a screenless agentic wristband that monitors, remembers and acts.
             </p>
             <div className="aira-hero-actions">
               <a
@@ -478,11 +502,7 @@ function Index() {
               <article className="aira-spec-card aira-spec-privacy">
                 <ShieldCheck aria-hidden="true" />
                 <h3>One-switch privacy control</h3>
-                <div className="aira-spec-control" aria-label="Active, mute, or block recording">
-                  <span>Active</span>
-                  <span>Mute</span>
-                  <span>Block</span>
-                </div>
+                <PrivacySpecControl />
               </article>
               <article className="aira-spec-card aira-spec-app">
                 <img
@@ -513,22 +533,24 @@ function Index() {
             <div className="aira-integrations-copy">
               <p className="aira-integrations-eyebrow">AIRA, together with your day</p>
               <h2 id="integrations-title">Works with the apps you use daily.</h2>
-              <p className="aira-integrations-tagline">
-                The Agentic wristband that monitors, remembers and acts.
-              </p>
               <p>
-                Connect Mail, Calendar, Meet, Notion and your grocery apps in the AIRA companion
-                app. Ask AIRA to plan your day or get your everyday groceries delivered home.
+                Connect your work, travel and grocery apps in the AIRA companion app. Let AIRA
+                organize your day, arrange your ride and bring everyday groceries home.
               </p>
-              <div className="aira-integration-logos" aria-label="Mail, Calendar, Meet, Notion and grocery apps">
-                <span className="aira-integration-app"><img src={gmailIcon} alt="" />Mail</span>
-                <span className="aira-integration-app"><img src={calendarIcon} alt="" />Calendar</span>
-                <span className="aira-integration-app"><img src={meetIcon} alt="" />Meet</span>
-                <span className="aira-integration-app"><span className="aira-notion-mark" aria-hidden="true">N</span>Notion</span>
-                <span className="aira-integration-app"><img src={tasksIcon} alt="" />Google Tasks</span>
-                <span className="aira-integration-app aira-grocery-app"><img className="aira-swiggy-logo" src={swiggyIcon} alt="Swiggy" /></span>
-                <span className="aira-integration-app aira-grocery-app"><img className="aira-square-grocery-logo" src={instamartIcon} alt="Instamart" /></span>
-                <span className="aira-integration-app aira-grocery-app"><img className="aira-square-grocery-logo" src={zeptoIcon} alt="Zepto" /></span>
+              <div className="aira-integration-logos" aria-label="Mail, Calendar, Meet, Notion, grocery and travel apps">
+                <div className="aira-integration-row aira-integration-tools">
+                  <span className="aira-integration-app" role="img" aria-label="Mail"><img src={gmailIcon} alt="" /><span className="aira-app-name">Mail</span></span>
+                  <span className="aira-integration-app" role="img" aria-label="Calendar"><img src={calendarIcon} alt="" /><span className="aira-app-name">Calendar</span></span>
+                  <span className="aira-integration-app" role="img" aria-label="Meet"><img src={meetIcon} alt="" /><span className="aira-app-name">Meet</span></span>
+                  <span className="aira-integration-app" role="img" aria-label="Notion"><span className="aira-notion-mark" aria-hidden="true">N</span><span className="aira-app-name">Notion</span></span>
+                  <span className="aira-integration-app" role="img" aria-label="Tasks"><img src={tasksIcon} alt="" /><span className="aira-app-name">Tasks</span></span>
+                </div>
+                <div className="aira-integration-row aira-integration-daily">
+                  <span className="aira-integration-app aira-grocery-app"><img className="aira-swiggy-logo" src={swiggyIcon} alt="Swiggy" /></span>
+                  <span className="aira-integration-app aira-grocery-app"><img className="aira-square-grocery-logo" src={instamartIcon} alt="Instamart" /></span>
+                  <span className="aira-integration-app aira-grocery-app"><img className="aira-square-grocery-logo" src={zeptoIcon} alt="Zepto" /></span>
+                  <span className="aira-integration-app aira-grocery-app aira-namma-app"><img className="aira-namma-logo" src={nammaYatriIcon} alt="Namma Yatri" /></span>
+                </div>
               </div>
               <p className="aira-integrations-note">Connect in the AIRA companion app</p>
             </div>
@@ -543,7 +565,7 @@ function Index() {
                   {[0, 1].map((cycle) => (
                     <div className="aira-notification-cycle" key={cycle}>
                       {integrationNotifications.map((notification) => (
-                        <div className="aira-activity-row" key={`${cycle}-${notification.app}`}>
+                          <div className="aira-activity-row" key={`${cycle}-${notification.app}-${notification.status}`}>
                           <span className="aira-activity-icon">
                             {notification.icon ? (
                               <img src={notification.icon} alt="" />
