@@ -22,7 +22,7 @@ import instamartIcon from "@/assets/instamart.png";
 import zeptoIcon from "@/assets/zepto.png";
 import nammaYatriIcon from "@/assets/namma-yatri.png";
 import {
-  Activity,
+  Activity,   
   AudioLines,
   Battery,
   Globe2,
